@@ -3,12 +3,20 @@
   "description": "Composer project template for the Apigee Developer Portal Drupal distribution.",
   "type": "project",
   "license": "GPL-2.0-or-later",
-  "repositories": [
-    {
+  "repositories": {
+    "drupal": {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
+    },
+    "edge": {
+      "type": "vcs",
+      "url": "git@github.com:arlina-espinoza/apigee-edge-drupal.git"
+    },
+    "client": {
+      "type": "vcs",
+      "url": "git@github.com:arlina-espinoza/apigee-client-php.git"
     }
-  ],
+  },
   "config": {
     "process-timeout": 0
   },
@@ -20,7 +28,9 @@
     "drupal/apigee_m10n": "^1.0.0",
     "drupal/commerce": "^2.13",
     "php": "^7.1",
-    "drush/drush": "^9.7"
+    "drush/drush": "^9.7",
+    "apigee/apigee-client-php": "dev-2.x-hybrid-wip as 2.0.3",
+    "drupal/apigee_edge": "dev-8.x-1.x-hybrid as 1.x-dev"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
