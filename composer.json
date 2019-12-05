@@ -22,7 +22,8 @@
     "drush/drush": "^9.7",
     "php": "^7.3",
     "drupal/pantheon_advanced_page_cache": "^1.0",
-    "drupal/redis": "^1.1"
+    "drupal/redis": "^1.1",
+    "drupal/core": "^8.8"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
