@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "866ec5595db3cb2b36a916f22a43c56f",
+    "content-hash": "cc8c3b7b1597e0ea6bec20b2ac90e5c3",
     "packages": [
         {
             "name": "apigee/apigee-client-php",
@@ -8751,9 +8751,16 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": [],
-    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "drupal/better_exposed_filters": 15,
+        "drupal/default_content": 15,
+        "drupal/entity": 5,
+        "drupal/email_registration": 5,
+        "drupal/inline_entity_form": 5,
+        "drupal/state_machine": 5
+    },
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.3"
