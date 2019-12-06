@@ -12,11 +12,6 @@ use Drupal\Core\Serialization\Yaml;
 class InstallerNonEnglishProfileWithoutLocaleModuleTest extends InstallerTestBase {
 
   /**
-   * {@inheritdoc}
-   */
-  protected $defaultTheme = 'stark';
-
-  /**
    * The testing profile name.
    *
    * @var string
@@ -35,12 +30,10 @@ class InstallerNonEnglishProfileWithoutLocaleModuleTest extends InstallerTestBas
     parent::prepareEnvironment();
 
     // Create a self::PROFILE testing profile that depends on the 'language'
-    // module but not on 'locale' module. We set core_version_requirement to '*'
-    // for the test so that it does not need to be updated between major
-    // versions.
+    // module but not on 'locale' module.
     $profile_info = [
       'type' => 'profile',
-      'core_version_requirement' => '*',
+      'core' => \Drupal::CORE_COMPATIBILITY,
       'name' => 'Test with language but without locale',
       'install' => ['language'],
     ];

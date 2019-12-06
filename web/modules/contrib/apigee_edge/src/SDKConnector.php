@@ -23,8 +23,10 @@ use Apigee\Edge\Api\Management\Controller\OrganizationController;
 use Apigee\Edge\Client;
 use Apigee\Edge\ClientInterface;
 use Apigee\Edge\HttpClient\Utility\Builder;
+use Drupal\apigee_edge\Connector\HybridCredentials;
 use Drupal\apigee_edge\Exception\AuthenticationKeyException;
 use Drupal\apigee_edge\Exception\AuthenticationKeyNotFoundException;
+use Drupal\apigee_edge\Exception\InvalidArgumentException;
 use Drupal\apigee_edge\Plugin\EdgeKeyTypeInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -230,7 +232,10 @@ class SDKConnector implements SDKConnectorInterface {
   private function buildCredentials(KeyInterface $key): CredentialsInterface {
     /** @var \Drupal\apigee_edge\Plugin\EdgeKeyTypeInterface $key */
     if ($key->getKeyType() instanceof EdgeKeyTypeInterface) {
-      if ($key->getKeyType()->getAuthenticationType($key) === EdgeKeyTypeInterface::EDGE_AUTH_TYPE_OAUTH) {
+      if ($key->getKeyType()->getInstanceType($key) === EdgeKeyTypeInterface::INSTANCE_TYPE_HYBRID) {
+        return new HybridCredentials($key);
+      }
+      elseif ($key->getKeyType()->getAuthenticationType($key) === EdgeKeyTypeInterface::EDGE_AUTH_TYPE_OAUTH) {
         return new OauthCredentials($key);
       }
       return new Credentials($key);
@@ -273,7 +278,15 @@ class SDKConnector implements SDKConnectorInterface {
     try {
       // We use the original, non-decorated organization controller here.
       $oc = new OrganizationController($client);
-      $oc->load($credentials->getKeyType()->getOrganization($credentials->getKey()));
+      /* @var \Apigee\Edge\Api\Management\Entity\Organization $org */
+      $org = $oc->load($credentials->getKeyType()->getOrganization($credentials->getKey()));
+
+      // Calling an invalid endpoint under some circumstances might return an
+      // empty organization object, so we check if it indeed loaded an org.
+      // @see https://github.com/apigee/apigee-edge-drupal/issues/250
+      if (empty($org->id())) {
+        throw new InvalidArgumentException('Failed to load a valid organization.');
+      }
     }
     catch (\Exception $e) {
       throw $e;

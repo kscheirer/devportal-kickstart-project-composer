@@ -21,13 +21,18 @@
 namespace Drupal\apigee_edge;
 
 use Apigee\Edge\Exception\ApiRequestException;
+use Apigee\Edge\Exception\HybridOauth2AuthenticationException;
 use Apigee\Edge\Exception\OauthAuthenticationException;
 use Apigee\Edge\HttpClient\Plugin\Authentication\Oauth;
+use DomainException;
+use Drupal\apigee_edge\Exception\AuthenticationKeyException;
+use Drupal\apigee_edge\Exception\InvalidArgumentException;
 use Drupal\apigee_edge\Exception\KeyProviderRequirementsException;
 use Drupal\apigee_edge\Plugin\EdgeKeyTypeInterface;
 use Drupal\apigee_edge\Plugin\KeyProviderRequirementsInterface;
 use Drupal\apigee_edge\Plugin\KeyType\ApigeeAuthKeyType;
 use Drupal\Component\Render\MarkupInterface;
+use Drupal\Component\Utility\EmailValidatorInterface;
 use Drupal\Component\Utility\Random;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
@@ -67,11 +72,11 @@ final class KeyEntityFormEnhancer {
   private $connector;
 
   /**
-   * The key entity storage.
+   * The entity type manager.
    *
-   * @var \Drupal\Core\Config\Entity\ConfigEntityStorageInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  private $keyStorage;
+  private $entityTypeManager;
 
   /**
    * The OAuth token storage.
@@ -88,6 +93,13 @@ final class KeyEntityFormEnhancer {
   private $configFactory;
 
   /**
+   * The email validator.
+   *
+   * @var \Drupal\Component\Utility\EmailValidatorInterface
+   */
+  private $emailValidator;
+
+  /**
    * KeyEntityFormEnhancer constructor.
    *
    * @param \Drupal\apigee_edge\SDKConnectorInterface $connector
@@ -98,12 +110,15 @@ final class KeyEntityFormEnhancer {
    *   The entity type manager serivce.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config factory.
+   * @param \Drupal\Component\Utility\EmailValidatorInterface $email_validator
+   *   The email validator.
    */
-  public function __construct(SDKConnectorInterface $connector, OauthTokenStorageInterface $oauth_token_storage, EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory) {
+  public function __construct(SDKConnectorInterface $connector, OauthTokenStorageInterface $oauth_token_storage, EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, EmailValidatorInterface $email_validator) {
     $this->connector = $connector;
-    $this->keyStorage = $entity_type_manager->getStorage('key');
+    $this->entityTypeManager = $entity_type_manager;
     $this->oauthTokenStorage = $oauth_token_storage;
     $this->configFactory = $config_factory;
+    $this->emailValidator = $email_validator;
   }
 
   /**
@@ -234,9 +249,16 @@ final class KeyEntityFormEnhancer {
         ],
         '#states' => [
           'enabled' => [
-            ':input[name="key_input_settings[password]"]' => ['filled' => TRUE],
-            ':input[name="key_input_settings[organization]"]' => ['filled' => TRUE],
-            ':input[name="key_input_settings[username]"]' => ['filled' => TRUE],
+            [
+              ':input[name="key_input_settings[organization]"]' => ['empty' => FALSE],
+              ':input[name="key_input_settings[password]"]' => ['empty' => FALSE],
+              ':input[name="key_input_settings[username]"]' => ['empty' => FALSE],
+            ],
+            [
+              ':input[name="key_input_settings[instance_type]"]' => ['value' => EdgeKeyTypeInterface::INSTANCE_TYPE_HYBRID],
+              ':input[name="key_input_settings[organization]"]' => ['empty' => FALSE],
+              ':input[name="key_input_settings[account_json_key]"]' => ['empty' => FALSE],
+            ],
           ],
         ],
       ];
@@ -289,19 +311,14 @@ final class KeyEntityFormEnhancer {
         // saved key. We must remove that from the storage otherwise an
         // invalid combination of the saved key values and the new values from
         // the input fields gets sent to Apigee Edge.
-        // TODO Add test coverage to this.
-        // For this, the SDKConnector service decorator in the testing module
-        // has to be able to return a client object that either returns a mock
-        // response from its queue or make a real API call if the queue is
-        // empty.
-        // @see https://github.com/apigee/apigee-edge-drupal/pull/179#pullrequestreview-230512792
-        unset($form_state->getStorage()['key_value']);
+        $key_value_from_storage = &$form_state->get('key_value');
+        unset($key_value_from_storage['original'], $key_value_from_storage['processed_original']);
       }
 
       // Create a temp key for testing without saving it.
       $random = new Random();
       /** @var \Drupal\key\KeyInterface $test_key */
-      $test_key = $this->keyStorage->create([
+      $test_key = $this->entityTypeManager->getStorage('key')->create([
         'id' => strtolower($random->name(16)),
         'key_type' => $key->getKeyType()->getPluginID(),
         'key_input' => $key->getKeyInput()->getPluginID(),
@@ -319,7 +336,7 @@ final class KeyEntityFormEnhancer {
     $test_key_type = $test_key->getKeyType();
     $test_auth_type = $test_key_type->getAuthenticationType($test_key);
     try {
-      if ($test_auth_type === EdgeKeyTypeInterface::EDGE_AUTH_TYPE_OAUTH) {
+      if (in_array($test_auth_type, [EdgeKeyTypeInterface::EDGE_AUTH_TYPE_OAUTH, EdgeKeyTypeInterface::EDGE_AUTH_TYPE_JWT])) {
         // Check the requirements first.
         $this->oauthTokenStorage->checkRequirements();
         // Clear existing OAuth token data.
@@ -345,7 +362,9 @@ final class KeyEntityFormEnhancer {
       // still not clear the submitted value.
       // \Drupal\apigee_edge\Plugin\KeyInput\ApigeeAuthKeyInput::buildConfigurationForm()
       // does not get called in this case.
-      $form['settings']['input_section']['key_input_settings']['password']['#attributes']['value'] = $test_key_type->getPassword($test_key);
+      if ($test_key_type->getInstanceType($test_key) != EdgeKeyTypeInterface::INSTANCE_TYPE_HYBRID) {
+        $form['settings']['input_section']['key_input_settings']['password']['#attributes']['value'] = $test_key_type->getPassword($test_key);
+      }
     }
     finally {
       // Clear Oauth token data that may have been saved during testing
@@ -445,8 +464,29 @@ final class KeyEntityFormEnhancer {
     /** @var \Drupal\apigee_edge\Plugin\KeyType\ApigeeAuthKeyType $key_type */
     $key_type = $key->getKeyType();
 
+    if ($exception instanceof AuthenticationKeyException) {
+      $suggestion = $this->t('@fail_text Verify the Apigee Edge connection settings.', [
+        '@fail_text' => $fail_text,
+      ]);
+    }
+
+    elseif ($exception instanceof HybridOauth2AuthenticationException) {
+      $fail_text = $this->t('Failed to connect to the authorization server.');
+      // General error message.
+      $suggestion = $this->t('@fail_text Check the debug information below for more details.', [
+        '@fail_text' => $fail_text,
+      ]);
+
+      // Invalid key / OpenSSL unable to sign data.
+      if ($exception->getPrevious() && $exception->getPrevious() instanceof DomainException) {
+        $suggestion = $this->t('@fail_text The private key in the GCP service account key JSON is invalid.', [
+          '@fail_text' => $fail_text,
+        ]);
+      }
+    }
+
     // Failed to connect to the Oauth authorization server.
-    if ($exception instanceof OauthAuthenticationException) {
+    elseif ($exception instanceof OauthAuthenticationException) {
       $fail_text = $this->t('Failed to connect to the OAuth authorization server.');
       // General error message.
       $suggestion = $this->t('@fail_text Check the debug information below for more details.', [
@@ -502,13 +542,22 @@ final class KeyEntityFormEnhancer {
       // valid organization name and username provided with an invalid password
       // the MGMT server returns HTTP 500 with an error instead of HTTP 401.
       if ($exception->getCode() === 401 || ($exception->getCode() === 500 && $exception->getEdgeErrorCode() === 'usersandroles.SsoInternalServerError')) {
-        $suggestion = $this->t('@fail_text The given username (%username) or password is incorrect.', [
-          '@fail_text' => $fail_text,
-          '%username' => $key_type->getUsername($key),
-        ]);
+
+        // If on public cloud, the username should be an email.
+        if ($key_type->getInstanceType($key) === EdgeKeyTypeInterface::INSTANCE_TYPE_PUBLIC && !$this->emailValidator->isValid($key_type->getUsername($key))) {
+          $suggestion = $this->t('@fail_text The organization username should be a valid email.', [
+            '@fail_text' => $fail_text,
+          ]);
+        }
+        else {
+          $suggestion = $this->t('@fail_text The given username (%username) or password is incorrect.', [
+            '@fail_text' => $fail_text,
+            '%username' => $key_type->getUsername($key),
+          ]);
+        }
       }
       // Invalid organization name.
-      elseif ($exception->getCode() === 403) {
+      elseif ($exception->getCode() === 404) {
         $suggestion = $this->t('@fail_text The given organization name (%organization) is incorrect.', [
           '@fail_text' => $fail_text,
           '%organization' => $key_type->getOrganization($key),
@@ -535,6 +584,15 @@ final class KeyEntityFormEnhancer {
             ]);
           }
         }
+
+        // If SDKConnector::testConnection() fails to retrieve a valid org,
+        // then this exception is thrown.
+        elseif ($exception instanceof InvalidArgumentException) {
+          $suggestion = $this->t('@fail_text The given endpoint (%endpoint) is incorrect or something is wrong with the connection.', [
+            '@fail_text' => $fail_text,
+            '%endpoint' => $key_type->getEndpoint($key),
+          ]);
+        }
       }
     }
 
@@ -554,22 +612,27 @@ final class KeyEntityFormEnhancer {
    */
   private function createDebugText(\Exception $exception, KeyInterface $key): string {
     $key_type = $key->getKeyType();
-
-    $credentials = !($key_type instanceof EdgeKeyTypeInterface) ? [] : [
-      'endpoint' => $key_type->getEndpoint($key),
-      'organization' => $key_type->getOrganization($key),
-      'username' => $key_type->getUsername($key),
-    ];
-
+    $credentials = [];
     $keys = [
       'auth_type' => ($key_type instanceof EdgeKeyTypeInterface) ? $key_type->getAuthenticationType($key) : 'invalid credentials',
       'key_provider' => get_class($key->getKeyProvider()),
     ];
 
-    if (!empty($credentials) && $keys['auth_type'] === EdgeKeyTypeInterface::EDGE_AUTH_TYPE_OAUTH) {
-      $credentials['authorization_server'] = $key_type->getAuthorizationServer($key);
-      $credentials['client_id'] = $key_type->getClientId($key);
-      $credentials['client_secret'] = $key_type->getClientSecret($key) === Oauth::DEFAULT_CLIENT_SECRET ? Oauth::DEFAULT_CLIENT_SECRET : '***client-secret***';
+    if ($key_type instanceof EdgeKeyTypeInterface) {
+      $credentials = [
+        'endpoint' => $key_type->getEndpoint($key),
+        'organization' => $key_type->getOrganization($key),
+      ];
+
+      if ($key_type->getInstanceType($key) != EdgeKeyTypeInterface::INSTANCE_TYPE_HYBRID) {
+        $credentials['username'] = $key_type->getUsername($key);
+      }
+
+      if ($key_type->getAuthenticationType($key) === EdgeKeyTypeInterface::EDGE_AUTH_TYPE_OAUTH) {
+        $credentials['authorization_server'] = $key_type->getAuthorizationServer($key);
+        $credentials['client_id'] = $key_type->getClientId($key);
+        $credentials['client_secret'] = $key_type->getClientSecret($key) === Oauth::DEFAULT_CLIENT_SECRET ? Oauth::DEFAULT_CLIENT_SECRET : '***client-secret***';
+      }
     }
 
     // Sanitize exception text.
