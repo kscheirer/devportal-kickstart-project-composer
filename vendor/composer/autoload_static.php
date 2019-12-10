@@ -612,13 +612,6 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
                 0 => __DIR__ . '/..' . '/stack/builder/src',
             ),
         ),
-        'P' => 
-        array (
-            'PEAR' => 
-            array (
-                0 => __DIR__ . '/..' . '/pear/pear_exception',
-            ),
-        ),
         'E' => 
         array (
             'EasyRdf_' => 
@@ -666,6 +659,7 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
         'Drupal\\Core\\DrupalKernelInterface' => __DIR__ . '/../..' . '/web/core/lib/Drupal/Core/DrupalKernelInterface.php',
         'Drupal\\Core\\Site\\Settings' => __DIR__ . '/../..' . '/web/core/lib/Drupal/Core/Site/Settings.php',
         'Error' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/Error.php',
+        'PEAR_Exception' => __DIR__ . '/..' . '/pear/pear_exception/PEAR/Exception.php',
         'ParseError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ParseError.php',
         'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',

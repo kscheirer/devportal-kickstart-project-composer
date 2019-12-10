@@ -222,16 +222,16 @@
         },
         {
             "name": "chi-teck/drupal-code-generator",
-            "version": "1.30.5",
+            "version": "1.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chi-teck/drupal-code-generator.git",
-                "reference": "c59c31ee6d8eefe76a5d367feef902e259c90c7b"
+                "reference": "f994157721f238175be90171f0ccc1c0aa17c276"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/c59c31ee6d8eefe76a5d367feef902e259c90c7b",
-                "reference": "c59c31ee6d8eefe76a5d367feef902e259c90c7b",
+                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/f994157721f238175be90171f0ccc1c0aa17c276",
+                "reference": "f994157721f238175be90171f0ccc1c0aa17c276",
                 "shasum": ""
             },
             "require": {
@@ -239,7 +239,7 @@
                 "php": ">=5.5.9",
                 "symfony/console": "^3.4 || ^4.0",
                 "symfony/filesystem": "^2.7 || ^3.4 || ^4.0",
-                "twig/twig": "^1.38.2 || ^2.10"
+                "twig/twig": "^1.41 || ^2.12"
             },
             "bin": [
                 "bin/dcg"
@@ -263,7 +263,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal code generator",
-            "time": "2019-10-27T14:27:26+00:00"
+            "time": "2019-12-07T16:54:31+00:00"
         },
         {
             "name": "clue/stream-filter",
@@ -2418,17 +2418,17 @@
         },
         {
             "name": "drupal/apigee_api_catalog",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_api_catalog.git",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "c19d19e82aaa8d348a841e3605773d6d9ba27902"
+                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "00af39c665dfa5309021401e6786a45a5b31d83f"
             },
             "require": {
                 "drupal/apigee_edge": "~1.0-rc4",
@@ -2447,8 +2447,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1571067185",
+                    "version": "8.x-1.1",
+                    "datestamp": "1575952684",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4808,16 +4808,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.4.1",
+            "version": "6.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "0895c932405407fd3a7368b6910c09a24d26db11"
+                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0895c932405407fd3a7368b6910c09a24d26db11",
-                "reference": "0895c932405407fd3a7368b6910c09a24d26db11",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
+                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
                 "shasum": ""
             },
             "require": {
@@ -4832,12 +4832,13 @@
                 "psr/log": "^1.1"
             },
             "suggest": {
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.3-dev"
+                    "dev-master": "6.5-dev"
                 }
             },
             "autoload": {
@@ -4870,7 +4871,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-10-23T15:58:00+00:00"
+            "time": "2019-12-07T18:20:45+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -5527,16 +5528,16 @@
         },
         {
             "name": "pear/pear_exception",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/PEAR_Exception.git",
-                "reference": "8c18719fdae000b690e3912be401c76e406dd13b"
+                "reference": "dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/8c18719fdae000b690e3912be401c76e406dd13b",
-                "reference": "8c18719fdae000b690e3912be401c76e406dd13b",
+                "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7",
+                "reference": "dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7",
                 "shasum": ""
             },
             "require": {
@@ -5552,9 +5553,9 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "PEAR": ""
-                }
+                "classmap": [
+                    "PEAR/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "include-path": [
@@ -5578,7 +5579,7 @@
             "keywords": [
                 "exception"
             ],
-            "time": "2015-02-10T20:07:52+00:00"
+            "time": "2019-12-10T10:24:42+00:00"
         },
         {
             "name": "php-http/client-common",
