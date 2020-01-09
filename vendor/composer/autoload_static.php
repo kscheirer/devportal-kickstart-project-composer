@@ -186,10 +186,6 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
             'CommerceGuys\\Addressing\\' => 24,
             'Clue\\StreamFilter\\' => 18,
         ),
-        'B' => 
-        array (
-            'Brumann\\Polyfill\\' => 17,
-        ),
         'A' => 
         array (
             'Asm89\\Stack\\' => 12,
@@ -587,10 +583,6 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
         'Clue\\StreamFilter\\' => 
         array (
             0 => __DIR__ . '/..' . '/clue/stream-filter/src',
-        ),
-        'Brumann\\Polyfill\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/brumann/polyfill-unserialize/src',
         ),
         'Asm89\\Stack\\' => 
         array (

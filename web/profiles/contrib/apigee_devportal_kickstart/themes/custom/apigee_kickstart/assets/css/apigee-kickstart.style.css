@@ -11684,6 +11684,10 @@ body {
 main {
   flex-grow: 1;
 }
+.no-cssgrid main {
+  padding-bottom: 120px;
+  flex-shrink: 0;
+}
 
 .page__breadcrumbs {
   background-color: var(--ak-accent-color);
@@ -11892,7 +11896,11 @@ input.btn + .btn {
   flex-direction: column;
   text-decoration: none;
   color: #3c3c3c;
-  height: 100%;
+}
+@media (min-width: 768px) {
+  .no-cssgrid .api-card .card-img-top {
+    max-height: 205px;
+  }
 }
 
 .collapsible-card {
@@ -11950,6 +11958,9 @@ details.details {
 .details__summary {
   cursor: pointer;
   position: relative;
+}
+.details__summary::marker {
+  content: "";
 }
 @media (min-width: 768px) {
   .details__summary {
@@ -12250,6 +12261,13 @@ details .form-select {
   background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
 }
 
+.form-item--error > label {
+  color: #dc3545;
+}
+.form-item--error .form-control.error {
+  border-color: #dc3545;
+}
+
 .form-actions {
   margin-top: 1.5rem;
 }
@@ -12385,6 +12403,7 @@ fieldset > .fieldset-wrapper p:last-child {
   position: relative;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   display: flex;
   height: 100%;
   z-index: 1;
@@ -12609,6 +12628,11 @@ ul.social-links li a {
     max-height: 480px;
   }
 }
+.no-cssgrid .text-image__wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
 @media (max-width: 991.98px) {
   .text-image__title {
@@ -12624,6 +12648,11 @@ ul.social-links li a {
 @media (min-width: 992px) {
   .text-image__text {
     padding-right: 85px;
+  }
+}
+@media (min-width: 768px) {
+  .no-cssgrid .text-image__text {
+    max-width: 550px;
   }
 }
 
@@ -13057,6 +13086,11 @@ ul.social-links li a {
   margin-top: -1rem;
   flex-wrap: nowrap;
   overflow: scroll;
+}
+@media (min-width: 768px) {
+  .apigee-entity--app--view-mode-collapsible-card .nav-tabs--secondary {
+    overflow: hidden;
+  }
 }
 
 .apidoc--view-mode-card {
