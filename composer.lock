@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc8c3b7b1597e0ea6bec20b2ac90e5c3",
+    "content-hash": "7e5c6071c9d49ed1ff1926fc0dd746ba",
     "packages": [
         {
             "name": "apigee/apigee-client-php",
@@ -2536,17 +2536,17 @@
         },
         {
             "name": "drupal/apigee_m10n",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_m10n.git",
-                "reference": "8.x-1.2"
+                "reference": "8.x-1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_m10n-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "b35253f0f0a49aee0864df43b9733129b5c3c876"
+                "url": "https://ftp.drupal.org/files/projects/apigee_m10n-8.x-1.3.zip",
+                "reference": "8.x-1.3",
+                "shasum": "e0d03d6e2425aa80f82358c111d685f2fadd6f00"
             },
             "require": {
                 "apigee/apigee-client-php": "~2.0.3",
@@ -2554,6 +2554,7 @@
                 "cweagans/composer-patches": "~1.6",
                 "drupal/apigee_edge": "~1.0",
                 "drupal/core": "*",
+                "drupal/requirement": "~1.0",
                 "ext-bcmath": "*",
                 "php": ">=7.1"
             },
@@ -2582,8 +2583,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1578607087",
+                    "version": "8.x-1.3",
+                    "datestamp": "1580423845",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2598,6 +2599,10 @@
                 {
                     "name": "Arlina",
                     "homepage": "https://www.drupal.org/user/1055344"
+                },
+                {
+                    "name": "arshadcn",
+                    "homepage": "https://www.drupal.org/user/571032"
                 },
                 {
                     "name": "chrisnovak",
@@ -3217,20 +3222,26 @@
         },
         {
             "name": "drupal/email_registration",
-            "version": "1.0.0-rc7",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/email_registration.git",
-                "reference": "8.x-1.0-rc7"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/email_registration-8.x-1.0-rc7.zip",
-                "reference": "8.x-1.0-rc7",
-                "shasum": "a3ebc1e38539e7916f48e827d5bd7b1abeef0011"
+                "url": "https://ftp.drupal.org/files/projects/email_registration-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "f960f489f4273212b924a2d54e6cb8e43adb633e"
             },
             "require": {
                 "drupal/core": "*"
+            },
+            "conflict": {
+                "drupal/commerce": "<2.12"
+            },
+            "require-dev": {
+                "drupal/commerce": "^2.0"
             },
             "type": "drupal-module",
             "extra": {
@@ -3238,11 +3249,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc7",
-                    "datestamp": "1557344281",
+                    "version": "8.x-1.0",
+                    "datestamp": "1580243964",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -4131,6 +4142,73 @@
             "homepage": "https://www.drupal.org/project/redis",
             "support": {
                 "source": "https://git.drupalcode.org/project/redis"
+            }
+        },
+        {
+            "name": "drupal/requirement",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/requirement.git",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/requirement-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "2534d3b04a04194c16616bd9da300b40e135d43c"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1579675986",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Arlina",
+                    "homepage": "https://www.drupal.org/user/1055344"
+                },
+                {
+                    "name": "Jacine",
+                    "homepage": "https://www.drupal.org/user/88931"
+                },
+                {
+                    "name": "arshadcn",
+                    "homepage": "https://www.drupal.org/user/571032"
+                },
+                {
+                    "name": "chrisnovak",
+                    "homepage": "https://www.drupal.org/user/880416"
+                },
+                {
+                    "name": "jennbbennett",
+                    "homepage": "https://www.drupal.org/user/3605278"
+                },
+                {
+                    "name": "kscheirer",
+                    "homepage": "https://www.drupal.org/user/128191"
+                }
+            ],
+            "description": "A Drupal module to that gives modules a way to declare configuration requirement and suggestions.",
+            "homepage": "https://www.drupal.org/project/requirement",
+            "support": {
+                "source": "https://git.drupalcode.org/project/requirement"
             }
         },
         {
@@ -6365,25 +6443,26 @@
         },
         {
             "name": "stack/builder",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackphp/builder.git",
-                "reference": "fb3d136d04c6be41120ebf8c0cc71fe9507d750a"
+                "reference": "a4faaa6f532c6086bc66c29e1bc6c29593e1ca7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stackphp/builder/zipball/fb3d136d04c6be41120ebf8c0cc71fe9507d750a",
-                "reference": "fb3d136d04c6be41120ebf8c0cc71fe9507d750a",
+                "url": "https://api.github.com/repos/stackphp/builder/zipball/a4faaa6f532c6086bc66c29e1bc6c29593e1ca7c",
+                "reference": "a4faaa6f532c6086bc66c29e1bc6c29593e1ca7c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
-                "symfony/http-foundation": "~2.1|~3.0|~4.0",
-                "symfony/http-kernel": "~2.1|~3.0|~4.0"
+                "php": ">=7.2.0",
+                "symfony/http-foundation": "~2.1|~3.0|~4.0|~5.0",
+                "symfony/http-kernel": "~2.1|~3.0|~4.0|~5.0"
             },
             "require-dev": {
-                "silex/silex": "~1.0"
+                "phpunit/phpunit": "~8.0",
+                "symfony/routing": "^5.0"
             },
             "type": "library",
             "extra": {
@@ -6406,11 +6485,11 @@
                     "email": "igor@wiedler.ch"
                 }
             ],
-            "description": "Builder for stack middlewares based on HttpKernelInterface.",
+            "description": "Builder for stack middleware based on HttpKernelInterface.",
             "keywords": [
                 "stack"
             ],
-            "time": "2017-11-18T14:57:29+00:00"
+            "time": "2020-01-30T12:17:27+00:00"
         },
         {
             "name": "symfony-cmf/routing",
@@ -6601,16 +6680,16 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v4.4.3",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "89c3fd5c299b940333bc6fe9f1b8db1b0912c759"
+                "reference": "20236471058bbaa9907382500fc14005c84601f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/89c3fd5c299b940333bc6fe9f1b8db1b0912c759",
-                "reference": "89c3fd5c299b940333bc6fe9f1b8db1b0912c759",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/20236471058bbaa9907382500fc14005c84601f0",
+                "reference": "20236471058bbaa9907382500fc14005c84601f0",
                 "shasum": ""
             },
             "require": {
@@ -6653,7 +6732,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2020-01-08T17:29:02+00:00"
+            "time": "2020-01-25T12:44:29+00:00"
         },
         {
             "name": "symfony/dependency-injection",
@@ -6791,7 +6870,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.4.3",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -6841,7 +6920,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v4.4.3",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -7034,7 +7113,7 @@
         },
         {
             "name": "symfony/inflector",
-            "version": "v5.0.3",
+            "version": "v5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/inflector.git",
@@ -7092,7 +7171,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v4.4.3",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
@@ -7655,7 +7734,7 @@
         },
         {
             "name": "symfony/property-access",
-            "version": "v4.4.3",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-access.git",
@@ -7722,7 +7801,7 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "v4.4.3",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-info.git",
@@ -8174,16 +8253,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v4.4.3",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "7cfa470bc3b1887a7b2a47c0a702a84ad614fa92"
+                "reference": "46b53fd714568af343953c039ff47b67ce8af8d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/7cfa470bc3b1887a7b2a47c0a702a84ad614fa92",
-                "reference": "7cfa470bc3b1887a7b2a47c0a702a84ad614fa92",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/46b53fd714568af343953c039ff47b67ce8af8d6",
+                "reference": "46b53fd714568af343953c039ff47b67ce8af8d6",
                 "shasum": ""
             },
             "require": {
@@ -8246,7 +8325,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2020-01-04T13:00:46+00:00"
+            "time": "2020-01-25T12:44:29+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -8375,16 +8454,16 @@
         },
         {
             "name": "typo3/phar-stream-wrapper",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/phar-stream-wrapper.git",
-                "reference": "586ff60beea128e069a5dc271d3d8133a9bc460a"
+                "reference": "e0c1b495cfac064f4f5c4bcb6bf67bb7f345ed04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/phar-stream-wrapper/zipball/586ff60beea128e069a5dc271d3d8133a9bc460a",
-                "reference": "586ff60beea128e069a5dc271d3d8133a9bc460a",
+                "url": "https://api.github.com/repos/TYPO3/phar-stream-wrapper/zipball/e0c1b495cfac064f4f5c4bcb6bf67bb7f345ed04",
+                "reference": "e0c1b495cfac064f4f5c4bcb6bf67bb7f345ed04",
                 "shasum": ""
             },
             "require": {
@@ -8421,7 +8500,7 @@
                 "security",
                 "stream-wrapper"
             ],
-            "time": "2019-10-18T11:57:16+00:00"
+            "time": "2019-12-10T11:53:27+00:00"
         },
         {
             "name": "webflo/drupal-finder",
@@ -8785,7 +8864,6 @@
         "drupal/better_exposed_filters": 15,
         "drupal/default_content": 15,
         "drupal/entity": 5,
-        "drupal/email_registration": 5,
         "drupal/inline_entity_form": 5,
         "drupal/state_machine": 5
     },
