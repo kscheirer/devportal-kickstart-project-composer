@@ -161,6 +161,7 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
             'DrupalComposer\\DrupalScaffold\\' => 30,
             'DrupalCodeGenerator\\' => 20,
             'Doctrine\\Persistence\\' => 21,
+            'Doctrine\\Inflector\\' => 19,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
             'Doctrine\\Common\\Collections\\' => 28,
@@ -501,6 +502,10 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
         'Doctrine\\Persistence\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Persistence',
+        ),
+        'Doctrine\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
         ),
         'Doctrine\\Common\\Lexer\\' => 
         array (
