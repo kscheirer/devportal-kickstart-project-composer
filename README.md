@@ -17,7 +17,7 @@ This is a Composer package that installs the following components to make a full
 The following command will download Drupal core, the Apigee Developer Portal Kickstart profile, and their dependencies, into the `MY_PROJECT` directory:
 
 ```sh
-composer create-project apigee/devportal-kickstart-project:8.x-dev MY_PROJECT --no-interaction
+composer create-project apigee/devportal-kickstart-project:8.x-dev MY_PROJECT
 ```
 
 The actual web root will be `MY_PROJECT/web`. You will need to point your [web server](https://www.drupal.org/docs/develop/local-server-setup) to serve that directory. Then, visit the site in a web browser, and you'll be redirected to `core/install.php`, where you can run the installer like any Drupal site installation. Running the installation via web browser is recommended for the best experience.
@@ -30,6 +30,10 @@ composer quick-start
 ```
 
 **Note: While `quick-start` is the quickest means of installing this profile, it is not the most performant, or complete. It does not present the configuration options available when installing via web browser. As a result, you'll need to configure the [Apigee Edge connection](https://www.drupal.org/docs/8/modules/apigee-edge/configure-the-connection-to-apigee-edge) manually, post installation. See [Apigee Edge documentation](https://www.drupal.org/docs/8/modules/apigee-edge) for more details.*
+
+## Update
+
+Read the guide on [drupal.org](https://www.drupal.org/docs/8/modules/apigee-developer-portal-kickstart/get-started-with-kickstart#s-upgrading-kickstart).
 
 ## Issues, Questions and Feedback
 
