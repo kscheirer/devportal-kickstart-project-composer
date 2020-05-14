@@ -91,16 +91,16 @@
         },
         {
             "name": "apigee/apigee_devportal_kickstart",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apigee/apigee-devportal-kickstart-drupal.git",
-                "reference": "c06bf2164535b59d4ca92fed185252031f558063"
+                "reference": "0186c85f32ec1f0f432db02de958317e759e7371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/c06bf2164535b59d4ca92fed185252031f558063",
-                "reference": "c06bf2164535b59d4ca92fed185252031f558063",
+                "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/0186c85f32ec1f0f432db02de958317e759e7371",
+                "reference": "0186c85f32ec1f0f432db02de958317e759e7371",
                 "shasum": ""
             },
             "require": {
@@ -133,7 +133,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "A fast demo and starting point for Apigee Developer Portals.",
-            "time": "2020-04-08T05:18:58+00:00"
+            "time": "2020-05-05T08:36:23+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -2402,21 +2402,20 @@
         },
         {
             "name": "drupal/apigee_api_catalog",
-            "version": "1.2.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_api_catalog.git",
-                "reference": "8.x-1.2"
+                "reference": "8.x-2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "a8657e3e88a1c5dd1e8636ab13377363b2167378"
+                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "6602a1b499718f5988d78ec3d6618a5ac9cb1b4b"
             },
             "require": {
-                "drupal/apigee_edge": "~1.0-rc4",
-                "drupal/core": "*",
+                "drupal/core": "^8.8.0 || ^9",
                 "drupal/file_link": "~1.0",
                 "php": ">=7.1"
             },
@@ -2428,8 +2427,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1586447482",
+                    "version": "8.x-2.0",
+                    "datestamp": "1589480393",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
