@@ -86,24 +86,24 @@
     },
     {
         "name": "apigee/apigee_devportal_kickstart",
-        "version": "1.13.0",
-        "version_normalized": "1.13.0.0",
+        "version": "1.14.0",
+        "version_normalized": "1.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/apigee/apigee-devportal-kickstart-drupal.git",
-            "reference": "0186c85f32ec1f0f432db02de958317e759e7371"
+            "reference": "b7673e7ec1258a07960fba3f5b825c2ea302e30f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/0186c85f32ec1f0f432db02de958317e759e7371",
-            "reference": "0186c85f32ec1f0f432db02de958317e759e7371",
+            "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/b7673e7ec1258a07960fba3f5b825c2ea302e30f",
+            "reference": "b7673e7ec1258a07960fba3f5b825c2ea302e30f",
             "shasum": ""
         },
         "require": {
             "cweagans/composer-patches": "^1.6.5",
             "drupal/admin_toolbar": "^2.0",
             "drupal/adminimal_admin_toolbar": "^1.9",
-            "drupal/apigee_api_catalog": ">=1.0-beta2",
+            "drupal/apigee_api_catalog": "^1.0",
             "drupal/apigee_edge": "^1.0",
             "drupal/better_exposed_filters": "^3.0@alpha",
             "drupal/default_content": "^1.0@alpha",
@@ -116,7 +116,7 @@
         "conflict": {
             "drupal/pathauto": "<1.6"
         },
-        "time": "2020-05-05T08:36:23+00:00",
+        "time": "2020-05-15T17:47:22+00:00",
         "type": "drupal-profile",
         "extra": {
             "patches": {
@@ -2682,21 +2682,22 @@
     },
     {
         "name": "drupal/apigee_api_catalog",
-        "version": "2.0.0",
-        "version_normalized": "2.0.0.0",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/apigee_api_catalog.git",
-            "reference": "8.x-2.0"
+            "reference": "8.x-1.2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-2.0.zip",
-            "reference": "8.x-2.0",
-            "shasum": "6602a1b499718f5988d78ec3d6618a5ac9cb1b4b"
+            "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-1.2.zip",
+            "reference": "8.x-1.2",
+            "shasum": "a8657e3e88a1c5dd1e8636ab13377363b2167378"
         },
         "require": {
-            "drupal/core": "^8.8.0 || ^9",
+            "drupal/apigee_edge": "~1.0-rc4",
+            "drupal/core": "*",
             "drupal/file_link": "~1.0",
             "php": ">=7.1"
         },
@@ -2708,8 +2709,8 @@
         "type": "drupal-module",
         "extra": {
             "drupal": {
-                "version": "8.x-2.0",
-                "datestamp": "1589480393",
+                "version": "8.x-1.2",
+                "datestamp": "1586447482",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
