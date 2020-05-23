@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "apigee/apigee-client-php",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apigee/apigee-client-php.git",
-                "reference": "e5e352ed93fab670459396339f3257fe314207ad"
+                "reference": "10efcdbe511b5a24a01caf3594cfd71000f3486a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apigee/apigee-client-php/zipball/e5e352ed93fab670459396339f3257fe314207ad",
-                "reference": "e5e352ed93fab670459396339f3257fe314207ad",
+                "url": "https://api.github.com/repos/apigee/apigee-client-php/zipball/10efcdbe511b5a24a01caf3594cfd71000f3486a",
+                "reference": "10efcdbe511b5a24a01caf3594cfd71000f3486a",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "sdk",
                 "web service"
             ],
-            "time": "2019-12-05T16:23:55+00:00"
+            "time": "2020-05-21T19:19:36+00:00"
         },
         {
             "name": "apigee/apigee_devportal_kickstart",
@@ -3664,20 +3664,20 @@
         },
         {
             "name": "drupal/paragraphs",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/paragraphs.git",
-                "reference": "8.x-1.11"
+                "reference": "8.x-1.12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.11.zip",
-                "reference": "8.x-1.11",
-                "shasum": "4fa849a249fbc689ca0c83523a967c08767e91af"
+                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.12.zip",
+                "reference": "8.x-1.12",
+                "shasum": "3b67d8af1160af42d93a4610be1e02869e428965"
             },
             "require": {
-                "drupal/core": "^8.7.7 || ^9",
+                "drupal/core": "^8.8 || ^9",
                 "drupal/entity_reference_revisions": "~1.3"
             },
             "require-dev": {
@@ -3698,12 +3698,9 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-1.11",
-                    "datestamp": "1581850829",
+                    "version": "8.x-1.12",
+                    "datestamp": "1590066861",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3712,7 +3709,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
