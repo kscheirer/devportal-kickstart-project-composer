@@ -86,17 +86,17 @@
     },
     {
         "name": "apigee/apigee_devportal_kickstart",
-        "version": "1.14.0",
-        "version_normalized": "1.14.0.0",
+        "version": "1.15.0",
+        "version_normalized": "1.15.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/apigee/apigee-devportal-kickstart-drupal.git",
-            "reference": "b7673e7ec1258a07960fba3f5b825c2ea302e30f"
+            "reference": "2828661ecdf7fa8793dce935bcbb5311fcbed897"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/b7673e7ec1258a07960fba3f5b825c2ea302e30f",
-            "reference": "b7673e7ec1258a07960fba3f5b825c2ea302e30f",
+            "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/2828661ecdf7fa8793dce935bcbb5311fcbed897",
+            "reference": "2828661ecdf7fa8793dce935bcbb5311fcbed897",
             "shasum": ""
         },
         "require": {
@@ -104,7 +104,7 @@
             "drupal/admin_toolbar": "^2.0",
             "drupal/adminimal_admin_toolbar": "^1.9",
             "drupal/apigee_api_catalog": "^1.0",
-            "drupal/apigee_edge": "^1.0",
+            "drupal/apigee_edge": "^1.10",
             "drupal/better_exposed_filters": "^3.0@alpha",
             "drupal/default_content": "^1.0@alpha",
             "drupal/email_registration": "^1.0@RC",
@@ -116,7 +116,7 @@
         "conflict": {
             "drupal/pathauto": "<1.6"
         },
-        "time": "2020-05-15T17:47:22+00:00",
+        "time": "2020-05-29T16:34:55+00:00",
         "type": "drupal-profile",
         "extra": {
             "patches": {
