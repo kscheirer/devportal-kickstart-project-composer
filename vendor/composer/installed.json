@@ -86,24 +86,24 @@
     },
     {
         "name": "apigee/apigee_devportal_kickstart",
-        "version": "1.16.0",
-        "version_normalized": "1.16.0.0",
+        "version": "1.17",
+        "version_normalized": "1.17.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/apigee/apigee-devportal-kickstart-drupal.git",
-            "reference": "78100fe66006e2ca8b29fbaec7113b951b338e60"
+            "reference": "1427859fc34105083a62c25866a1ef6578a7cfc8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/78100fe66006e2ca8b29fbaec7113b951b338e60",
-            "reference": "78100fe66006e2ca8b29fbaec7113b951b338e60",
+            "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/1427859fc34105083a62c25866a1ef6578a7cfc8",
+            "reference": "1427859fc34105083a62c25866a1ef6578a7cfc8",
             "shasum": ""
         },
         "require": {
             "cweagans/composer-patches": "^1.6.5",
             "drupal/admin_toolbar": "^2.0",
             "drupal/adminimal_admin_toolbar": "^1.9",
-            "drupal/apigee_api_catalog": "^1.0",
+            "drupal/apigee_api_catalog": "^2.1",
             "drupal/apigee_edge": "^1.10",
             "drupal/better_exposed_filters": "^3.0@alpha",
             "drupal/default_content": "^1.0@alpha",
@@ -116,7 +116,7 @@
         "conflict": {
             "drupal/pathauto": "<1.6"
         },
-        "time": "2020-06-12T17:34:31+00:00",
+        "time": "2020-07-14T17:46:25+00:00",
         "type": "drupal-profile",
         "extra": {
             "patches": {
@@ -2691,22 +2691,21 @@
     },
     {
         "name": "drupal/apigee_api_catalog",
-        "version": "1.2.0",
-        "version_normalized": "1.2.0.0",
+        "version": "2.2.0",
+        "version_normalized": "2.2.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/apigee_api_catalog.git",
-            "reference": "8.x-1.2"
+            "reference": "8.x-2.2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-1.2.zip",
-            "reference": "8.x-1.2",
-            "shasum": "a8657e3e88a1c5dd1e8636ab13377363b2167378"
+            "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-2.2.zip",
+            "reference": "8.x-2.2",
+            "shasum": "b9d2725a6cae6dab0faf0ddc5bac821959d71e50"
         },
         "require": {
-            "drupal/apigee_edge": "~1.0-rc4",
-            "drupal/core": "*",
+            "drupal/core": "^8.8.0 || ^9",
             "drupal/file_link": "~1.0",
             "php": ">=7.1"
         },
@@ -2718,8 +2717,8 @@
         "type": "drupal-module",
         "extra": {
             "drupal": {
-                "version": "8.x-1.2",
-                "datestamp": "1586447482",
+                "version": "8.x-2.2",
+                "datestamp": "1594751947",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -6755,37 +6754,37 @@
     },
     {
         "name": "php-http/discovery",
-        "version": "1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "1.9.1",
+        "version_normalized": "1.9.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/php-http/discovery.git",
-            "reference": "9ab7668fee74a5ad61996095e50917bd50ee8bfe"
+            "reference": "64a18cc891957e05d91910b3c717d6bd11fbede9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-http/discovery/zipball/9ab7668fee74a5ad61996095e50917bd50ee8bfe",
-            "reference": "9ab7668fee74a5ad61996095e50917bd50ee8bfe",
+            "url": "https://api.github.com/repos/php-http/discovery/zipball/64a18cc891957e05d91910b3c717d6bd11fbede9",
+            "reference": "64a18cc891957e05d91910b3c717d6bd11fbede9",
             "shasum": ""
         },
         "require": {
-            "php": "^7.1"
+            "php": "^7.1 || ^8.0"
         },
         "conflict": {
             "nyholm/psr7": "<1.0"
         },
         "require-dev": {
-            "akeneo/phpspec-skip-example-extension": "^4.0",
+            "graham-campbell/phpspec-skip-example-extension": "^5.0",
             "php-http/httplug": "^1.0 || ^2.0",
             "php-http/message-factory": "^1.0",
-            "phpspec/phpspec": "^5.1",
+            "phpspec/phpspec": "^5.1 || ^6.1",
             "puli/composer-plugin": "1.0.0-beta10"
         },
         "suggest": {
             "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories",
             "puli/composer-plugin": "Sets up Puli which is recommended for Discovery to work. Check http://docs.php-http.org/en/latest/discovery.html for more details."
         },
-        "time": "2020-07-02T11:43:45+00:00",
+        "time": "2020-07-13T15:44:45+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -10336,27 +10335,31 @@
     },
     {
         "name": "symfony/polyfill-php72",
-        "version": "v1.17.0",
-        "version_normalized": "1.17.0.0",
+        "version": "v1.17.1",
+        "version_normalized": "1.17.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php72.git",
-            "reference": "f048e612a3905f34931127360bdd2def19a5e582"
+            "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/f048e612a3905f34931127360bdd2def19a5e582",
-            "reference": "f048e612a3905f34931127360bdd2def19a5e582",
+            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
+            "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2020-05-12T16:47:27+00:00",
+        "time": "2020-06-06T08:46:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "1.17-dev"
+            },
+            "thanks": {
+                "name": "symfony/polyfill",
+                "url": "https://github.com/symfony/polyfill"
             }
         },
         "installation-source": "dist",
@@ -10389,6 +10392,20 @@
             "polyfill",
             "portable",
             "shim"
+        ],
+        "funding": [
+            {
+                "url": "https://symfony.com/sponsor",
+                "type": "custom"
+            },
+            {
+                "url": "https://github.com/fabpot",
+                "type": "github"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                "type": "tidelift"
+            }
         ]
     },
     {
@@ -11324,26 +11341,26 @@
     },
     {
         "name": "theseer/tokenizer",
-        "version": "1.1.3",
-        "version_normalized": "1.1.3.0",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/theseer/tokenizer.git",
-            "reference": "11336f6f84e16a720dae9d8e6ed5019efa85a0f9"
+            "reference": "75a63c33a8577608444246075ea0af0d052e452a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/theseer/tokenizer/zipball/11336f6f84e16a720dae9d8e6ed5019efa85a0f9",
-            "reference": "11336f6f84e16a720dae9d8e6ed5019efa85a0f9",
+            "url": "https://api.github.com/repos/theseer/tokenizer/zipball/75a63c33a8577608444246075ea0af0d052e452a",
+            "reference": "75a63c33a8577608444246075ea0af0d052e452a",
             "shasum": ""
         },
         "require": {
             "ext-dom": "*",
             "ext-tokenizer": "*",
             "ext-xmlwriter": "*",
-            "php": "^7.0"
+            "php": "^7.2 || ^8.0"
         },
-        "time": "2019-06-13T22:48:21+00:00",
+        "time": "2020-07-12T23:59:07+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -11362,7 +11379,13 @@
                 "role": "Developer"
             }
         ],
-        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats"
+        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
+        "funding": [
+            {
+                "url": "https://github.com/theseer",
+                "type": "github"
+            }
+        ]
     },
     {
         "name": "twig/twig",
