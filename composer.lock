@@ -91,16 +91,16 @@
         },
         {
             "name": "apigee/apigee_devportal_kickstart",
-            "version": "1.18.0",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apigee/apigee-devportal-kickstart-drupal.git",
-                "reference": "b6a48d4f7384a0101c5f309d1ce20e2147ad61bf"
+                "reference": "8fddf108bec9f0b481fba209f330468b2f65b898"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/b6a48d4f7384a0101c5f309d1ce20e2147ad61bf",
-                "reference": "b6a48d4f7384a0101c5f309d1ce20e2147ad61bf",
+                "url": "https://api.github.com/repos/apigee/apigee-devportal-kickstart-drupal/zipball/8fddf108bec9f0b481fba209f330468b2f65b898",
+                "reference": "8fddf108bec9f0b481fba209f330468b2f65b898",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 "drupal/admin_toolbar": "^2.0",
                 "drupal/adminimal_admin_toolbar": "^1.9",
                 "drupal/apigee_api_catalog": "^2.2",
-                "drupal/apigee_edge": "^1.13",
+                "drupal/apigee_edge": "^1.14",
                 "drupal/better_exposed_filters": "^3.0@alpha",
                 "drupal/default_content": "^1.0@alpha",
                 "drupal/email_registration": "^1.0@RC",
@@ -133,7 +133,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "A fast demo and starting point for Apigee Developer Portals.",
-            "time": "2020-08-06T19:32:01+00:00"
+            "time": "2020-08-11T20:36:37+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -2145,17 +2145,17 @@
         },
         {
             "name": "drupal/apigee_edge",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_edge.git",
-                "reference": "8.x-1.13"
+                "reference": "8.x-1.14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_edge-8.x-1.13.zip",
-                "reference": "8.x-1.13",
-                "shasum": "9e93cd82319a6c10525c2d292cf21fc6711eb74e"
+                "url": "https://ftp.drupal.org/files/projects/apigee_edge-8.x-1.14.zip",
+                "reference": "8.x-1.14",
+                "shasum": "39901498b36d0591f53d569123f52cadd0302850"
             },
             "require": {
                 "apigee/apigee-client-php": "^2.0.4",
@@ -2187,8 +2187,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.13",
-                    "datestamp": "1596741616",
+                    "version": "8.x-1.14",
+                    "datestamp": "1597170733",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5068,16 +5068,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.7.0",
+            "version": "v4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300"
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
-                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
                 "shasum": ""
             },
             "require": {
@@ -5085,8 +5085,8 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.5",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
+                "ircmaxell/php-yacc": "^0.0.6",
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -5094,7 +5094,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.7-dev"
+                    "dev-master": "4.8-dev"
                 }
             },
             "autoload": {
@@ -5116,7 +5116,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-07-25T13:18:53+00:00"
+            "time": "2020-08-09T10:23:20+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -11254,16 +11254,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.5",
+            "version": "3.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6"
+                "reference": "e97627871a7eab2f70e59166072a6b767d5834e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
-                "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/e97627871a7eab2f70e59166072a6b767d5834e0",
+                "reference": "e97627871a7eab2f70e59166072a6b767d5834e0",
                 "shasum": ""
             },
             "require": {
@@ -11301,7 +11301,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-04-17T01:09:41+00:00"
+            "time": "2020-08-10T04:50:15+00:00"
         },
         {
             "name": "symfony/browser-kit",
