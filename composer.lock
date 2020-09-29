@@ -2074,33 +2074,38 @@
         },
         {
             "name": "drupal/apigee_api_catalog",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_api_catalog.git",
-                "reference": "8.x-2.3"
+                "reference": "8.x-2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-2.3.zip",
-                "reference": "8.x-2.3",
-                "shasum": "e77bda0c310a64454e65711b5c05d27a8f2894b7"
+                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-2.4.zip",
+                "reference": "8.x-2.4",
+                "shasum": "20997e01f78e409ee56bc17f5e50913d71ed02e2"
             },
             "require": {
                 "drupal/core": "^8.8.0 || ^9",
+                "drupal/entity": "^1.1",
                 "drupal/file_link": "^2.0",
                 "php": ">=7.1"
             },
             "require-dev": {
-                "drupal/coder": "^8.3",
-                "phpmd/phpmd": "^2.6",
-                "phpunit/phpunit": "^6.5"
+                "cweagans/composer-patches": "^1.6",
+                "drupal/core-dev": "^7.0",
+                "drush/drush": "^9.0 || ^10.0",
+                "mglaman/drupal-check": "^1.1",
+                "phpmd/phpmd": "2.8.2",
+                "phpmetrics/phpmetrics": "^2.5",
+                "phpstan/phpstan": "0.12.42"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.3",
-                    "datestamp": "1596740426",
+                    "version": "8.x-2.4",
+                    "datestamp": "1601419838",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
