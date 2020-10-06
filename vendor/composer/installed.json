@@ -477,26 +477,26 @@
     },
     {
         "name": "clue/stream-filter",
-        "version": "v1.4.1",
-        "version_normalized": "1.4.1.0",
+        "version": "v1.5.0",
+        "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/clue/php-stream-filter.git",
-            "reference": "5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71"
+            "reference": "aeb7d8ea49c7963d3b581378955dbf5bc49aa320"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/clue/php-stream-filter/zipball/5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71",
-            "reference": "5a58cc30a8bd6a4eb8f856adf61dd3e013f53f71",
+            "url": "https://api.github.com/repos/clue/php-stream-filter/zipball/aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
+            "reference": "aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3"
         },
         "require-dev": {
-            "phpunit/phpunit": "^5.0 || ^4.8"
+            "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.36"
         },
-        "time": "2019-04-09T12:31:48+00:00",
+        "time": "2020-10-02T12:38:20+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -514,7 +514,7 @@
         "authors": [
             {
                 "name": "Christian Lück",
-                "email": "christian@lueck.tv"
+                "email": "christian@clue.engineering"
             }
         ],
         "description": "A simple and modern approach to stream filtering in PHP",
@@ -527,6 +527,16 @@
             "stream",
             "stream_filter_append",
             "stream_filter_register"
+        ],
+        "funding": [
+            {
+                "url": "https://clue.engineering/support",
+                "type": "custom"
+            },
+            {
+                "url": "https://github.com/clue",
+                "type": "github"
+            }
         ]
     },
     {
@@ -2811,18 +2821,18 @@
     },
     {
         "name": "drupal/apigee_edge",
-        "version": "1.16.0",
-        "version_normalized": "1.16.0.0",
+        "version": "1.17.0",
+        "version_normalized": "1.17.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/apigee_edge.git",
-            "reference": "8.x-1.16"
+            "reference": "8.x-1.17"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/apigee_edge-8.x-1.16.zip",
-            "reference": "8.x-1.16",
-            "shasum": "15af20688ab5703aa4ddf5ff56d6883f8b70e39d"
+            "url": "https://ftp.drupal.org/files/projects/apigee_edge-8.x-1.17.zip",
+            "reference": "8.x-1.17",
+            "shasum": "f459830095e84b61902d117dc101e0f432669f1b"
         },
         "require": {
             "apigee/apigee-client-php": "^2.0.4",
@@ -2855,8 +2865,8 @@
         "type": "drupal-module",
         "extra": {
             "drupal": {
-                "version": "8.x-1.16",
-                "datestamp": "1601418043",
+                "version": "8.x-1.17",
+                "datestamp": "1601598017",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -2899,36 +2909,34 @@
     },
     {
         "name": "drupal/apigee_m10n",
-        "version": "1.6.0",
-        "version_normalized": "1.6.0.0",
+        "version": "1.7.0",
+        "version_normalized": "1.7.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/apigee_m10n.git",
-            "reference": "8.x-1.6"
+            "reference": "8.x-1.7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/apigee_m10n-8.x-1.6.zip",
-            "reference": "8.x-1.6",
-            "shasum": "2bb596be17f8683a77b5ed05f7428feac3240e77"
+            "url": "https://ftp.drupal.org/files/projects/apigee_m10n-8.x-1.7.zip",
+            "reference": "8.x-1.7",
+            "shasum": "8fa5fcaa389abcc97ad4e9e988552c281d2d4076"
         },
         "require": {
             "apigee/apigee-client-php": "~2.0.3",
             "commerceguys/intl": "~1.0",
             "cweagans/composer-patches": "~1.6",
-            "drupal/apigee_edge": "~1.0",
+            "drupal/apigee_edge": "^1.16",
             "drupal/core": "^8 || ^9",
             "drupal/requirement": "~1.0",
             "ext-bcmath": "*",
             "php": ">=7.1"
         },
         "require-dev": {
-            "behat/mink-extension": "v2.2",
-            "behat/mink-selenium2-driver": "1.3.x-dev",
+            "apigee/apigee-mock-client-php": "^1.0",
+            "behat/mink-extension": "^2.0",
             "bex/behat-screenshot": "^1.2",
-            "consolidation/robo": "~1.0",
             "drupal/apigee_edge_teams": "*",
-            "drupal/coder": "^8.3",
             "drupal/commerce": "^2.16",
             "drupal/commerce_cart": "*",
             "drupal/commerce_checkout": "*",
@@ -2936,16 +2944,19 @@
             "drupal/commerce_payment": "*",
             "drupal/commerce_price": "*",
             "drupal/commerce_product": "*",
+            "drupal/core-dev": "^7.0",
             "drupal/drupal-extension": "master-dev",
-            "phpmd/phpmd": "^2.6",
-            "phpmetrics/phpmetrics": "^2.4",
-            "phpunit/phpunit": "^6.5"
+            "drush/drush": "^9.0 || ^10.0",
+            "mglaman/drupal-check": "^1.1",
+            "phpmd/phpmd": "2.8.2",
+            "phpmetrics/phpmetrics": "^2.5",
+            "phpstan/phpstan": "0.12.42"
         },
         "type": "drupal-module",
         "extra": {
             "drupal": {
-                "version": "8.x-1.6",
-                "datestamp": "1590646456",
+                "version": "8.x-1.7",
+                "datestamp": "1601491928",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -4668,18 +4679,18 @@
     },
     {
         "name": "drupal/radix",
-        "version": "4.9.0",
-        "version_normalized": "4.9.0.0",
+        "version": "4.10.0",
+        "version_normalized": "4.10.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/radix.git",
-            "reference": "8.x-4.9"
+            "reference": "8.x-4.10"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/radix-8.x-4.9.zip",
-            "reference": "8.x-4.9",
-            "shasum": "e9b244cc5e5defaa1128505cab63ec83e251d275"
+            "url": "https://ftp.drupal.org/files/projects/radix-8.x-4.10.zip",
+            "reference": "8.x-4.10",
+            "shasum": "b9fd9c0f12be58fc39c06318d3fe081550f5cbf7"
         },
         "require": {
             "drupal/components": "~2.0@beta",
@@ -4688,8 +4699,8 @@
         "type": "drupal-theme",
         "extra": {
             "drupal": {
-                "version": "8.x-4.9",
-                "datestamp": "1601290195",
+                "version": "8.x-4.10",
+                "datestamp": "1601449009",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -9791,8 +9802,8 @@
     },
     {
         "name": "symfony/inflector",
-        "version": "v5.1.6",
-        "version_normalized": "5.1.6.0",
+        "version": "v5.1.7",
+        "version_normalized": "5.1.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/inflector.git",
@@ -9944,8 +9955,8 @@
     },
     {
         "name": "symfony/options-resolver",
-        "version": "v4.4.14",
-        "version_normalized": "4.4.14.0",
+        "version": "v4.4.15",
+        "version_normalized": "4.4.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/options-resolver.git",
@@ -10821,8 +10832,8 @@
     },
     {
         "name": "symfony/property-access",
-        "version": "v4.4.14",
-        "version_normalized": "4.4.14.0",
+        "version": "v4.4.15",
+        "version_normalized": "4.4.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/property-access.git",
@@ -10904,8 +10915,8 @@
     },
     {
         "name": "symfony/property-info",
-        "version": "v4.4.14",
-        "version_normalized": "4.4.14.0",
+        "version": "v4.4.15",
+        "version_normalized": "4.4.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/property-info.git",
@@ -11220,8 +11231,8 @@
     },
     {
         "name": "symfony/string",
-        "version": "v5.1.6",
-        "version_normalized": "5.1.6.0",
+        "version": "v5.1.7",
+        "version_normalized": "5.1.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/string.git",
@@ -11467,8 +11478,8 @@
     },
     {
         "name": "symfony/var-dumper",
-        "version": "v4.4.14",
-        "version_normalized": "4.4.14.0",
+        "version": "v4.4.15",
+        "version_normalized": "4.4.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/var-dumper.git",
