@@ -481,12 +481,12 @@
         "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/clue/php-stream-filter.git",
+            "url": "https://github.com/clue/stream-filter.git",
             "reference": "aeb7d8ea49c7963d3b581378955dbf5bc49aa320"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/clue/php-stream-filter/zipball/aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
+            "url": "https://api.github.com/repos/clue/stream-filter/zipball/aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
             "reference": "aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
             "shasum": ""
         },
@@ -3508,8 +3508,8 @@
     },
     {
         "name": "drupal/core-composer-scaffold",
-        "version": "8.9.12",
-        "version_normalized": "8.9.12.0",
+        "version": "8.9.13",
+        "version_normalized": "8.9.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -3557,8 +3557,8 @@
     },
     {
         "name": "drupal/core-dev",
-        "version": "8.9.12",
-        "version_normalized": "8.9.12.0",
+        "version": "8.9.13",
+        "version_normalized": "8.9.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-dev.git",
@@ -3604,8 +3604,8 @@
     },
     {
         "name": "drupal/core-project-message",
-        "version": "8.9.12",
-        "version_normalized": "8.9.12.0",
+        "version": "8.9.13",
+        "version_normalized": "8.9.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-project-message.git",
