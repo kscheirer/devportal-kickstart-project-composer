@@ -6,10 +6,10 @@ use Drupal\Core\Cache\Cache;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ExtensionList;
 use Drupal\Core\Extension\ModuleExtensionList;
-use Drupal\Core\Extension\ModuleHandler;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Logger\LoggerChannelTrait;
-use Drupal\Core\Theme\ThemeManager;
+use Drupal\Core\Theme\ThemeManagerInterface;
 
 /**
  * Loads info about components defined in themes or modules.
@@ -40,74 +40,90 @@ class ComponentsInfo {
   protected $protectedNamespaces = [];
 
   /**
+   * The module handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   */
+  protected $moduleHandler;
+
+  /**
+   * The theme manager.
+   *
+   * @var \Drupal\Core\Theme\ThemeManagerInterface
+   */
+  protected $themeManager;
+
+  /**
+   * The module extension list service.
+   *
+   * @var \Drupal\Core\Extension\ModuleExtensionList
+   */
+  protected $moduleExtensionList;
+
+  /**
+   * The theme extension list service.
+   *
+   * @var \Drupal\Core\Extension\ThemeExtensionList
+   */
+  protected $themeExtensionList;
+
+  /**
    * The cache backend.
    *
    * @var \Drupal\Core\Cache\CacheBackendInterface
    */
-  public $cacheBackend;
+  protected $cache;
+
+  /**
+   * Stores whether the registry was already initialized.
+   *
+   * @var bool
+   */
+  protected $initialized = FALSE;
 
   /**
    * Constructs a new ComponentsInfo object.
    *
-   * @param \Drupal\Core\Extension\ModuleExtensionList $module_extension_list
+   * @param \Drupal\Core\Extension\ModuleExtensionList $moduleExtensionList
    *   The module extension list service.
-   * @param \Drupal\Core\Extension\ThemeExtensionList $theme_extension_list
+   * @param \Drupal\Core\Extension\ThemeExtensionList $themeExtensionList
    *   The theme extension list service.
-   * @param \Drupal\Core\Extension\ModuleHandler $moduleHandler
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
    *   The module handler service.
-   * @param \Drupal\Core\Theme\ThemeManager $themeManager
+   * @param \Drupal\Core\Theme\ThemeManagerInterface $themeManager
    *   The theme manager service.
-   * @param \Drupal\Core\Cache\CacheBackendInterface $cacheBackend
-   *   Cache backend for storing module hook implementation information.
+   * @param \Drupal\Core\Cache\CacheBackendInterface $cache
+   *   Cache backend for storing components info flags.
    */
   public function __construct(
-    ModuleExtensionList $module_extension_list,
-    ThemeExtensionList $theme_extension_list,
-    ModuleHandler $moduleHandler,
-    ThemeManager $themeManager,
-    CacheBackendInterface $cacheBackend
+    ModuleExtensionList $moduleExtensionList,
+    ThemeExtensionList $themeExtensionList,
+    ModuleHandlerInterface $moduleHandler,
+    ThemeManagerInterface $themeManager,
+    CacheBackendInterface $cache
   ) {
-    $this->cacheBackend = $cacheBackend;
+    $this->moduleExtensionList = $moduleExtensionList;
+    $this->themeExtensionList = $themeExtensionList;
+    $this->moduleHandler = $moduleHandler;
+    $this->themeManager = $themeManager;
+    $this->cache = $cache;
+  }
 
-    $this->moduleInfo = $this->findComponentsInfo($module_extension_list);
-    $this->themeInfo = $this->findComponentsInfo($theme_extension_list);
+  /**
+   * Initializes the registry and loads the theme namespaces.
+   */
+  protected function init(): void {
+    if ($this->initialized) {
+      return;
+    }
+    $this->initialized = TRUE;
+
+    $this->moduleInfo = $this->findComponentsInfo($this->moduleExtensionList);
+    $this->themeInfo = $this->findComponentsInfo($this->themeExtensionList);
 
     // Run hook_protected_twig_namespaces_alter().
-    $moduleHandler->alter('protected_twig_namespaces', $this->protectedNamespaces);
-    $themeManager->alter('protected_twig_namespaces', $this->protectedNamespaces);
-  }
-
-  /**
-   * Logs exceptional occurrences that are not errors.
-   *
-   * Example: Use of deprecated APIs, poor use of an API, undesirable things
-   * that are not necessarily wrong.
-   *
-   * @param string $message
-   *   The warning to log.
-   * @param mixed[] $context
-   *   Any additional context to pass to the logger.
-   *
-   * @internal
-   */
-  public function logWarning($message, array $context = []) {
-    if (!$this->cacheBackend->get('components:suppressWarnings')) {
-      $this->getLogger('components')->warning($message, $context);
-    }
-  }
-
-  /**
-   * Suppress warnings until the theme registry cache is rebuilt.
-   *
-   * @internal
-   */
-  public function suppressWarnings() {
-    $this->cacheBackend->set(
-      'components:suppressWarnings',
-      TRUE,
-      Cache::PERMANENT,
-      ['theme_registry']
-    );
+    $this->moduleHandler->alter('protected_twig_namespaces', $this->protectedNamespaces);
+    $this->themeManager->alter('protected_twig_namespaces', $this->protectedNamespaces);
   }
 
   /**
@@ -185,6 +201,8 @@ class ComponentsInfo {
    *   The components info.
    */
   public function getModuleInfo($name) {
+    $this->init();
+
     if (isset($this->moduleInfo[$name])) {
       return $this->moduleInfo[$name];
     }
@@ -200,6 +218,8 @@ class ComponentsInfo {
    *   The components info, keyed by module name.
    */
   public function getAllModuleInfo() {
+    $this->init();
+
     return $this->moduleInfo;
   }
 
@@ -213,6 +233,8 @@ class ComponentsInfo {
    *   The components info.
    */
   public function getThemeInfo($name) {
+    $this->init();
+
     if (isset($this->themeInfo[$name])) {
       return $this->themeInfo[$name];
     }
@@ -228,6 +250,8 @@ class ComponentsInfo {
    *   The components info, keyed by theme name.
    */
   public function getAllThemeInfo() {
+    $this->init();
+
     return $this->themeInfo;
   }
 
@@ -248,6 +272,8 @@ class ComponentsInfo {
    *   Whether the namespace is protected or not.
    */
   public function isProtectedNamespace(string $namespace): bool {
+    $this->init();
+
     return isset($this->protectedNamespaces[$namespace]);
   }
 
@@ -281,6 +307,8 @@ class ComponentsInfo {
    *     string.
    */
   public function getProtectedNamespaceExtensionInfo(string $namespace) {
+    $this->init();
+
     return isset($this->protectedNamespaces[$namespace])
       ? $this->protectedNamespaces[$namespace]
       : ['name' => '', 'type' => '', 'package' => ''];
@@ -303,7 +331,42 @@ class ComponentsInfo {
    *   ::isProtectedNamespace() instead.
    */
   public function getProtectedNamespaces() {
+    $this->init();
+
     return array_keys($this->protectedNamespaces);
+  }
+
+  /**
+   * Logs exceptional occurrences that are not errors.
+   *
+   * Example: Use of deprecated APIs, poor use of an API, undesirable things
+   * that are not necessarily wrong.
+   *
+   * @param string $message
+   *   The warning to log.
+   * @param mixed[] $context
+   *   Any additional context to pass to the logger.
+   *
+   * @internal
+   */
+  public function logWarning($message, array $context = []) {
+    if (!$this->cache->get('components:suppressWarnings')) {
+      $this->getLogger('components')->warning($message, $context);
+    }
+  }
+
+  /**
+   * Suppress warnings until the theme registry cache is rebuilt.
+   *
+   * @internal
+   */
+  public function suppressWarnings() {
+    $this->cache->set(
+      'components:suppressWarnings',
+      TRUE,
+      Cache::PERMANENT,
+      ['theme_registry']
+    );
   }
 
 }

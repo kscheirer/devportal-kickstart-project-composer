@@ -69,8 +69,6 @@ class ComponentsLoader extends FilesystemLoader {
 
     $this->componentsInfo = $components_info;
     $this->themeManager = $theme_manager;
-
-    $this->checkActiveTheme();
   }
 
   /**
@@ -229,8 +227,8 @@ class ComponentsLoader extends FilesystemLoader {
    * @throws \Twig\Error\LoaderError
    */
   protected function findTemplate($name, $throw = TRUE) {
-    // The active theme might change during the request, so we double check
-    // before delivering a template.
+    // The active theme might change during the request, so we wait until the
+    // last possible moment to check before delivering a template.
     $this->checkActiveTheme();
 
     return parent::findTemplate($name, $throw);

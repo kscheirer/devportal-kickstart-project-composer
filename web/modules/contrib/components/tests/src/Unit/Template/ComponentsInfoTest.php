@@ -115,6 +115,7 @@ class ComponentsInfoTest extends UnitTestCase {
         'system' => [
           'name' => 'System',
           'type' => 'module',
+          'package' => 'Core',
           'no-components' => 'system-value',
         ],
         // Look for namespaces using 1.x API (backwards compatibility).
@@ -235,9 +236,19 @@ class ComponentsInfoTest extends UnitTestCase {
     $result = $this->systemUnderTest->getAllModuleInfo();
     $this->assertEquals($expected, $result);
 
-    $expected = ['system', 'edna_lewis', 'tracy_chapman'];
-    $result = $this->systemUnderTest->getProtectedNamespaces();
-    $this->assertEquals($expected, $result);
+    foreach (['system', 'edna_lewis', 'tracy_chapman'] as $namespace) {
+      $this->assertTrue($this->systemUnderTest->isProtectedNamespace($namespace), 'Failed finding "' . $namespace . '" in protected namespaces list.');
+    }
+    foreach ([
+      'harriet_tubman',
+      'phillis_wheatley',
+      'wheatley',
+      'lewis',
+      'chapman',
+      'components',
+    ] as $namespace) {
+      $this->assertNotTrue($this->systemUnderTest->isProtectedNamespace($namespace), 'Failed looking up "' . $namespace . '" in protected namespaces list.');
+    }
   }
 
   /**
@@ -419,51 +430,123 @@ class ComponentsInfoTest extends UnitTestCase {
   /**
    * Tests checking for protected namespaces.
    *
+   * @param array $moduleInfo
+   *   List of module .info.yml data.
+   * @param array $themeInfo
+   *   List of theme .info.yml data.
+   * @param array $expected
+   *   Expected data.
+   *
    * @covers ::isProtectedNamespace
+   *
+   * @dataProvider providerTestIsProtectedNamespace
    */
-  public function testIsProtectedNamespace() {
+  public function testIsProtectedNamespace(array $moduleInfo, array $themeInfo, array $expected) {
     $this->moduleExtensionList
       ->expects($this->exactly(1))
       ->method('getAllInstalledInfo')
-      ->willReturn([
-        'bop' => [
-          'name' => 'Bop',
-          'type' => 'module',
-          'no-components' => 'system-value',
-        ],
-        // Manual opt-in.
-        'mmmbop' => [
-          'name' => 'mmmBop!',
-          'type' => 'module',
-          'components' => [
-            'allow_default_namespace_reuse' => TRUE,
-          ],
-        ],
-      ]);
-    $this->moduleExtensionList->expects($this->exactly(2))
-      ->method('getPath');
+      ->willReturn($moduleInfo);
 
     $this->themeExtensionList
+      ->expects($this->exactly(1))
       ->method('getAllInstalledInfo')
-      ->willReturn([
-        'baz' => [
-          'name' => 'Baz',
-          'type' => 'theme',
-          'components' => [
-            'namespaces' => [
-              'baz' => '/baz',
-            ],
-          ],
-        ],
-      ]);
-    $this->themeExtensionList->expects($this->exactly(1))
-      ->method('getPath');
+      ->willReturn($themeInfo);
 
     $this->newSystemUnderTest();
 
-    $this->assertEquals(TRUE, $this->systemUnderTest->isProtectedNamespace('bop'));
-    $this->assertEquals(FALSE, $this->systemUnderTest->isProtectedNamespace('mmmbop'));
-    $this->assertEquals(FALSE, $this->systemUnderTest->isProtectedNamespace('baz'));
+    foreach ($expected as $extension => $value) {
+      $actual = $this->systemUnderTest->isProtectedNamespace($extension);
+      if ($value) {
+        $this->assertTrue($actual, 'Failed checking if isProtectedNamespace("' . $extension . '") was TRUE');
+      }
+      else {
+        $this->assertNotTrue($actual, 'Failed checking if isProtectedNamespace("' . $extension . '") was FALSE');
+      }
+    }
+  }
+
+  /**
+   * Provides test data to ::testIsProtectedNamespace().
+   *
+   * @see testIsProtectedNamespace()
+   */
+  public function providerTestIsProtectedNamespace(): array {
+    return [
+      'no components data in info.yml' => [
+        'moduleInfo' => [
+          'fooModule' => [
+            'name' => 'Foo Module',
+            'type' => 'module',
+            'non-components' => 'value',
+          ],
+        ],
+        'themeInfo' => [
+          'fooTheme' => [
+            'name' => 'Foo Theme',
+            'type' => 'theme',
+            'no-components' => 'value',
+          ],
+        ],
+        'expected' => [
+          'fooModule' => TRUE,
+          'fooTheme' => TRUE,
+        ],
+      ],
+      'auto opt-in if default namespace is used' => [
+        'moduleInfo' => [
+          'fooModule' => [
+            'name' => 'Foo Module',
+            'type' => 'module',
+            'non-components' => 'value',
+            'components' => [
+              'namespaces' => [
+                'fooModule' => 'fooPath',
+              ],
+            ],
+          ],
+        ],
+        'themeInfo' => [
+          'fooTheme' => [
+            'name' => 'Foo Theme',
+            'type' => 'theme',
+            'no-components' => 'value',
+            'components' => [
+              'namespaces' => [
+                'notFooTheme' => 'fooPath',
+              ],
+            ],
+          ],
+        ],
+        'expected' => [
+          'fooModule' => FALSE,
+          'fooTheme' => TRUE,
+          'notFooTheme' => FALSE,
+        ],
+      ],
+      'manual opt-in with .info.yml flag' => [
+        'moduleInfo' => [
+          'fooModule' => [
+            'name' => 'Foo Module',
+            'type' => 'module',
+            'non-components' => 'value',
+            'components' => [
+              'allow_default_namespace_reuse' => TRUE,
+            ],
+          ],
+        ],
+        'themeInfo' => [
+          'fooTheme' => [
+            'name' => 'Foo Theme',
+            'type' => 'theme',
+            'components' => [],
+          ],
+        ],
+        'expected' => [
+          'fooModule' => FALSE,
+          'fooTheme' => TRUE,
+        ],
+      ],
+    ];
   }
 
 }
