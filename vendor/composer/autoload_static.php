@@ -57,10 +57,6 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
             'Zend\\Escaper\\' => 13,
             'Zend\\Diactoros\\' => 15,
         ),
-        'X' => 
-        array (
-            'XdgBaseDir\\' => 11,
-        ),
         'W' => 
         array (
             'Webmozart\\PathUtil\\' => 19,
@@ -265,10 +261,6 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
         'Zend\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
-        ),
-        'XdgBaseDir\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
         ),
         'Webmozart\\PathUtil\\' => 
         array (

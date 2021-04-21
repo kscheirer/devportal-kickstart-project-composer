@@ -7,7 +7,7 @@ dependencies:
   - drupal:link
   - drupal:file
 
-# Information added by Drupal.org packaging script on 2021-03-24
-version: '2.0.5'
+# Information added by Drupal.org packaging script on 2021-04-06
+version: '2.0.6'
 project: 'file_link'
-datestamp: 1616577699
+datestamp: 1617713797

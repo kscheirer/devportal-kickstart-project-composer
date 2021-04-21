@@ -14,7 +14,6 @@ return array(
     'Zend\\Feed\\' => array($vendorDir . '/zendframework/zend-feed/src'),
     'Zend\\Escaper\\' => array($vendorDir . '/zendframework/zend-escaper/src'),
     'Zend\\Diactoros\\' => array($vendorDir . '/zendframework/zend-diactoros/src'),
-    'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'Webmozart\\PathUtil\\' => array($vendorDir . '/webmozart/path-util/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'VariableAnalysis\\' => array($vendorDir . '/sirbrillig/phpcs-variable-analysis/VariableAnalysis'),

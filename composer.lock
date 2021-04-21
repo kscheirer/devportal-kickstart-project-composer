@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "apigee/apigee-client-php",
-            "version": "2.0.6",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apigee/apigee-client-php.git",
-                "reference": "d0040d80ecc8d8a48549abab9d2f8d87247170c8"
+                "reference": "2087b07553e43e096b3497a9afcccbf9210577be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apigee/apigee-client-php/zipball/d0040d80ecc8d8a48549abab9d2f8d87247170c8",
-                "reference": "d0040d80ecc8d8a48549abab9d2f8d87247170c8",
+                "url": "https://api.github.com/repos/apigee/apigee-client-php/zipball/2087b07553e43e096b3497a9afcccbf9210577be",
+                "reference": "2087b07553e43e096b3497a9afcccbf9210577be",
                 "shasum": ""
             },
             "require": {
@@ -45,6 +45,7 @@
                 "guzzlehttp/guzzle": "<6.1.0",
                 "guzzlehttp/psr7": "<1.4.1",
                 "phpdocumentor/type-resolver": "<0.2.1",
+                "symfony/polyfill-mbstring": ">1.20.0",
                 "vimeo/psalm": ">2.0.13"
             },
             "require-dev": {
@@ -87,7 +88,7 @@
                 "sdk",
                 "web service"
             ],
-            "time": "2020-12-04T23:22:42+00:00"
+            "time": "2021-04-19T22:33:39+00:00"
         },
         {
             "name": "apigee/apigee_devportal_kickstart",
@@ -1463,39 +1464,6 @@
             "time": "2017-01-20T21:14:22+00:00"
         },
         {
-            "name": "dnoegel/php-xdg-base-dir",
-            "version": "v0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dnoegel/php-xdg-base-dir.git",
-                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
-                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~7.0|~6.0|~5.0|~4.8.35"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "XdgBaseDir\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "implementation of xdg base directory specification for php",
-            "time": "2019-12-04T15:06:13+00:00"
-        },
-        {
             "name": "doctrine/annotations",
             "version": "v1.4.0",
             "source": {
@@ -2170,17 +2138,17 @@
         },
         {
             "name": "drupal/apigee_edge",
-            "version": "1.21.0",
+            "version": "1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_edge.git",
-                "reference": "8.x-1.21"
+                "reference": "8.x-1.22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_edge-8.x-1.21.zip",
-                "reference": "8.x-1.21",
-                "shasum": "958183895c1fc145c9558932d8716325ce0dd014"
+                "url": "https://ftp.drupal.org/files/projects/apigee_edge-8.x-1.22.zip",
+                "reference": "8.x-1.22",
+                "shasum": "9d897086c7a89e6d1435cb82e5585c7a76b4558e"
             },
             "require": {
                 "apigee/apigee-client-php": "^2.0.6",
@@ -2213,8 +2181,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.21",
-                    "datestamp": "1616090263",
+                    "version": "8.x-1.22",
+                    "datestamp": "1618944443",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2272,23 +2240,23 @@
         },
         {
             "name": "drupal/apigee_m10n",
-            "version": "1.8.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_m10n.git",
-                "reference": "8.x-1.8"
+                "reference": "8.x-1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_m10n-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "9fedf3e3215b7315e76b916abd5326344b1db3ac"
+                "url": "https://ftp.drupal.org/files/projects/apigee_m10n-8.x-1.10.zip",
+                "reference": "8.x-1.10",
+                "shasum": "46117404c95fe901c3af1028bf3aefba629d4ee4"
             },
             "require": {
-                "apigee/apigee-client-php": "~2.0.3",
+                "apigee/apigee-client-php": "^2.0.7",
                 "commerceguys/intl": "~1.0",
                 "cweagans/composer-patches": "~1.6",
-                "drupal/apigee_edge": "^1.16",
+                "drupal/apigee_edge": "^1.22",
                 "drupal/core": "^8 || ^9",
                 "drupal/requirement": "~1.0",
                 "ext-bcmath": "*",
@@ -2317,8 +2285,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1607546117",
+                    "version": "8.x-1.10",
+                    "datestamp": "1618990528",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2335,6 +2303,10 @@
                     "homepage": "https://www.drupal.org/user/1055344"
                 },
                 {
+                    "name": "Divyajose",
+                    "homepage": "https://www.drupal.org/user/3406306"
+                },
+                {
                     "name": "arshadcn",
                     "homepage": "https://www.drupal.org/user/571032"
                 },
@@ -2345,6 +2317,18 @@
                 {
                     "name": "gitesh.koli",
                     "homepage": "https://www.drupal.org/user/673858"
+                },
+                {
+                    "name": "phdhiren",
+                    "homepage": "https://www.drupal.org/user/181989"
+                },
+                {
+                    "name": "raakesh",
+                    "homepage": "https://www.drupal.org/user/831108"
+                },
+                {
+                    "name": "shishirsuvarna",
+                    "homepage": "https://www.drupal.org/user/3119751"
                 }
             ],
             "description": "Apigee Edge Monetization for Drupal",
@@ -2501,17 +2485,17 @@
         },
         {
             "name": "drupal/components",
-            "version": "2.2.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/components.git",
-                "reference": "8.x-2.2"
+                "reference": "8.x-2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/components-8.x-2.2.zip",
-                "reference": "8.x-2.2",
-                "shasum": "02a57b2274348c7b9c14800c1bc5f5954d64df88"
+                "url": "https://ftp.drupal.org/files/projects/components-8.x-2.4.zip",
+                "reference": "8.x-2.4",
+                "shasum": "9b083c2f845ff2e1a1632efcf24f88cecd7479cc"
             },
             "require": {
                 "drupal/core": "^8.7.7 || ^9"
@@ -2519,8 +2503,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.2",
-                    "datestamp": "1611799702",
+                    "version": "8.x-2.4",
+                    "datestamp": "1618861606",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2753,9 +2737,6 @@
                         "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                         "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                     }
-                },
-                "patches_applied": {
-                    "https://www.drupal.org/project/drupal/issues/2943172": "https://www.drupal.org/files/issues/2018-07-05/2943172-kernel-test-base-3.patch"
                 }
             },
             "autoload": {
@@ -2948,38 +2929,38 @@
         },
         {
             "name": "drupal/ctools",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ctools.git",
-                "reference": "8.x-3.4"
+                "reference": "8.x-3.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ctools-8.x-3.4.zip",
-                "reference": "8.x-3.4",
-                "shasum": "016ca5abb7ac4ca720352a72e8989f3ef0e20539"
+                "url": "https://ftp.drupal.org/files/projects/ctools-8.x-3.5.zip",
+                "reference": "8.x-3.5",
+                "shasum": "0113cd1e787ff3bde088c836c2d79d14136b0013"
             },
             "require": {
-                "drupal/core": "^8.7.7 || ^9"
+                "drupal/core": "^8.8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-3.x": "3.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-3.4",
-                    "datestamp": "1585763383",
+                    "version": "8.x-3.5",
+                    "datestamp": "1618592931",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "branch-alias": {
+                    "dev-8.x-3.x": "3.x-dev"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -3304,17 +3285,17 @@
         },
         {
             "name": "drupal/file_link",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/file_link.git",
-                "reference": "2.0.5"
+                "reference": "2.0.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/file_link-2.0.5.zip",
-                "reference": "2.0.5",
-                "shasum": "ed69740112c17a6a2b54dde85423464f7275c935"
+                "url": "https://ftp.drupal.org/files/projects/file_link-2.0.6.zip",
+                "reference": "2.0.6",
+                "shasum": "015ae3c0aa75216b1fc5c607754c3be959bcf504"
             },
             "require": {
                 "drupal/core": "^8 || ^9"
@@ -3331,8 +3312,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.5",
-                    "datestamp": "1616577697",
+                    "version": "2.0.6",
+                    "datestamp": "1617713795",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3457,20 +3438,21 @@
         },
         {
             "name": "drupal/inline_entity_form",
-            "version": "1.0.0-rc8",
+            "version": "1.0.0-rc9",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/inline_entity_form.git",
-                "reference": "8.x-1.0-rc8"
+                "reference": "8.x-1.0-rc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-rc8.zip",
-                "reference": "8.x-1.0-rc8",
-                "shasum": "103de382dd07b4acdd6bacd5ad76628fdf0eefda"
+                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-rc9.zip",
+                "reference": "8.x-1.0-rc9",
+                "shasum": "78953103a9c6e4e44bc877820a35f39913ea4559"
             },
             "require": {
-                "drupal/core": "^8.7.7 || ^9"
+                "drupal/core": "^8.8 || ^9",
+                "php": ">=7.1"
             },
             "require-dev": {
                 "drupal/entity_reference_revisions": "^1.0"
@@ -3478,8 +3460,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc8",
-                    "datestamp": "1602172716",
+                    "version": "8.x-1.0-rc9",
+                    "datestamp": "1618174486",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -6231,20 +6213,19 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.7",
+            "version": "v0.10.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "a395af46999a12006213c0c8346c9445eb31640c"
+                "reference": "e4573f47750dd6c92dca5aee543fa77513cbd8d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/a395af46999a12006213c0c8346c9445eb31640c",
-                "reference": "a395af46999a12006213c0c8346c9445eb31640c",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/e4573f47750dd6c92dca5aee543fa77513cbd8d3",
+                "reference": "e4573f47750dd6c92dca5aee543fa77513cbd8d3",
                 "shasum": ""
             },
             "require": {
-                "dnoegel/php-xdg-base-dir": "0.1.*",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "nikic/php-parser": "~4.0|~3.0|~2.0|~1.3",
@@ -6299,7 +6280,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2021-03-14T02:14:56+00:00"
+            "time": "2021-04-10T16:23:39+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -6706,16 +6687,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.2.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "5fa56b4074d1ae755beb55617ddafe6f5d78f665"
+                "reference": "5f38c8804a9e97d23e0c8d63341088cd8a22d627"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/5fa56b4074d1ae755beb55617ddafe6f5d78f665",
-                "reference": "5fa56b4074d1ae755beb55617ddafe6f5d78f665",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/5f38c8804a9e97d23e0c8d63341088cd8a22d627",
+                "reference": "5f38c8804a9e97d23e0c8d63341088cd8a22d627",
                 "shasum": ""
             },
             "require": {
@@ -6724,7 +6705,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-main": "2.4-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -6766,7 +6747,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-07T11:33:47+00:00"
+            "time": "2021-03-23T23:28:01+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -9764,11 +9745,11 @@
         },
         {
             "name": "drupal/coder",
-            "version": "8.3.12",
+            "version": "8.3.13",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/coder.git",
-                "reference": "719ddb16aec2e5da4ce274bf3bf8450caef564d4"
+                "reference": "d3286d571b19633cc296d438c36b9aed195de43c"
             },
             "require": {
                 "ext-mbstring": "*",
@@ -9778,7 +9759,7 @@
                 "symfony/yaml": ">=2.0.5"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12.51",
+                "phpstan/phpstan": "^0.12.63",
                 "phpunit/phpunit": "^6.0 || ^7.0"
             },
             "type": "phpcodesniffer-standard",
@@ -9799,7 +9780,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-12-06T09:34:55+00:00"
+            "time": "2021-02-06T10:44:32+00:00"
         },
         {
             "name": "drupal/core-dev",
@@ -11535,16 +11516,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.8",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4"
+                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
-                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
+                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
                 "shasum": ""
             },
             "require": {
@@ -11582,7 +11563,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-10-23T02:01:07+00:00"
+            "time": "2021-04-09T00:54:41+00:00"
         },
         {
             "name": "symfony/browser-kit",
