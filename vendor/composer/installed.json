@@ -722,17 +722,17 @@
     },
     {
         "name": "composer/composer",
-        "version": "1.10.21",
-        "version_normalized": "1.10.21.0",
+        "version": "1.10.22",
+        "version_normalized": "1.10.22.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/composer.git",
-            "reference": "04021432f4a9cbd9351dd166b8c193f42c36a39c"
+            "reference": "28c9dfbe2351635961f670773e8d7b17bc5eda25"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/composer/zipball/04021432f4a9cbd9351dd166b8c193f42c36a39c",
-            "reference": "04021432f4a9cbd9351dd166b8c193f42c36a39c",
+            "url": "https://api.github.com/repos/composer/composer/zipball/28c9dfbe2351635961f670773e8d7b17bc5eda25",
+            "reference": "28c9dfbe2351635961f670773e8d7b17bc5eda25",
             "shasum": ""
         },
         "require": {
@@ -762,7 +762,7 @@
             "ext-zip": "Enabling the zip extension allows you to unzip archives",
             "ext-zlib": "Allow gzip compression of HTTP requests"
         },
-        "time": "2021-04-01T07:16:35+00:00",
+        "time": "2021-04-27T11:10:45+00:00",
         "bin": [
             "bin/composer"
         ],
@@ -3487,8 +3487,8 @@
     },
     {
         "name": "drupal/core-composer-scaffold",
-        "version": "8.9.14",
-        "version_normalized": "8.9.14.0",
+        "version": "8.9.15",
+        "version_normalized": "8.9.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -3536,8 +3536,8 @@
     },
     {
         "name": "drupal/core-dev",
-        "version": "8.9.14",
-        "version_normalized": "8.9.14.0",
+        "version": "8.9.15",
+        "version_normalized": "8.9.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-dev.git",
@@ -3583,8 +3583,8 @@
     },
     {
         "name": "drupal/core-project-message",
-        "version": "8.9.14",
-        "version_normalized": "8.9.14.0",
+        "version": "8.9.15",
+        "version_normalized": "8.9.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-project-message.git",
@@ -6327,17 +6327,17 @@
     },
     {
         "name": "nikic/php-parser",
-        "version": "v4.10.4",
-        "version_normalized": "4.10.4.0",
+        "version": "v4.10.5",
+        "version_normalized": "4.10.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nikic/PHP-Parser.git",
-            "reference": "c6d052fc58cb876152f89f532b95a8d7907e7f0e"
+            "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c6d052fc58cb876152f89f532b95a8d7907e7f0e",
-            "reference": "c6d052fc58cb876152f89f532b95a8d7907e7f0e",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4432ba399e47c66624bc73c8c0f811e5c109576f",
+            "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f",
             "shasum": ""
         },
         "require": {
@@ -6348,7 +6348,7 @@
             "ircmaxell/php-yacc": "^0.0.7",
             "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
         },
-        "time": "2020-12-20T10:01:03+00:00",
+        "time": "2021-05-03T19:11:20+00:00",
         "bin": [
             "bin/php-parse"
         ],
@@ -11071,17 +11071,17 @@
     },
     {
         "name": "symfony/property-info",
-        "version": "v4.4.20",
-        "version_normalized": "4.4.20.0",
+        "version": "v4.4.22",
+        "version_normalized": "4.4.22.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/property-info.git",
-            "reference": "67845c335482cea0dd52497ae1314ce7a4978c74"
+            "reference": "a910e1a728b90797d9e549737c8fc640b99a2873"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/property-info/zipball/67845c335482cea0dd52497ae1314ce7a4978c74",
-            "reference": "67845c335482cea0dd52497ae1314ce7a4978c74",
+            "url": "https://api.github.com/repos/symfony/property-info/zipball/a910e1a728b90797d9e549737c8fc640b99a2873",
+            "reference": "a910e1a728b90797d9e549737c8fc640b99a2873",
             "shasum": ""
         },
         "require": {
@@ -11106,7 +11106,7 @@
             "symfony/doctrine-bridge": "To use Doctrine metadata",
             "symfony/serializer": "To use Serializer metadata"
         },
-        "time": "2021-02-16T12:45:26+00:00",
+        "time": "2021-04-13T22:23:01+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -11624,17 +11624,17 @@
     },
     {
         "name": "symfony/var-dumper",
-        "version": "v4.4.21",
-        "version_normalized": "4.4.21.0",
+        "version": "v4.4.22",
+        "version_normalized": "4.4.22.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/var-dumper.git",
-            "reference": "0da0e174f728996f5d5072d6a9f0a42259dbc806"
+            "reference": "c194bcedde6295f3ec3e9eba1f5d484ea97c41a7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/0da0e174f728996f5d5072d6a9f0a42259dbc806",
-            "reference": "0da0e174f728996f5d5072d6a9f0a42259dbc806",
+            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/c194bcedde6295f3ec3e9eba1f5d484ea97c41a7",
+            "reference": "c194bcedde6295f3ec3e9eba1f5d484ea97c41a7",
             "shasum": ""
         },
         "require": {
@@ -11658,7 +11658,7 @@
             "ext-intl": "To show region name in time zone dump",
             "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
         },
-        "time": "2021-03-27T19:49:03+00:00",
+        "time": "2021-04-19T13:36:17+00:00",
         "bin": [
             "Resources/bin/var-dump-server"
         ],
