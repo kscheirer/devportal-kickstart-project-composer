@@ -11,7 +11,7 @@ dependencies:
 
 php: "7.1"
 
-# Information added by Drupal.org packaging script on 2021-04-21
-version: '8.x-1.10'
+# Information added by Drupal.org packaging script on 2021-06-01
+version: '8.x-1.11'
 project: 'apigee_m10n'
-datestamp: 1618990531
+datestamp: 1622567238
