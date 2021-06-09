@@ -18,7 +18,7 @@ configure: apigee_edge.settings
 
 php: "7.1"
 
-# Information added by Drupal.org packaging script on 2021-04-20
-version: '8.x-1.22'
+# Information added by Drupal.org packaging script on 2021-06-09
+version: '8.x-1.23'
 project: 'apigee_edge'
-datestamp: 1618944446
+datestamp: 1623214917
