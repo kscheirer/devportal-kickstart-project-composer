@@ -2062,17 +2062,17 @@
         },
         {
             "name": "drupal/apigee_api_catalog",
-            "version": "2.5.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_api_catalog.git",
-                "reference": "8.x-2.5"
+                "reference": "8.x-2.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-2.5.zip",
-                "reference": "8.x-2.5",
-                "shasum": "c8be508307e67484711ba60da37c7cc963bd8c7d"
+                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-8.x-2.6.zip",
+                "reference": "8.x-2.6",
+                "shasum": "1d709ba705b0a699ed668dd86e1f0fc5a061ecfe"
             },
             "require": {
                 "drupal/core": "^8.8.0 || ^9",
@@ -2092,8 +2092,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.5",
-                    "datestamp": "1604088796",
+                    "version": "8.x-2.6",
+                    "datestamp": "1628001853",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2108,6 +2108,10 @@
                 {
                     "name": "Arlina",
                     "homepage": "https://www.drupal.org/user/1055344"
+                },
+                {
+                    "name": "Divyajose",
+                    "homepage": "https://www.drupal.org/user/3406306"
                 },
                 {
                     "name": "Jacine",
@@ -2128,6 +2132,18 @@
                 {
                     "name": "gitesh.koli",
                     "homepage": "https://www.drupal.org/user/673858"
+                },
+                {
+                    "name": "phdhiren",
+                    "homepage": "https://www.drupal.org/user/181989"
+                },
+                {
+                    "name": "raakesh",
+                    "homepage": "https://www.drupal.org/user/831108"
+                },
+                {
+                    "name": "shishirsuvarna",
+                    "homepage": "https://www.drupal.org/user/3119751"
                 }
             ],
             "description": "Apigee API Catalog for Drupal",
@@ -5654,16 +5670,16 @@
         },
         {
             "name": "php-http/message",
-            "version": "1.11.1",
+            "version": "1.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/message.git",
-                "reference": "887734d9c515ad9a564f6581a682fff87a6253cc"
+                "reference": "295c82867d07261f2fa4b3a26677519fc6f7f5f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/message/zipball/887734d9c515ad9a564f6581a682fff87a6253cc",
-                "reference": "887734d9c515ad9a564f6581a682fff87a6253cc",
+                "url": "https://api.github.com/repos/php-http/message/zipball/295c82867d07261f2fa4b3a26677519fc6f7f5f6",
+                "reference": "295c82867d07261f2fa4b3a26677519fc6f7f5f6",
                 "shasum": ""
             },
             "require": {
@@ -5720,7 +5736,7 @@
                 "message",
                 "psr-7"
             ],
-            "time": "2021-05-24T18:11:08+00:00"
+            "time": "2021-08-03T11:52:11+00:00"
         },
         {
             "name": "php-http/message-factory",
@@ -11330,6 +11346,7 @@
                     "type": "github"
                 }
             ],
+            "abandoned": true,
             "time": "2020-11-30T07:30:19+00:00"
         },
         {

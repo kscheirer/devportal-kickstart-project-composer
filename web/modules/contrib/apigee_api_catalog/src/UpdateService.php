@@ -195,7 +195,8 @@ class UpdateService {
       if (substr($fieldName, 0, 6) === 'field_') {
 
         // Namespace this custom field to avoid collisions.
-        $newFieldName = $fieldName . '_apidoc';
+        // Machine names have a maximum length of 32 characters https://www.drupal.org/node/2232665
+        $newFieldName = substr($fieldName . '_apidoc', 0, 32);
 
         if (!FieldStorageConfig::loadByName('node', $newFieldName)) {
           $fieldStorageConfig->create([
@@ -330,6 +331,20 @@ class UpdateService {
     drupal_flush_all_caches();
 
     return 'Installed API Doc deprecated entity type.';
+  }
+
+  /**
+   * This will set the field field_apidoc_spec_file_source as not required.
+   */
+  public function update8807() {
+    $field = FieldConfig::loadByName('node', 'apidoc', 'field_apidoc_spec_file_source');
+    $field->set('required', FALSE)
+      ->save();
+
+    // Clear all caches.
+    drupal_flush_all_caches();
+
+    return 'Updated field_apidoc_spec_file_source required attribute to false.';
   }
 
   /**
