@@ -542,17 +542,17 @@
     },
     {
         "name": "commerceguys/addressing",
-        "version": "v1.2.1",
-        "version_normalized": "1.2.1.0",
+        "version": "v1.2.2",
+        "version_normalized": "1.2.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/commerceguys/addressing.git",
-            "reference": "311040bd78ea2ea82105dd1f17205c449ac8de47"
+            "reference": "fb98dfc72f8a3d12fac55f69ab2477a0fbfa9860"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/commerceguys/addressing/zipball/311040bd78ea2ea82105dd1f17205c449ac8de47",
-            "reference": "311040bd78ea2ea82105dd1f17205c449ac8de47",
+            "url": "https://api.github.com/repos/commerceguys/addressing/zipball/fb98dfc72f8a3d12fac55f69ab2477a0fbfa9860",
+            "reference": "fb98dfc72f8a3d12fac55f69ab2477a0fbfa9860",
             "shasum": ""
         },
         "require": {
@@ -568,7 +568,7 @@
         "suggest": {
             "symfony/validator": "to validate addresses"
         },
-        "time": "2021-05-17T08:05:21+00:00",
+        "time": "2021-10-30T12:33:41+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -603,17 +603,17 @@
     },
     {
         "name": "commerceguys/intl",
-        "version": "v1.1.0",
-        "version_normalized": "1.1.0.0",
+        "version": "v1.1.1",
+        "version_normalized": "1.1.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/commerceguys/intl.git",
-            "reference": "90b4f75c4917927a1960c0dcaa002a91ab97f5d5"
+            "reference": "cab3b55dbf8c1753fe54457404082c777a8c154f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/commerceguys/intl/zipball/90b4f75c4917927a1960c0dcaa002a91ab97f5d5",
-            "reference": "90b4f75c4917927a1960c0dcaa002a91ab97f5d5",
+            "url": "https://api.github.com/repos/commerceguys/intl/zipball/cab3b55dbf8c1753fe54457404082c777a8c154f",
+            "reference": "cab3b55dbf8c1753fe54457404082c777a8c154f",
             "shasum": ""
         },
         "require": {
@@ -623,7 +623,7 @@
             "mikey179/vfsstream": "1.*",
             "phpunit/phpunit": "^7.5"
         },
-        "time": "2021-05-17T08:25:58+00:00",
+        "time": "2021-10-30T18:07:14+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -649,17 +649,17 @@
     },
     {
         "name": "composer/ca-bundle",
-        "version": "1.2.11",
-        "version_normalized": "1.2.11.0",
+        "version": "1.3.1",
+        "version_normalized": "1.3.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/ca-bundle.git",
-            "reference": "0b072d51c5a9c6f3412f7ea3ab043d6603cb2582"
+            "reference": "4c679186f2aca4ab6a0f1b0b9cf9252decb44d0b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/ca-bundle/zipball/0b072d51c5a9c6f3412f7ea3ab043d6603cb2582",
-            "reference": "0b072d51c5a9c6f3412f7ea3ab043d6603cb2582",
+            "url": "https://api.github.com/repos/composer/ca-bundle/zipball/4c679186f2aca4ab6a0f1b0b9cf9252decb44d0b",
+            "reference": "4c679186f2aca4ab6a0f1b0b9cf9252decb44d0b",
             "shasum": ""
         },
         "require": {
@@ -673,7 +673,7 @@
             "symfony/phpunit-bridge": "^4.2 || ^5",
             "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0"
         },
-        "time": "2021-09-25T20:32:43+00:00",
+        "time": "2021-10-28T20:44:15+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1006,26 +1006,27 @@
     },
     {
         "name": "composer/spdx-licenses",
-        "version": "1.5.5",
-        "version_normalized": "1.5.5.0",
+        "version": "1.5.6",
+        "version_normalized": "1.5.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/spdx-licenses.git",
-            "reference": "de30328a7af8680efdc03e396aad24befd513200"
+            "reference": "a30d487169d799745ca7280bc90fdfa693536901"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/de30328a7af8680efdc03e396aad24befd513200",
-            "reference": "de30328a7af8680efdc03e396aad24befd513200",
+            "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/a30d487169d799745ca7280bc90fdfa693536901",
+            "reference": "a30d487169d799745ca7280bc90fdfa693536901",
             "shasum": ""
         },
         "require": {
             "php": "^5.3.2 || ^7.0 || ^8.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "^4.8.35 || ^5.7 || 6.5 - 7"
+            "phpstan/phpstan": "^0.12.55",
+            "symfony/phpunit-bridge": "^4.2 || ^5"
         },
-        "time": "2020-12-03T16:04:16+00:00",
+        "time": "2021-11-18T10:14:14+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3507,8 +3508,8 @@
     },
     {
         "name": "drupal/core-composer-scaffold",
-        "version": "8.9.19",
-        "version_normalized": "8.9.19.0",
+        "version": "8.9.20",
+        "version_normalized": "8.9.20.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -3556,8 +3557,8 @@
     },
     {
         "name": "drupal/core-dev",
-        "version": "8.9.19",
-        "version_normalized": "8.9.19.0",
+        "version": "8.9.20",
+        "version_normalized": "8.9.20.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-dev.git",
@@ -3603,8 +3604,8 @@
     },
     {
         "name": "drupal/core-project-message",
-        "version": "8.9.19",
-        "version_normalized": "8.9.19.0",
+        "version": "8.9.20",
+        "version_normalized": "8.9.20.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-project-message.git",
@@ -5451,17 +5452,17 @@
     },
     {
         "name": "firebase/php-jwt",
-        "version": "v5.4.0",
-        "version_normalized": "5.4.0.0",
+        "version": "v5.5.1",
+        "version_normalized": "5.5.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/firebase/php-jwt.git",
-            "reference": "d2113d9b2e0e349796e72d2a63cf9319100382d2"
+            "reference": "83b609028194aa042ea33b5af2d41a7427de80e6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/firebase/php-jwt/zipball/d2113d9b2e0e349796e72d2a63cf9319100382d2",
-            "reference": "d2113d9b2e0e349796e72d2a63cf9319100382d2",
+            "url": "https://api.github.com/repos/firebase/php-jwt/zipball/83b609028194aa042ea33b5af2d41a7427de80e6",
+            "reference": "83b609028194aa042ea33b5af2d41a7427de80e6",
             "shasum": ""
         },
         "require": {
@@ -5473,7 +5474,7 @@
         "suggest": {
             "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
         },
-        "time": "2021-06-23T19:00:23+00:00",
+        "time": "2021-11-08T20:18:51+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -6351,17 +6352,17 @@
     },
     {
         "name": "nikic/php-parser",
-        "version": "v4.13.0",
-        "version_normalized": "4.13.0.0",
+        "version": "v4.13.1",
+        "version_normalized": "4.13.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nikic/PHP-Parser.git",
-            "reference": "50953a2691a922aa1769461637869a0a2faa3f53"
+            "reference": "63a79e8daa781cac14e5195e63ed8ae231dd10fd"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/50953a2691a922aa1769461637869a0a2faa3f53",
-            "reference": "50953a2691a922aa1769461637869a0a2faa3f53",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/63a79e8daa781cac14e5195e63ed8ae231dd10fd",
+            "reference": "63a79e8daa781cac14e5195e63ed8ae231dd10fd",
             "shasum": ""
         },
         "require": {
@@ -6372,7 +6373,7 @@
             "ircmaxell/php-yacc": "^0.0.7",
             "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
         },
-        "time": "2021-09-20T12:20:58+00:00",
+        "time": "2021-11-03T20:52:16+00:00",
         "bin": [
             "bin/php-parse"
         ],
@@ -8429,17 +8430,17 @@
     },
     {
         "name": "sebastian/exporter",
-        "version": "3.1.3",
-        "version_normalized": "3.1.3.0",
+        "version": "3.1.4",
+        "version_normalized": "3.1.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/exporter.git",
-            "reference": "6b853149eab67d4da22291d36f5b0631c0fd856e"
+            "reference": "0c32ea2e40dbf59de29f3b49bf375176ce7dd8db"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/6b853149eab67d4da22291d36f5b0631c0fd856e",
-            "reference": "6b853149eab67d4da22291d36f5b0631c0fd856e",
+            "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/0c32ea2e40dbf59de29f3b49bf375176ce7dd8db",
+            "reference": "0c32ea2e40dbf59de29f3b49bf375176ce7dd8db",
             "shasum": ""
         },
         "require": {
@@ -8448,9 +8449,9 @@
         },
         "require-dev": {
             "ext-mbstring": "*",
-            "phpunit/phpunit": "^6.0"
+            "phpunit/phpunit": "^8.5"
         },
-        "time": "2020-11-30T07:47:53+00:00",
+        "time": "2021-11-11T13:51:24+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -11412,17 +11413,17 @@
     },
     {
         "name": "symfony/string",
-        "version": "v5.3.7",
-        "version_normalized": "5.3.7.0",
+        "version": "v5.3.10",
+        "version_normalized": "5.3.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/string.git",
-            "reference": "8d224396e28d30f81969f083a58763b8b9ceb0a5"
+            "reference": "d70c35bb20bbca71fc4ab7921e3c6bda1a82a60c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/string/zipball/8d224396e28d30f81969f083a58763b8b9ceb0a5",
-            "reference": "8d224396e28d30f81969f083a58763b8b9ceb0a5",
+            "url": "https://api.github.com/repos/symfony/string/zipball/d70c35bb20bbca71fc4ab7921e3c6bda1a82a60c",
+            "reference": "d70c35bb20bbca71fc4ab7921e3c6bda1a82a60c",
             "shasum": ""
         },
         "require": {
@@ -11439,7 +11440,7 @@
             "symfony/translation-contracts": "^1.1|^2",
             "symfony/var-exporter": "^4.4|^5.0"
         },
-        "time": "2021-08-26T08:00:08+00:00",
+        "time": "2021-10-27T18:21:46+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -11654,17 +11655,17 @@
     },
     {
         "name": "symfony/var-dumper",
-        "version": "v4.4.31",
-        "version_normalized": "4.4.31.0",
+        "version": "v4.4.33",
+        "version_normalized": "4.4.33.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/var-dumper.git",
-            "reference": "1f12cc0c2e880a5f39575c19af81438464717839"
+            "reference": "50286e2b7189bfb4f419c0731e86632cddf7c5ee"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/1f12cc0c2e880a5f39575c19af81438464717839",
-            "reference": "1f12cc0c2e880a5f39575c19af81438464717839",
+            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/50286e2b7189bfb4f419c0731e86632cddf7c5ee",
+            "reference": "50286e2b7189bfb4f419c0731e86632cddf7c5ee",
             "shasum": ""
         },
         "require": {
@@ -11688,7 +11689,7 @@
             "ext-intl": "To show region name in time zone dump",
             "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
         },
-        "time": "2021-09-24T15:30:11+00:00",
+        "time": "2021-10-25T20:24:58+00:00",
         "bin": [
             "Resources/bin/var-dump-server"
         ],
@@ -12113,7 +12114,8 @@
                 "email": "bschussek@gmail.com"
             }
         ],
-        "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths."
+        "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+        "abandoned": "symfony/filesystem"
     },
     {
         "name": "zendframework/zend-diactoros",
