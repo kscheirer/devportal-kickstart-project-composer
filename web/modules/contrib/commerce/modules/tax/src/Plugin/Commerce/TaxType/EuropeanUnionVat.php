@@ -48,13 +48,19 @@ class EuropeanUnionVat extends LocalTaxTypeBase {
     }
     $order = $order_item->getOrder();
     $store = $order->getStore();
-    $store_address = $store->getAddress();
-    $store_country = $store_address->getCountryCode();
-    $store_zones = $this->getMatchingZones($store_address);
     $store_registration_zones = array_filter($zones, function ($zone) use ($store) {
       /** @var \Drupal\commerce_tax\TaxZone $zone */
       return $this->checkRegistrations($store, $zone);
     });
+
+    // The store is not registered to collect taxes in the EU, stop here.
+    if (empty($store_registration_zones)) {
+      return [];
+    }
+
+    $store_address = $store->getAddress();
+    $store_country = $store_address->getCountryCode();
+    $store_zones = $this->getMatchingZones($store_address);
 
     $customer_tax_number = '';
     if (!$customer_profile->get('tax_number')->isEmpty()) {
@@ -70,7 +76,7 @@ class EuropeanUnionVat extends LocalTaxTypeBase {
     $taxable_type = $this->getTaxableType($order_item);
     $year = $order->getCalculationDate()->format('Y');
     $is_digital = $taxable_type == TaxableType::DIGITAL_GOODS && $year >= 2015;
-    if (empty($store_zones) && !empty($store_registration_zones)) {
+    if (empty($store_zones)) {
       // The store is not in the EU but is registered to collect VAT for
       // digital goods.
       $resolved_zones = [];
@@ -514,39 +520,6 @@ class EuropeanUnionVat extends LocalTaxTypeBase {
         ],
       ],
     ]);
-    $zones['gb'] = new TaxZone([
-      'id' => 'gb',
-      'label' => $this->t('United Kingdom'),
-      'display_label' => $labels['vat'],
-      'territories' => [
-        ['country_code' => 'GB'],
-        ['country_code' => 'IM'],
-      ],
-      'rates' => [
-        [
-          'id' => 'standard',
-          'label' => $labels['standard'],
-          'percentages' => [
-            ['number' => '0.2', 'start_date' => '2011-01-04'],
-          ],
-          'default' => TRUE,
-        ],
-        [
-          'id' => 'reduced',
-          'label' => $labels['reduced'],
-          'percentages' => [
-            ['number' => '0.05', 'start_date' => '1997-09-01'],
-          ],
-        ],
-        [
-          'id' => 'zero',
-          'label' => $labels['zero'],
-          'percentages' => [
-            ['number' => '0', 'start_date' => '1973-01-01'],
-          ],
-        ],
-      ],
-    ]);
     $zones['gr'] = new TaxZone([
       'id' => 'gr',
       'label' => $this->t('Greece'),
@@ -715,6 +688,7 @@ class EuropeanUnionVat extends LocalTaxTypeBase {
           'label' => $labels['second_reduced'],
           'percentages' => [
             ['number' => '0.09', 'start_date' => '2011-07-01', 'end_date' => '2018-12-31'],
+            ['number' => '0.09', 'start_date' => '2020-11-01', 'end_date' => '2022-08-31'],
           ],
         ],
         [
@@ -992,12 +966,44 @@ class EuropeanUnionVat extends LocalTaxTypeBase {
         ],
       ],
     ]);
+    $zones['pt_20'] = new TaxZone([
+      'id' => 'pt_20',
+      'label' => $this->t('Portugal (Azores)'),
+      'display_label' => $labels['vat'],
+      'territories' => [
+        ['country_code' => 'PT', 'included_postal_codes' => '/(9)[5-9][0-9]{2}-[0-9]{3}/'],
+      ],
+      'rates' => [
+        [
+          'id' => 'standard',
+          'label' => $labels['standard'],
+          'percentages' => [
+            ['number' => '0.18', 'start_date' => '2012-04-01'],
+          ],
+          'default' => TRUE,
+        ],
+        [
+          'id' => 'intermediate',
+          'label' => $labels['intermediate'],
+          'percentages' => [
+            ['number' => '0.09', 'start_date' => '2012-04-01'],
+          ],
+        ],
+        [
+          'id' => 'reduced',
+          'label' => $labels['reduced'],
+          'percentages' => [
+            ['number' => '0.04', 'start_date' => '2012-04-01'],
+          ],
+        ],
+      ],
+    ]);
     $zones['pt_30'] = new TaxZone([
       'id' => 'pt_30',
       'label' => $this->t('Portugal (Madeira)'),
       'display_label' => $labels['vat'],
       'territories' => [
-        ['country_code' => 'PT', 'included_postal_codes' => '/(9)[5-9][0-9]{2}-[0-9]{3}/'],
+        ['country_code' => 'PT', 'included_postal_codes' => '/(9)[0-4][0-9]{2}-[0-9]{3}/'],
       ],
       'rates' => [
         [

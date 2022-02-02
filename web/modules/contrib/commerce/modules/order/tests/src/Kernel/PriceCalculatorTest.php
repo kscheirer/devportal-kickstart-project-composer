@@ -67,11 +67,14 @@ class PriceCalculatorTest extends OrderKernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installEntitySchema('commerce_promotion');
+    $this->installSchema('commerce_promotion', ['commerce_promotion_usage']);
 
+    $this->store->set('tax_registrations', ['US']);
+    $this->store->save();
     $promotion = Promotion::create([
       'name' => 'Promotion 1',
       'order_types' => ['default'],

@@ -13,7 +13,7 @@ class NorwegianVatTest extends EuropeanUnionVatTest {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->taxType = TaxType::create([
@@ -36,7 +36,7 @@ class NorwegianVatTest extends EuropeanUnionVatTest {
   public function testApplication() {
     $plugin = $this->taxType->getPlugin();
     // Norwegian customer, Norwegian store, standard VAT.
-    $order = $this->buildOrder('NO', 'NO');
+    $order = $this->buildOrder('NO', 'NO', '', ['NO']);
     $this->assertTrue($plugin->applies($order));
     $plugin->apply($order);
     $adjustments = $order->collectAdjustments();
@@ -45,7 +45,7 @@ class NorwegianVatTest extends EuropeanUnionVatTest {
     $this->assertEquals('norwegian_vat|no|standard', $adjustment->getSourceId());
 
     // Polish customer, Norwegian store, no VAT.
-    $order = $this->buildOrder('PL', 'NO');
+    $order = $this->buildOrder('PL', 'NO', '', ['NO']);
     $this->assertTrue($plugin->applies($order));
     $plugin->apply($order);
     $adjustments = $order->collectAdjustments();

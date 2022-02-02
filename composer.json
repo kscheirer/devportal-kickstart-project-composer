@@ -51,7 +51,10 @@
   "prefer-stable": true,
   "config": {
     "sort-packages": true,
-    "process-timeout": 0
+    "process-timeout": 0,
+    "allow-plugins": {
+      "composer/installers": true
+    }
   },
   "extra": {
     "drupal-scaffold": {

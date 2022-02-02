@@ -8,11 +8,11 @@ use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\Core\TypedData\Validation\ExecutionContextFactory;
 use Drupal\Core\TypedData\Validation\RecursiveValidator;
 use Drupal\Core\Validation\ConstraintManager;
 use Drupal\Core\Validation\ConstraintValidatorFactory;
 use Drupal\Core\Validation\DrupalTranslator;
+use Symfony\Component\Validator\Context\ExecutionContextFactory;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -169,7 +169,15 @@ class TypedDataManager extends DefaultPluginManager implements TypedDataManagerI
       $parts[] = json_encode($settings);
     }
     // Property path for the requested data object.
-    $parts[] = $object->getPropertyPath() . '.' . $property_name;
+    $parts[] = $object->getPropertyPath();
+    // Only property instances of complex data types should be cached by the
+    // property name, as they represent different properties. Properties of list
+    // data types are the items of the list and the property name represents
+    // only the delta in that list and not an unique property, which is why all
+    // items should use the same prototype.
+    if ($object instanceof ComplexDataInterface) {
+      $parts[] = $property_name;
+    }
     $key = implode(':', $parts);
 
     // Create the prototype if needed.

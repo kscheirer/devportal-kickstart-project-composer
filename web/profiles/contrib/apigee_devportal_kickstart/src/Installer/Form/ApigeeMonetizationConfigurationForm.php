@@ -23,6 +23,7 @@ namespace Drupal\apigee_devportal_kickstart\Installer\Form;
 use Apigee\Edge\Api\Management\Controller\OrganizationController;
 use Apigee\Edge\Api\Monetization\Controller\OrganizationProfileController;
 use Apigee\Edge\Api\Monetization\Controller\SupportedCurrencyController;
+use Apigee\Edge\Api\ApigeeX\Controller\SupportedCurrencyController as ApigeeXSupportedCurrencyController;
 use CommerceGuys\Addressing\AddressFormat\AddressField;
 use CommerceGuys\Addressing\Subdivision\SubdivisionRepositoryInterface;
 use CommerceGuys\Intl\Currency\CurrencyRepository;
@@ -97,6 +98,13 @@ class ApigeeMonetizationConfigurationForm extends FormBase {
   protected $missingDependencies;
 
   /**
+   * TRUE if organization is monetizable ApigeeX.
+   *
+   * @var bool
+   */
+  protected $isOrgApigeeX;
+
+  /**
    * ApigeeM10nConfigurationForm constructor.
    *
    * @param \Drupal\apigee_edge\SDKConnectorInterface $sdk_connector
@@ -121,8 +129,20 @@ class ApigeeMonetizationConfigurationForm extends FormBase {
       // cache these values?
       $organization_controller = new OrganizationController($client);
       $organization = $organization_controller->load($organization_id);
+      if ($organization && ('CLOUD' === $organization->getRuntimeType() || 'HYBRID' === $organization->getRuntimeType())) {
+        if ($this->isMonetizable = $organization->getAddonsConfig()->getMonetizationConfig()->getEnabled() === TRUE) {
+          // Set the organization.
+          $this->organization = $organization;
+
+          // Set supported currencies.
+          $supported_currency_controller = new ApigeeXSupportedCurrencyController($organization_id, $client);
+          $this->supportedCurrencies = $supported_currency_controller->getEntities();
+
+          $this->isOrgApigeeX = TRUE;
+        }
+      }
       /** @var \Apigee\Edge\Api\Management\Entity\OrganizationInterface $organization */
-      if ($this->isMonetizable = $organization->getPropertyValue('features.isMonetizationEnabled') === 'true') {
+      elseif ($this->isMonetizable = $organization->getPropertyValue('features.isMonetizationEnabled') === 'true') {
         // Set the organization.
         $organization_profile_controller = new OrganizationProfileController($organization_id, $client);
         $this->organization = $organization_profile_controller->load($organization_id);
@@ -298,7 +318,7 @@ class ApigeeMonetizationConfigurationForm extends FormBase {
 
     $form['store']['default_currency'] = [
       '#type' => 'value',
-      '#value' => $this->organization->getCurrencyCode(),
+      '#value' => $this->isOrgApigeeX ? 'USD' : $this->organization->getCurrencyCode(),
     ];
 
     $form['store']['type'] = [
@@ -351,8 +371,8 @@ class ApigeeMonetizationConfigurationForm extends FormBase {
       ];
     }
 
-    // Add default address from organization.
-    if ($addresses = $this->organization->getAddresses()) {
+    // Check if not ApigeeX and add default address from organization.
+    if (!$this->isOrgApigeeX && $addresses = $this->organization->getAddresses()) {
       /** @var \Apigee\Edge\Api\Monetization\Structure\Address $address */
       $address = reset($addresses);
 

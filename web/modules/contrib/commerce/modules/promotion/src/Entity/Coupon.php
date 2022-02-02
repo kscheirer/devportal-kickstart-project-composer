@@ -4,9 +4,12 @@ namespace Drupal\commerce_promotion\Entity;
 
 use Drupal\commerce\Entity\CommerceContentEntityBase;
 use Drupal\commerce_order\Entity\OrderInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
 /**
  * Defines the Coupon entity.
@@ -60,6 +63,8 @@ use Drupal\Core\Entity\EntityTypeInterface;
  */
 class Coupon extends CommerceContentEntityBase implements CouponInterface {
 
+  use EntityChangedTrait;
+
   /**
    * {@inheritdoc}
    */
@@ -95,6 +100,21 @@ class Coupon extends CommerceContentEntityBase implements CouponInterface {
    */
   public function setCode($code) {
     $this->set('code', $code);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCreatedTime() {
+    return $this->get('created')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setCreatedTime($timestamp) {
+    $this->set('created', $timestamp);
     return $this;
   }
 
@@ -146,11 +166,57 @@ class Coupon extends CommerceContentEntityBase implements CouponInterface {
   /**
    * {@inheritdoc}
    */
+  public function getStartDate($store_timezone = 'UTC') {
+    if (!$this->get('start_date')->isEmpty()) {
+      return new DrupalDateTime($this->get('start_date')->value, $store_timezone);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setStartDate(DrupalDateTime $start_date) {
+    $this->get('start_date')->value = $start_date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getEndDate($store_timezone = 'UTC') {
+    if (!$this->get('end_date')->isEmpty()) {
+      return new DrupalDateTime($this->get('end_date')->value, $store_timezone);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setEndDate(DrupalDateTime $end_date = NULL) {
+    $this->get('end_date')->value = NULL;
+    if ($end_date) {
+      $this->get('end_date')->value = $end_date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function available(OrderInterface $order) {
     if (!$this->isEnabled()) {
       return FALSE;
     }
     if (!$this->getPromotion()->available($order)) {
+      return FALSE;
+    }
+    $date = $order->getCalculationDate();
+    $store_timezone = $date->getTimezone()->getName();
+    $start_date = $this->getStartDate($store_timezone);
+    if ($start_date && ($start_date->format('U') > $date->format('U'))) {
+      return FALSE;
+    }
+    $end_date = $this->getEndDate($store_timezone);
+    if ($end_date && $end_date->format('U') <= $date->format('U')) {
       return FALSE;
     }
 
@@ -248,6 +314,38 @@ class Coupon extends CommerceContentEntityBase implements CouponInterface {
         'weight' => -4,
       ])
       ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['start_date'] = BaseFieldDefinition::create('datetime')
+      ->setLabel(t('Start date'))
+      ->setDescription(t('The date the coupon becomes valid.'))
+      ->setRequired(FALSE)
+      ->setSetting('datetime_type', 'datetime')
+      ->setSetting('datetime_optional_label', t('Provide a start date'))
+      ->setDefaultValueCallback('Drupal\commerce_promotion\Entity\Promotion::getDefaultStartDate')
+      ->setDisplayOptions('form', [
+        'type' => 'commerce_store_datetime',
+        'weight' => 5,
+      ]);
+
+    $fields['end_date'] = BaseFieldDefinition::create('datetime')
+      ->setLabel(t('End date'))
+      ->setDescription(t('The date after which the coupon is invalid.'))
+      ->setRequired(FALSE)
+      ->setSetting('datetime_type', 'datetime')
+      ->setSetting('datetime_optional_label', t('Provide an end date'))
+      ->setDisplayOptions('form', [
+        'type' => 'commerce_store_datetime',
+        'weight' => 6,
+      ]);
+
+    $fields['created'] = BaseFieldDefinition::create('created')
+      ->setLabel(t('Created'))
+      ->setDescription(t('The time when the coupon was created.'));
+
+    $fields['changed'] = BaseFieldDefinition::create('changed')
+      ->setLabel(t('Changed'))
+      ->setDescription(t('The time when the coupon was last edited.'))
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['usage_limit'] = BaseFieldDefinition::create('integer')

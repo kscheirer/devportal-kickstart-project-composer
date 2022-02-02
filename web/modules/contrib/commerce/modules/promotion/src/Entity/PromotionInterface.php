@@ -7,11 +7,13 @@ use Drupal\commerce_store\Entity\EntityStoresInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\commerce_promotion\Plugin\Commerce\PromotionOffer\PromotionOfferInterface;
+use Drupal\Core\Entity\EntityChangedInterface;
+use Drupal\user\EntityOwnerInterface;
 
 /**
  * Defines the interface for promotions.
  */
-interface PromotionInterface extends ContentEntityInterface, EntityStoresInterface {
+interface PromotionInterface extends ContentEntityInterface, EntityStoresInterface, EntityChangedInterface, EntityOwnerInterface {
 
   const COMPATIBLE_ANY = 'any';
   const COMPATIBLE_NONE = 'none';
@@ -428,5 +430,31 @@ interface PromotionInterface extends ContentEntityInterface, EntityStoresInterfa
    *   The order.
    */
   public function clear(OrderInterface $order);
+
+  /**
+   * Gets the promotion creation timestamp.
+   *
+   * @return int
+   *   Creation timestamp of the promotion.
+   */
+  public function getCreatedTime();
+
+  /**
+   * Sets the promotion creation timestamp.
+   *
+   * @param int $timestamp
+   *   The promotion creation timestamp.
+   *
+   * @return $this
+   */
+  public function setCreatedTime($timestamp);
+
+  /**
+   * Checks whether a coupon is required for the promotion to apply.
+   *
+   * @return bool
+   *   TRUE if the promotion requires a coupon, FALSE otherwise.
+   */
+  public function requiresCoupon();
 
 }

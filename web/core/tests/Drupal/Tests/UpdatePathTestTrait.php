@@ -2,10 +2,11 @@
 
 namespace Drupal\Tests;
 
+use Drupal\Core\Database\Database;
 use Drupal\Core\Url;
 
 /**
- * Trait UpdatePathTestTrait
+ * Trait UpdatePathTestTrait.
  *
  * For use on \Drupal\Tests\BrowserTestBase tests.
  */
@@ -44,11 +45,11 @@ trait UpdatePathTestTrait {
 
     $this->drupalGet($update_url);
     $this->updateRequirementsProblem();
-    $this->clickLink(t('Continue'));
+    $this->clickLink('Continue');
 
     $this->doSelectionTest();
     // Run the update hooks.
-    $this->clickLink(t('Apply pending updates'));
+    $this->clickLink('Apply pending updates');
     $this->checkForMetaRefresh();
 
     // Ensure there are no failed updates.
@@ -64,6 +65,7 @@ trait UpdatePathTestTrait {
           case 'update':
             $all_updates = update_get_update_list();
             break;
+
           case 'post_update':
             $all_updates = \Drupal::service('update.post_update_registry')->getPendingUpdateInformation();
             break;
@@ -86,8 +88,10 @@ trait UpdatePathTestTrait {
       $modules_installed = FALSE;
       // Modules that are in configuration but not the module handler have been
       // installed.
+      /** @var \Drupal\Core\Extension\ModuleExtensionList $module_list */
+      $module_list = $this->container->get('extension.list.module');
       foreach (array_keys(array_diff_key($config_module_list, $module_handler_list)) as $module) {
-        $module_handler->addModule($module, drupal_get_path('module', $module));
+        $module_handler->addModule($module, $module_list->getPath($module));
         $modules_installed = TRUE;
       }
       $modules_uninstalled = FALSE;
@@ -102,6 +106,15 @@ trait UpdatePathTestTrait {
         // Note that resetAll() does not reset the kernel module list so we
         // have to do that manually.
         $this->kernel->updateModules($module_handler_list, $module_handler_list);
+      }
+
+      // Close any open database connections. This allows DB drivers that store
+      // static information to refresh it in the update runner.
+      // @todo https://drupal.org/i/3222121 consider doing this in
+      //   \Drupal\Core\DrupalKernel::initializeContainer() for container
+      //   rebuilds.
+      foreach (Database::getAllConnectionInfo() as $key => $info) {
+        Database::closeConnection(NULL, $key);
       }
 
       // If we have successfully clicked 'Apply pending updates' then we need to
@@ -159,11 +172,7 @@ trait UpdatePathTestTrait {
   protected function ensureUpdatesToRun() {
     \Drupal::service('module_installer')->install(['update_script_test']);
     // Reset the schema so there is an update to run.
-    \Drupal::database()->update('key_value')
-      ->fields(['value' => serialize(8000)])
-      ->condition('collection', 'system.schema')
-      ->condition('name', 'update_script_test')
-      ->execute();
+    \Drupal::service('update.update_hook_registry')->setInstalledVersion('update_script_test', 8000);
   }
 
 }

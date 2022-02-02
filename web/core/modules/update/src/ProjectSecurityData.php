@@ -2,6 +2,8 @@
 
 namespace Drupal\update;
 
+use Drupal\Core\Extension\ExtensionVersion;
+
 /**
  * Calculates a project's security coverage information.
  *
@@ -17,6 +19,12 @@ final class ProjectSecurityData {
    * For example, if this value is 2 and the existing version is 9.0.1, the
    * 9.0.x branch will receive security coverage until the release of version
    * 9.2.0.
+   *
+   * @todo In https://www.drupal.org/node/2998285 determine if we want this
+   *   policy to be expressed in the updates.drupal.org feed, instead of relying
+   *   on a hard-coded constant.
+   *
+   * @see https://www.drupal.org/core/release-cycle-overview
    */
   const CORE_MINORS_WITH_SECURITY_COVERAGE = 2;
 
@@ -51,11 +59,6 @@ final class ProjectSecurityData {
    * Releases as returned by update_get_available().
    *
    * @var array
-   *
-   * Each release item in the array has metadata about that release. This class
-   * uses the keys:
-   * - status (string): The status of the release.
-   * - version (string): The version number of the release.
    *
    * @see update_get_available()
    */
@@ -123,7 +126,7 @@ final class ProjectSecurityData {
       return [];
     }
     $info = [];
-    $existing_release_version = ModuleVersion::createFromVersionString($this->existingVersion);
+    $existing_release_version = ExtensionVersion::createFromVersionString($this->existingVersion);
 
     // Check if the installed version has a specific end date defined.
     $version_suffix = $existing_release_version->getMajorVersion() . '_' . $this->getSemanticMinorVersion($this->existingVersion);
@@ -144,6 +147,12 @@ final class ProjectSecurityData {
   /**
    * Gets the release the current minor will receive security coverage until.
    *
+   * For the sake of example, assume that the currently installed version of
+   * Drupal is 8.7.11 and that static::CORE_MINORS_WITH_SECURITY_COVERAGE is 2.
+   * When Drupal 8.9.0 is released, the supported minor versions will be 8.8
+   * and 8.9. At that point, Drupal 8.7 will no longer have security coverage.
+   * Therefore, this function would return "8.9.0".
+   *
    * @todo In https://www.drupal.org/node/2998285 determine how we will know
    *    what the final minor release of a particular major version will be. This
    *    method should not return a version beyond that minor.
@@ -153,7 +162,7 @@ final class ProjectSecurityData {
    *   NULL if this cannot be determined.
    */
   private function getSecurityCoverageUntilVersion() {
-    $existing_release_version = ModuleVersion::createFromVersionString($this->existingVersion);
+    $existing_release_version = ExtensionVersion::createFromVersionString($this->existingVersion);
     if (!empty($existing_release_version->getVersionExtra())) {
       // Only full releases receive security coverage.
       return NULL;
@@ -165,7 +174,33 @@ final class ProjectSecurityData {
   }
 
   /**
-   * Gets the number of additional minor security covered releases.
+   * Gets the number of additional minor releases with security coverage.
+   *
+   * This function compares the currently installed (existing) version of
+   * the project with two things:
+   * - The latest available official release of that project.
+   * - The target minor release where security coverage for the current release
+   *   should expire. This target release is determined by
+   *   getSecurityCoverageUntilVersion().
+   *
+   * For the sake of example, assume that the currently installed version of
+   * Drupal is 8.7.11 and that static::CORE_MINORS_WITH_SECURITY_COVERAGE is 2.
+   *
+   * Before the release of Drupal 8.8.0, this function would return 2.
+   *
+   * After the release of Drupal 8.8.0 and before the release of 8.9.0, this
+   * function would return 1 to indicate that the next minor version release
+   * will end security coverage for 8.7.
+   *
+   * When Drupal 8.9.0 is released, this function would return 0 to indicate
+   * that security coverage is over for 8.7.
+   *
+   * If the currently installed version is 9.0.0, and there is no 9.1.0 release
+   * yet, the function would return 2. Once 9.1.0 is out, it would return 1.
+   * When 9.2.0 is released, it would again return 0.
+   *
+   * Note: callers should not test this function's return value with empty()
+   * since 0 is a valid return value that has different meaning than NULL.
    *
    * @param string $security_covered_version
    *   The version until which the existing version receives security coverage.
@@ -173,25 +208,41 @@ final class ProjectSecurityData {
    * @return int|null
    *   The number of additional minor releases that receive security coverage,
    *   or NULL if this cannot be determined.
+   *
+   * @see \Drupal\update\ProjectSecurityData\getSecurityCoverageUntilVersion()
    */
   private function getAdditionalSecurityCoveredMinors($security_covered_version) {
-    $security_covered_version_major = ModuleVersion::createFromVersionString($security_covered_version)->getMajorVersion();
+    $security_covered_version_major = ExtensionVersion::createFromVersionString($security_covered_version)->getMajorVersion();
     $security_covered_version_minor = $this->getSemanticMinorVersion($security_covered_version);
-    foreach ($this->releases as $release) {
-      $release_version = ModuleVersion::createFromVersionString($release['version']);
-      if ($release_version->getMajorVersion() === $security_covered_version_major && $release['status'] === 'published' && !$release_version->getVersionExtra()) {
+    foreach ($this->releases as $release_info) {
+      try {
+        $release = ProjectRelease::createFromArray($release_info);
+      }
+      catch (\UnexpectedValueException $exception) {
+        // Ignore releases that are in an invalid format. Although this is
+        // highly unlikely we should still process releases in the correct
+        // format.
+        watchdog_exception(
+          'update',
+          $exception,
+          'Invalid project format: @release',
+          ['@release' => print_r($release_info, TRUE)]
+        );
+        continue;
+      }
+      $release_version = ExtensionVersion::createFromVersionString($release->getVersion());
+      if ($release_version->getMajorVersion() === $security_covered_version_major && $release->isPublished() && !$release_version->getVersionExtra()) {
         // The releases are ordered with the most recent releases first.
-        // Therefore if we have found an official, published release with the
-        // same major version as $security_covered_version then this release
+        // Therefore, if we have found a published, official release with the
+        // same major version as $security_covered_version, then this release
         // can be used to determine the latest minor.
-        $latest_minor = $this->getSemanticMinorVersion($release['version']);
+        $latest_minor = $this->getSemanticMinorVersion($release->getVersion());
         break;
       }
     }
-    // If $latest_minor is set, we know that $latest_minor and
-    // $security_covered_version_minor have the same major version. Therefore we
-    // can simply subtract to determine the number of additional minor security
-    // covered releases.
+    // If $latest_minor is set, we know that $security_covered_version_minor and
+    // $latest_minor have the same major version. Therefore, we can subtract to
+    // determine the number of additional minor releases with security coverage.
     return isset($latest_minor) ? $security_covered_version_minor - $latest_minor : NULL;
   }
 

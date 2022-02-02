@@ -385,6 +385,7 @@ class PropertyAccessor implements PropertyAccessorInterface
 
         $result = self::RESULT_PROTO;
         $object = $zval[self::VALUE];
+        $class = \get_class($object);
         $access = $this->getReadAccessInfo(\get_class($object), $property);
 
         try {
@@ -406,6 +407,11 @@ class PropertyAccessor implements PropertyAccessorInterface
                     throw $e;
                 }
             } elseif (self::ACCESS_TYPE_PROPERTY === $access[self::ACCESS_TYPE]) {
+                $name = $access[self::ACCESS_NAME];
+                if ($access[self::ACCESS_REF] && !isset($object->$name) && !\array_key_exists($name, (array) $object) && (\PHP_VERSION_ID < 70400 || !(new \ReflectionProperty($class, $name))->hasType())) {
+                    throw new AccessException(sprintf('The property "%s::$%s" is not initialized.', $class, $name));
+                }
+
                 $result[self::VALUE] = $object->{$access[self::ACCESS_NAME]};
 
                 if ($access[self::ACCESS_REF] && isset($zval[self::REF])) {
@@ -430,11 +436,11 @@ class PropertyAccessor implements PropertyAccessorInterface
             }
         } catch (\Error $e) {
             // handle uninitialized properties in PHP >= 7.4
-            if (\PHP_VERSION_ID >= 70400 && preg_match('/^Typed property ([\w\\\]+)::\$(\w+) must not be accessed before initialization$/', $e->getMessage(), $matches)) {
-                $r = new \ReflectionProperty($matches[1], $matches[2]);
+            if (\PHP_VERSION_ID >= 70400 && preg_match('/^Typed property ('.preg_quote(get_debug_type($object), '/').')::\$(\w+) must not be accessed before initialization$/', $e->getMessage(), $matches)) {
+                $r = new \ReflectionProperty($class, $matches[2]);
                 $type = ($type = $r->getType()) instanceof \ReflectionNamedType ? $type->getName() : (string) $type;
 
-                throw new AccessException(sprintf('The property "%s::$%s" is not readable because it is typed "%s". You should initialize it or declare a default value instead.', $r->getDeclaringClass()->getName(), $r->getName(), $type), 0, $e);
+                throw new AccessException(sprintf('The property "%s::$%s" is not readable because it is typed "%s". You should initialize it or declare a default value instead.', $matches[1], $r->getName(), $type), 0, $e);
             }
 
             throw $e;
