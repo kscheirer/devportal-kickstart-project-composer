@@ -87,7 +87,7 @@ __webpack_require__.r(__webpack_exports__);
  // IE11 ponyfill.
 
 
-(0,css_vars_ponyfill__WEBPACK_IMPORTED_MODULE_3__.default)();
+(0,css_vars_ponyfill__WEBPACK_IMPORTED_MODULE_3__["default"])();
 
 /***/ }),
 
@@ -4545,7 +4545,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /*!
  * css-vars-ponyfill
- * v2.4.6
+ * v2.4.7
  * https://jhildenbiddle.github.io/css-vars-ponyfill/
  * (c) 2018-2021 John Hildenbiddle <http://hildenbiddle.com>
  * MIT license
@@ -5036,7 +5036,7 @@ function parseCss(css) {
         }
         match(/^([;\s]*)+/);
         var comment_regexp = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g;
-        var prop = match(/^(\*?[-#/*\\\w]+(\[[0-9a-z_-]+\])?)\s*/);
+        var prop = match(/^(\*?[-#/*\\\w.]+(\[[0-9a-z_-]+\])?)\s*/);
         if (!prop) {
             return;
         }
@@ -19849,12 +19849,14 @@ Popper.Defaults = Defaults;
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
 /******/ 			var moduleId, chunkId, i = 0;
-/******/ 			for(moduleId in moreModules) {
-/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
 /******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
 /******/ 			}
-/******/ 			if(runtime) var result = runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			for(;i < chunkIds.length; i++) {
 /******/ 				chunkId = chunkIds[i];

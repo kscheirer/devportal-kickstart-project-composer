@@ -176,6 +176,7 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'Grasmash\\Expander\\' => 18,
+            'GraphQL\\' => 8,
         ),
         'F' => 
         array (
@@ -594,6 +595,10 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
         'Grasmash\\Expander\\' => 
         array (
             0 => __DIR__ . '/..' . '/grasmash/expander/src',
+        ),
+        'GraphQL\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webonyx/graphql-php/src',
         ),
         'Firebase\\JWT\\' => 
         array (

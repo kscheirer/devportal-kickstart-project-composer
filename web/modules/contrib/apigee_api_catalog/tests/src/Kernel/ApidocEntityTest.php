@@ -57,13 +57,15 @@ class ApidocEntityTest extends KernelTestBase {
     'link',
     'file_link',
     'path_alias',
+    'key',
+    'apigee_edge',
     'apigee_api_catalog',
   ];
 
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installSchema('user', ['users_data']);
