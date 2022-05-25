@@ -76,8 +76,6 @@ final class Session extends Container
             'forward' => array('POST'),
             'back' => array('POST'),
             'refresh' => array('POST'),
-            'execute' => array('POST'),
-            'execute_async' => array('POST'),
             'screenshot' => array('GET'),
             'cookie' => array('GET', 'POST'), // for DELETE, use deleteAllCookies()
             'source' => array('GET'),
@@ -433,13 +431,11 @@ final class Session extends Container
      */
     public function execute(array $jsonScript)
     {
-        if (isset($jsonScript['args'])) {
-            $jsonScript['args'] = $this->serializeArguments($jsonScript['args']);
-        }
+        $jsonScript['args'] = $this->serializeArguments($jsonScript['args']);
 
         $result = $this->curl('POST', '/execute', $jsonScript);
 
-        return $this->unserializeResult($result);
+        return $this->unserializeResult($result['value']);
     }
 
     /**
@@ -451,13 +447,11 @@ final class Session extends Container
      */
     public function execute_async(array $jsonScript)
     {
-        if (isset($jsonScript['args'])) {
-            $jsonScript['args'] = $this->serializeArguments($jsonScript['args']);
-        }
+        $jsonScript['args'] = $this->serializeArguments($jsonScript['args']);
 
         $result = $this->curl('POST', '/execute_async', $jsonScript);
 
-        return $this->unserializeResult($result);
+        return $this->unserializeResult($result['value']);
     }
 
     /**
@@ -482,7 +476,13 @@ final class Session extends Container
         foreach ($arguments as $key => $value) {
             // Potential compat-buster, i.e., W3C-specific
             if ($value instanceof Element) {
-                $arguments[$key] = [Container::WEBDRIVER_ELEMENT_ID => $value->getID()];
+                // preferably we want to detect W3C support and never set nor parse
+                // LEGACY_ELEMENT_ID, until detection is implemented, serialize to both
+                // variants, tested with Selenium v2.53.1 and v3.141.59
+                $arguments[$key] = [
+                    Container::WEBDRIVER_ELEMENT_ID => $value->getID(),
+                    Container::LEGACY_ELEMENT_ID => $value->getID(),
+                ];
                 continue;
             }
 
