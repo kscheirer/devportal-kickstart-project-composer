@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "apigee/apigee-client-php",
-            "version": "2.0.15",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apigee/apigee-client-php.git",
-                "reference": "68b47b3fe200aad94e962c512747d0d194177113"
+                "reference": "174d812da32deec600392223c9ea786e09bb5e5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apigee/apigee-client-php/zipball/68b47b3fe200aad94e962c512747d0d194177113",
-                "reference": "68b47b3fe200aad94e962c512747d0d194177113",
+                "url": "https://api.github.com/repos/apigee/apigee-client-php/zipball/174d812da32deec600392223c9ea786e09bb5e5c",
+                "reference": "174d812da32deec600392223c9ea786e09bb5e5c",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,7 @@
                 "ext-reflection": "*",
                 "fightbulc/moment": "^1.26",
                 "firebase/php-jwt": "^5.0",
-                "league/period": "^3.4",
+                "league/period": "^4.12",
                 "php": "^7.4 || ^8.0",
                 "php-http/client-common": "^2.0",
                 "php-http/client-implementation": "^1.0",
@@ -87,7 +87,7 @@
                 "sdk",
                 "web service"
             ],
-            "time": "2022-04-27T06:53:37+00:00"
+            "time": "2022-05-30T08:23:09+00:00"
         },
         {
             "name": "apigee/apigee_devportal_kickstart",
@@ -4548,32 +4548,39 @@
         },
         {
             "name": "league/period",
-            "version": "3.4.0",
+            "version": "4.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/period.git",
-                "reference": "280b54d737b4d9d804d19f865a6496b82d1cee2a"
+                "reference": "766e9dddabbbef7d9655efd857ce977f8541b596"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/period/zipball/280b54d737b4d9d804d19f865a6496b82d1cee2a",
-                "reference": "280b54d737b4d9d804d19f865a6496b82d1cee2a",
+                "url": "https://api.github.com/repos/thephpleague/period/zipball/766e9dddabbbef7d9655efd857ce977f8541b596",
+                "reference": "766e9dddabbbef7d9655efd857ce977f8541b596",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "ext-json": "*",
+                "php": "^7.2.0 || ^8.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.10",
-                "phpunit/phpunit": "^4.0"
+                "friendsofphp/php-cs-fixer": "^v2.19 || ~v3.4.0",
+                "phpstan/phpstan": "^1.0.0",
+                "phpstan/phpstan-phpunit": "^1.0.0",
+                "phpstan/phpstan-strict-rules": "^1.0.0",
+                "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "4.x-dev"
                 }
             },
             "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
                 "psr-4": {
                     "League\\Period\\": "src"
                 }
@@ -4590,18 +4597,34 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A time range immutable value object",
+            "description": "Time range API for PHP",
             "homepage": "http://period.thephpleague.com",
             "keywords": [
+                "boundaries",
+                "calendar",
+                "collection",
                 "date",
                 "dateinterval",
                 "dateperiod",
                 "datetime",
+                "gap",
+                "intersections",
                 "interval",
+                "period",
                 "range",
-                "time"
+                "schedule",
+                "sequence",
+                "time",
+                "timeline",
+                "unions"
             ],
-            "time": "2017-11-17T11:28:33+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/nyamsprod",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-21T08:41:21+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -7793,16 +7816,16 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "v4.4.40",
+            "version": "v4.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-info.git",
-                "reference": "cab6913f192f2f680e8afea2743d8b4f65421dde"
+                "reference": "1b253708acc997978e4a528abd50cccd2f6a158b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/property-info/zipball/cab6913f192f2f680e8afea2743d8b4f65421dde",
-                "reference": "cab6913f192f2f680e8afea2743d8b4f65421dde",
+                "url": "https://api.github.com/repos/symfony/property-info/zipball/1b253708acc997978e4a528abd50cccd2f6a158b",
+                "reference": "1b253708acc997978e4a528abd50cccd2f6a158b",
                 "shasum": ""
             },
             "require": {
@@ -7875,7 +7898,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-18T06:58:32+00:00"
+            "time": "2022-05-17T08:53:34+00:00"
         },
         {
             "name": "symfony/psr-http-message-bridge",
@@ -8220,20 +8243,20 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.0.8",
+            "version": "v6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "ac0aa5c2282e0de624c175b68d13f2c8f2e2649d"
+                "reference": "d3edc75baf9f1d4f94879764dda2e1ac33499529"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/ac0aa5c2282e0de624c175b68d13f2c8f2e2649d",
-                "reference": "ac0aa5c2282e0de624c175b68d13f2c8f2e2649d",
+                "url": "https://api.github.com/repos/symfony/string/zipball/d3edc75baf9f1d4f94879764dda2e1ac33499529",
+                "reference": "d3edc75baf9f1d4f94879764dda2e1ac33499529",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.0.2",
+                "php": ">=8.1",
                 "symfony/polyfill-ctype": "~1.8",
                 "symfony/polyfill-intl-grapheme": "~1.0",
                 "symfony/polyfill-intl-normalizer": "~1.0",
@@ -8298,7 +8321,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-22T08:18:02+00:00"
+            "time": "2022-04-22T08:18:23+00:00"
         },
         {
             "name": "symfony/translation",
@@ -11768,16 +11791,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.4",
+            "version": "v0.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "05c544b339b112226ad14803e1e5b09a61957454"
+                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/05c544b339b112226ad14803e1e5b09a61957454",
-                "reference": "05c544b339b112226ad14803e1e5b09a61957454",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/c23686f9c48ca202710dbb967df8385a952a2daf",
+                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf",
                 "shasum": ""
             },
             "require": {
@@ -11836,7 +11859,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2022-05-06T12:49:14+00:00"
+            "time": "2022-05-27T18:03:49+00:00"
         },
         {
             "name": "react/promise",
@@ -13204,16 +13227,16 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v4.4.39",
+            "version": "v4.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "4e9215a8b533802ba84a3cc5bd3c43103e7a6dc3"
+                "reference": "be5a04618e5d44e71d013f177df80d3ec4b192a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/4e9215a8b533802ba84a3cc5bd3c43103e7a6dc3",
-                "reference": "4e9215a8b533802ba84a3cc5bd3c43103e7a6dc3",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/be5a04618e5d44e71d013f177df80d3ec4b192a0",
+                "reference": "be5a04618e5d44e71d013f177df80d3ec4b192a0",
                 "shasum": ""
             },
             "require": {
@@ -13271,20 +13294,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-25T10:38:15+00:00"
+            "time": "2022-04-30T18:34:00+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.4.39",
+            "version": "v4.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "72a5b35fecaa670b13954e6eaf414acbe2a67b35"
+                "reference": "815412ee8971209bd4c1eecd5f4f481eacd44bf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/72a5b35fecaa670b13954e6eaf414acbe2a67b35",
-                "reference": "72a5b35fecaa670b13954e6eaf414acbe2a67b35",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/815412ee8971209bd4c1eecd5f4f481eacd44bf5",
+                "reference": "815412ee8971209bd4c1eecd5f4f481eacd44bf5",
                 "shasum": ""
             },
             "require": {
@@ -13331,7 +13354,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-25T10:38:15+00:00"
+            "time": "2022-05-20T08:49:14+00:00"
         },
         {
             "name": "symfony/finder",

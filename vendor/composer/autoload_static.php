@@ -48,6 +48,7 @@ class ComposerStaticInita36386e88056d5b4d4b729fd9990cc35
         '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '794a8c4f11f45485d800443266f99e7a' => __DIR__ . '/..' . '/league/period/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (

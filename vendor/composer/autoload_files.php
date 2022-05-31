@@ -47,4 +47,5 @@ return array(
     '9c67151ae59aff4788964ce8eb2a0f43' => $vendorDir . '/clue/stream-filter/src/functions_include.php',
     '8cff32064859f4559445b89279f3199c' => $vendorDir . '/php-http/message/src/filters.php',
     '801c31d8ed748cfa537fa45402288c95' => $vendorDir . '/psy/psysh/src/functions.php',
+    '794a8c4f11f45485d800443266f99e7a' => $vendorDir . '/league/period/src/functions_include.php',
 );
