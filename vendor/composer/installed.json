@@ -86,17 +86,17 @@
     },
     {
         "name": "apigee/apigee-mock-client-php",
-        "version": "1.1.0",
-        "version_normalized": "1.1.0.0",
+        "version": "1.1.1",
+        "version_normalized": "1.1.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/apigee/apigee-mock-client-php.git",
-            "reference": "1856bcbf98c2f619454517d6829fdd7a0faed9ac"
+            "reference": "d8a5389dee9f8e93781818120e56df7cfc73e127"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/apigee/apigee-mock-client-php/zipball/1856bcbf98c2f619454517d6829fdd7a0faed9ac",
-            "reference": "1856bcbf98c2f619454517d6829fdd7a0faed9ac",
+            "url": "https://api.github.com/repos/apigee/apigee-mock-client-php/zipball/d8a5389dee9f8e93781818120e56df7cfc73e127",
+            "reference": "d8a5389dee9f8e93781818120e56df7cfc73e127",
             "shasum": ""
         },
         "require": {
@@ -114,7 +114,7 @@
             "phpunit/phpunit": "^6.4.0",
             "twig/twig": "~1.0"
         },
-        "time": "2020-12-07T21:03:43+00:00",
+        "time": "2022-05-31T11:37:10+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -7028,17 +7028,17 @@
     },
     {
         "name": "nikic/php-parser",
-        "version": "v4.13.2",
-        "version_normalized": "4.13.2.0",
+        "version": "v4.14.0",
+        "version_normalized": "4.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nikic/PHP-Parser.git",
-            "reference": "210577fe3cf7badcc5814d99455df46564f3c077"
+            "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/210577fe3cf7badcc5814d99455df46564f3c077",
-            "reference": "210577fe3cf7badcc5814d99455df46564f3c077",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/34bea19b6e03d8153165d8f30bba4c3be86184c1",
+            "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1",
             "shasum": ""
         },
         "require": {
@@ -7049,7 +7049,7 @@
             "ircmaxell/php-yacc": "^0.0.7",
             "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
         },
-        "time": "2021-11-30T19:35:32+00:00",
+        "time": "2022-05-31T20:59:12+00:00",
         "bin": [
             "bin/php-parse"
         ],
