@@ -105,7 +105,7 @@ class UpdateService {
    */
   public function update8802() {
     $module = 'apigee_api_catalog';
-    $configPath = drupal_get_path('module', $module) . '/config';
+    $configPath = \Drupal::service('extension.list.module')->getPath($module) . '/config';
     $configToImport['install'] = [
       'node.type.apidoc',
       'core.base_field_override.node.apidoc.title',
@@ -354,7 +354,7 @@ class UpdateService {
    */
   public function update8808() {
     $module = 'apigee_api_catalog';
-    $configPath = drupal_get_path('module', $module) . '/config';
+    $configPath = \Drupal::service('extension.list.module')->getPath($module) . '/config';
     $configToImport['install'] = [
       'node.type.apidoc',
       'field.field.node.apidoc.field_api_product',
@@ -424,6 +424,29 @@ class UpdateService {
       ->set('name', 'OpenAPI Doc')
       ->set('description', 'Use <em>OpenAPI Docs</em> to document OpenAPIs')
       ->save();
+  }
+
+  /**
+   * Removed .yml file upload for security reasons.
+   */
+  public function update8810() {
+    $fields = [
+      'field_apidoc_file_link',
+      'field_apidoc_spec',
+    ];
+
+    foreach ($fields as $field) {
+      $fieldConfig = FieldConfig::loadByName('node', 'apidoc', $field);
+      // Only look for yml extension.
+      $extensions = $fieldConfig->getSetting('file_extensions');
+      if (strpos($extensions, 'yml') !== FALSE) {
+        // Remove yml extension from allowed values.
+        $fieldConfig->setSetting('file_extensions', 'yaml json')
+          ->save();
+      }
+    }
+
+    return 'Removed the yml extension from field_apidoc_file_link and field_apidoc_spec allowed values for security reasons.';
   }
 
   /**
