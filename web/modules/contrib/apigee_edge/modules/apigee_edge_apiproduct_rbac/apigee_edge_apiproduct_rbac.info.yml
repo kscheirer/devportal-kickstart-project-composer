@@ -12,7 +12,7 @@ configure: apigee_edge.settings.developer.api_product_access
 
 php: "7.1"
 
-# Information added by Drupal.org packaging script on 2022-06-09
-version: '2.0.4'
+# Information added by Drupal.org packaging script on 2022-07-19
+version: '2.0.5'
 project: 'apigee_edge'
-datestamp: 1654784939
+datestamp: 1658213176

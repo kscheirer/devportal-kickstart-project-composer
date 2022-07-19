@@ -1116,17 +1116,17 @@
         },
         {
             "name": "drupal/apigee_api_catalog",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_api_catalog.git",
-                "reference": "3.0.1"
+                "reference": "3.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-3.0.1.zip",
-                "reference": "3.0.1",
-                "shasum": "32f38c301de15db76d956aa31256600bda139053"
+                "url": "https://ftp.drupal.org/files/projects/apigee_api_catalog-3.0.2.zip",
+                "reference": "3.0.2",
+                "shasum": "23114e13b445fa7519a21d6ca9b3952becb82335"
             },
             "require": {
                 "drupal/apigee_edge": "^2.0",
@@ -1142,15 +1142,15 @@
                 "drupal/file_link": "*",
                 "drush/drush": "^9.0 || ^10.0",
                 "mglaman/drupal-check": "^1.3",
-                "phpmd/phpmd": "2.8.2",
+                "phpmd/phpmd": "^2.8.2",
                 "phpmetrics/phpmetrics": "^2.5",
                 "phpstan/phpstan": "^1.5"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1654788667",
+                    "version": "3.0.2",
+                    "datestamp": "1658221670",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1167,8 +1167,16 @@
                     "homepage": "https://www.drupal.org/user/1055344"
                 },
                 {
+                    "name": "chrisnovak",
+                    "homepage": "https://www.drupal.org/user/880416"
+                },
+                {
                     "name": "Divyajose",
                     "homepage": "https://www.drupal.org/user/3406306"
+                },
+                {
+                    "name": "gitesh.koli",
+                    "homepage": "https://www.drupal.org/user/673858"
                 },
                 {
                     "name": "Jacine",
@@ -1177,14 +1185,6 @@
                 {
                     "name": "Jaesin",
                     "homepage": "https://www.drupal.org/user/841054"
-                },
-                {
-                    "name": "chrisnovak",
-                    "homepage": "https://www.drupal.org/user/880416"
-                },
-                {
-                    "name": "gitesh.koli",
-                    "homepage": "https://www.drupal.org/user/673858"
                 },
                 {
                     "name": "phdhiren",
@@ -1211,17 +1211,17 @@
         },
         {
             "name": "drupal/apigee_edge",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/apigee_edge.git",
-                "reference": "2.0.4"
+                "reference": "2.0.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/apigee_edge-2.0.4.zip",
-                "reference": "2.0.4",
-                "shasum": "56ca82752549e40641e0bffd5b0f05e8a842d99a"
+                "url": "https://ftp.drupal.org/files/projects/apigee_edge-2.0.5.zip",
+                "reference": "2.0.5",
+                "shasum": "7c4aef4438e2032143c6ea3f25d1129f3d9c5c1c"
             },
             "require": {
                 "apigee/apigee-client-php": "^2.0.16",
@@ -1243,8 +1243,8 @@
                 "drupal/drupal-extension": "master-dev",
                 "drupal/rules": "*",
                 "drush/drush": "^9.0 || ^10.0",
-                "mglaman/drupal-check": "^1.3",
-                "phpmd/phpmd": "2.8.2",
+                "mglaman/drupal-check": "1.3",
+                "phpmd/phpmd": "^2.8.2",
                 "phpmetrics/phpmetrics": "^2.5",
                 "phpstan/phpstan": "^1.5"
             },
@@ -1254,8 +1254,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.4",
-                    "datestamp": "1654784936",
+                    "version": "2.0.5",
+                    "datestamp": "1658213173",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1277,12 +1277,12 @@
                     "homepage": "https://www.drupal.org/user/1055344"
                 },
                 {
-                    "name": "Divyajose",
-                    "homepage": "https://www.drupal.org/user/3406306"
-                },
-                {
                     "name": "chrisnovak",
                     "homepage": "https://www.drupal.org/user/880416"
+                },
+                {
+                    "name": "Divyajose",
+                    "homepage": "https://www.drupal.org/user/3406306"
                 },
                 {
                     "name": "gitesh.koli",
@@ -4977,16 +4977,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.14.2",
+            "version": "1.14.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "c8d48852fbc052454af42f6de27635ddd916b959"
+                "reference": "31d8ee46d0215108df16a8527c7438e96a4d7735"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/c8d48852fbc052454af42f6de27635ddd916b959",
-                "reference": "c8d48852fbc052454af42f6de27635ddd916b959",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/31d8ee46d0215108df16a8527c7438e96a4d7735",
+                "reference": "31d8ee46d0215108df16a8527c7438e96a4d7735",
                 "shasum": ""
             },
             "require": {
@@ -5036,7 +5036,7 @@
                 "message",
                 "psr7"
             ],
-            "time": "2022-05-25T07:26:05+00:00"
+            "time": "2022-07-11T14:04:40+00:00"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -9327,16 +9327,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.2.16",
+            "version": "2.2.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "8c0ee53ff67399b0eec4eee2c5dc5189ec6938a6"
+                "reference": "a8ab5070fb99396e4710baee286478ad697724c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/8c0ee53ff67399b0eec4eee2c5dc5189ec6938a6",
-                "reference": "8c0ee53ff67399b0eec4eee2c5dc5189ec6938a6",
+                "url": "https://api.github.com/repos/composer/composer/zipball/a8ab5070fb99396e4710baee286478ad697724c2",
+                "reference": "a8ab5070fb99396e4710baee286478ad697724c2",
                 "shasum": ""
             },
             "require": {
@@ -9417,7 +9417,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-05T14:50:29+00:00"
+            "time": "2022-07-13T13:27:38+00:00"
         },
         {
             "name": "composer/metadata-minifier",
@@ -10497,16 +10497,16 @@
         },
         {
             "name": "drush/drush",
-            "version": "11.0.9",
+            "version": "11.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "88b2293ded84f67aad96ad6dbd64cacd84bcd6fe"
+                "reference": "5ee249f4e511d65c099e86317719fb3a15370e6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/88b2293ded84f67aad96ad6dbd64cacd84bcd6fe",
-                "reference": "88b2293ded84f67aad96ad6dbd64cacd84bcd6fe",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/5ee249f4e511d65c099e86317719fb3a15370e6b",
+                "reference": "5ee249f4e511d65c099e86317719fb3a15370e6b",
                 "shasum": ""
             },
             "require": {
@@ -10515,12 +10515,12 @@
                 "consolidation/annotated-command": "^4.5.3",
                 "consolidation/config": "^2",
                 "consolidation/filter-via-dot-access-data": "^2",
-                "consolidation/robo": "^3.0.9",
+                "consolidation/robo": "^3.0.9 || ^4.0.0-alpha1",
                 "consolidation/site-alias": "^3.1.3",
                 "consolidation/site-process": "^4.1.3 || ^5",
                 "enlightn/security-checker": "^1",
                 "ext-dom": "*",
-                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "guzzlehttp/guzzle": "^6.5 || ^7.0",
                 "league/container": "^3.4 || ^4",
                 "php": ">=7.4",
                 "psy/psysh": "~0.11",
@@ -10632,7 +10632,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-16T12:01:55+00:00"
+            "time": "2022-07-12T16:08:05+00:00"
         },
         {
             "name": "easyrdf/easyrdf",
