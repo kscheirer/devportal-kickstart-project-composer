@@ -12,7 +12,7 @@ dependencies:
 
 php: "7.1"
 
-# Information added by Drupal.org packaging script on 2022-06-09
-version: '2.0.2'
+# Information added by Drupal.org packaging script on 2022-07-21
+version: '2.0.3'
 project: 'apigee_m10n'
-datestamp: 1654787430
+datestamp: 1658385112
