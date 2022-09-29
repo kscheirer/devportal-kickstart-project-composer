@@ -8,7 +8,7 @@ dependencies:
   - file_link
   - text
 
-# Information added by Drupal.org packaging script on 2022-07-19
-version: '3.0.2'
+# Information added by Drupal.org packaging script on 2022-09-29
+version: '3.0.3'
 project: 'apigee_api_catalog'
-datestamp: 1658221673
+datestamp: 1664462000
