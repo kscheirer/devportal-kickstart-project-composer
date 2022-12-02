@@ -6,7 +6,7 @@ use Drupal\entity_test\Entity\EntityTest;
 use Drupal\KernelTests\KernelTestBase;
 
 /**
- * Tests the "file_link" widget
+ * Tests the "file_link" widget.
  *
  * @group file_link
  */
@@ -28,7 +28,7 @@ class FileLinkWidgetTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installEntitySchema('entity_test');
