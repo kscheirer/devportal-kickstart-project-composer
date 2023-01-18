@@ -10,7 +10,7 @@ dependencies:
   - apigee_edge_teams:apigee_edge_teams
   - rules:rules
 
-# Information added by Drupal.org packaging script on 2022-11-21
-version: '2.0.6'
+# Information added by Drupal.org packaging script on 2023-01-16
+version: '2.0.7'
 project: 'apigee_edge'
-datestamp: 1669037023
+datestamp: 1673875116
