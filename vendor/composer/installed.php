@@ -3,7 +3,7 @@
         'name' => 'apigee/devportal-kickstart-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '5ca76057829637d73c8c1bf8954aa29d0a70080f',
+        'reference' => 'e0cf0b9824cc1cf3de5b7e326bfc5f98c5db9444',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'apigee/apigee-client-php' => array(
-            'pretty_version' => '2.0.18',
-            'version' => '2.0.18.0',
-            'reference' => 'a6a24db85561a2cc2e4663f9000c084027af24a5',
+            'pretty_version' => '2.0.19',
+            'version' => '2.0.19.0',
+            'reference' => 'd9ebe72d24f0f2609ca373b019ce92e14c389a57',
             'type' => 'library',
             'install_path' => __DIR__ . '/../apigee/apigee-client-php',
             'aliases' => array(),
@@ -40,7 +40,7 @@
         'apigee/devportal-kickstart-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '5ca76057829637d73c8c1bf8954aa29d0a70080f',
+            'reference' => 'e0cf0b9824cc1cf3de5b7e326bfc5f98c5db9444',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -188,9 +188,9 @@
             'dev_requirement' => true,
         ),
         'consolidation/annotated-command' => array(
-            'pretty_version' => '4.8.1',
-            'version' => '4.8.1.0',
-            'reference' => '8fefdcff0cdb61bc04e34323f626404d536786a5',
+            'pretty_version' => '4.8.2',
+            'version' => '4.8.2.0',
+            'reference' => '7f5dd1aafb93a10593ed70f3caa6a0cd5a32f0e3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/annotated-command',
             'aliases' => array(),
@@ -386,9 +386,9 @@
             'dev_requirement' => false,
         ),
         'drupal/apigee_edge' => array(
-            'pretty_version' => '2.0.9',
-            'version' => '2.0.9.0',
-            'reference' => '2.0.9',
+            'pretty_version' => '2.0.10',
+            'version' => '2.0.10.0',
+            'reference' => '2.0.10',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/apigee_edge',
             'aliases' => array(),
@@ -440,9 +440,9 @@
             'dev_requirement' => false,
         ),
         'drupal/core' => array(
-            'pretty_version' => '9.5.4',
-            'version' => '9.5.4.0',
-            'reference' => 'd48ad3173a39d6792e617f884fefe86c4bf41630',
+            'pretty_version' => '9.5.5',
+            'version' => '9.5.5.0',
+            'reference' => 'eae5e76a8b403cbd42b3465f567313b52d78b0dc',
             'type' => 'drupal-core',
             'install_path' => __DIR__ . '/../../web/core',
             'aliases' => array(),
@@ -451,31 +451,31 @@
         'drupal/core-annotation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-assertion' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-bridge' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-class-finder' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-composer-scaffold' => array(
-            'pretty_version' => '9.5.4',
-            'version' => '9.5.4.0',
-            'reference' => 'df1f779d3f94500f6cc791427aa729e0ba4b2464',
+            'pretty_version' => '9.5.5',
+            'version' => '9.5.5.0',
+            'reference' => 'c78779acff7b39fc0f29ff1edd710361c15ed87b',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../drupal/core-composer-scaffold',
             'aliases' => array(),
@@ -484,18 +484,18 @@
         'drupal/core-datetime' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-dependency-injection' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-dev' => array(
-            'pretty_version' => '9.5.4',
-            'version' => '9.5.4.0',
+            'pretty_version' => '9.5.5',
+            'version' => '9.5.5.0',
             'reference' => '60196e12909624e168c482660c0f5795df67a6d7',
             'type' => 'metapackage',
             'install_path' => NULL,
@@ -505,78 +505,78 @@
         'drupal/core-diff' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-discovery' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-event-dispatcher' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-file-cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-file-security' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-front-matter' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-gettext' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-graph' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-http-foundation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-php-storage' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-plugin' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-project-message' => array(
-            'pretty_version' => '9.5.4',
-            'version' => '9.5.4.0',
+            'pretty_version' => '9.5.5',
+            'version' => '9.5.5.0',
             'reference' => '5dfa0b75a057caf6542be67f61e7531c737db48c',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../drupal/core-project-message',
@@ -586,13 +586,13 @@
         'drupal/core-proxy-builder' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-recommended' => array(
-            'pretty_version' => '9.5.4',
-            'version' => '9.5.4.0',
-            'reference' => '0198a05229b7560caf1bdb7dcf59b1d50c9b9b7b',
+            'pretty_version' => '9.5.5',
+            'version' => '9.5.5.0',
+            'reference' => '3c1d205349407e706cc89f56aa34448742fe81b4',
             'type' => 'metapackage',
             'install_path' => NULL,
             'aliases' => array(),
@@ -601,37 +601,37 @@
         'drupal/core-render' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-serialization' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-transliteration' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-utility' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-uuid' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/core-version' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.4',
+                0 => '9.5.5',
             ),
         ),
         'drupal/ctools' => array(
@@ -1646,9 +1646,9 @@
             ),
         ),
         'sirbrillig/phpcs-variable-analysis' => array(
-            'pretty_version' => 'v2.11.10',
-            'version' => '2.11.10.0',
-            'reference' => '0f25a3766f26df91d6bdda0c8931303fc85499d7',
+            'pretty_version' => 'v2.11.12',
+            'version' => '2.11.12.0',
+            'reference' => 'd8a00fb972b9317ef4decf66725a25e712cc4cbe',
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../sirbrillig/phpcs-variable-analysis',
             'aliases' => array(),
