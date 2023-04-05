@@ -82,8 +82,8 @@ class FileLinkRedirectTest extends BrowserTestBase {
    */
   public function redirectDataProvider() {
     return [
-      ['/test/redirect/301/md', 3, 'text/markdown'],
-      ['/test/redirect/302/md', 3, 'text/markdown'],
+      ['/test/redirect/301/md', 4, 'text/markdown'],
+      ['/test/redirect/302/md', 4, 'text/markdown'],
     ];
   }
 

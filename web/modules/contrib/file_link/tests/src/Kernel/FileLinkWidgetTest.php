@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\file_link\Functional;
+namespace Drupal\Tests\file_link\Kernel;
 
 use Drupal\entity_test\Entity\EntityTest;
 use Drupal\KernelTests\KernelTestBase;

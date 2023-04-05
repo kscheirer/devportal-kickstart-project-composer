@@ -14,7 +14,7 @@ configure: apigee_edge_teams.settings.team
 
 php: "7.1"
 
-# Information added by Drupal.org packaging script on 2023-03-16
-version: '2.0.10'
+# Information added by Drupal.org packaging script on 2023-03-30
+version: '2.0.11'
 project: 'apigee_edge'
-datestamp: 1678976880
+datestamp: 1680193488
