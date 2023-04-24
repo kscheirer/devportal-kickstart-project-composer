@@ -25,7 +25,7 @@ class ArrayHelper
 	protected static $tokens;
 
 	/**
-	 * @return ArrayKeyValue[]
+	 * @return list<ArrayKeyValue>
 	 */
 	public static function parse(File $phpcsFile, int $pointer): array
 	{
@@ -109,7 +109,7 @@ class ArrayHelper
 	}
 
 	/**
-	 * @param ArrayKeyValue[] $keyValues
+	 * @param list<ArrayKeyValue> $keyValues
 	 */
 	public static function getIndentation(array $keyValues): ?string
 	{
@@ -128,7 +128,7 @@ class ArrayHelper
 	}
 
 	/**
-	 * @param ArrayKeyValue[] $keyValues
+	 * @param list<ArrayKeyValue> $keyValues
 	 */
 	public static function isKeyed(array $keyValues): bool
 	{
@@ -141,12 +141,12 @@ class ArrayHelper
 	}
 
 	/**
-	 * @param ArrayKeyValue[] $keyValues
+	 * @param list<ArrayKeyValue> $keyValues
 	 */
 	public static function isKeyedAll(array $keyValues): bool
 	{
 		foreach ($keyValues as $keyValue) {
-			if ($keyValue->getKey() === null) {
+			if (!$keyValue->isUnpacking() && $keyValue->getKey() === null) {
 				return false;
 			}
 		}
@@ -164,32 +164,48 @@ class ArrayHelper
 		$tokenOpener = $tokens[$pointerOpener];
 		$tokenCloser = $tokens[$pointerCloser];
 
-		/** @var int $pointerPreviousToClose */
-		$pointerPreviousToClose = TokenHelper::findPreviousEffective($phpcsFile, $pointerCloser - 1);
-
-		return $tokenOpener['line'] !== $tokenCloser['line']
-			&& $pointerPreviousToClose !== $pointerOpener;
+		return $tokenOpener['line'] !== $tokenCloser['line'];
 	}
 
 	/**
-	 * @param ArrayKeyValue[] $keyValues
+	 * Test if effective tokens between open & closing tokens
+	 */
+	public static function isNotEmpty(File $phpcsFile, int $pointer): bool
+	{
+		$tokens = $phpcsFile->getTokens();
+		$token = $tokens[$pointer];
+		[$pointerOpener, $pointerCloser] = self::openClosePointers($token);
+
+		/** @var int $pointerPreviousToClose */
+		$pointerPreviousToClose = TokenHelper::findPreviousEffective($phpcsFile, $pointerCloser - 1);
+
+		return $pointerPreviousToClose !== $pointerOpener;
+	}
+
+	/**
+	 * @param list<ArrayKeyValue> $keyValues
 	 */
 	public static function isSortedByKey(array $keyValues): bool
 	{
-		$prev = '';
+		$previousKey = '';
 		foreach ($keyValues as $keyValue) {
-			$cmp = strnatcasecmp((string) $prev, (string) $keyValue->getKey());
-			if ($cmp === 1) {
+			if ($keyValue->isUnpacking()) {
+				continue;
+			}
+
+			if (strnatcasecmp($previousKey, $keyValue->getKey()) === 1) {
 				return false;
 			}
-			$prev = $keyValue->getKey();
+
+			$previousKey = $keyValue->getKey();
 		}
+
 		return true;
 	}
 
 	/**
 	 * @param array<string, array<int, int|string>|int|string> $token
-	 * @return int[]
+	 * @return array{0: int, 1: int}
 	 */
 	public static function openClosePointers(array $token): array
 	{

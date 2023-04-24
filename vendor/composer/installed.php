@@ -3,7 +3,7 @@
         'name' => 'apigee/devportal-kickstart-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '82e813e0c40cffb6f08417d08b9a6f13de0dc82f',
+        'reference' => '9515eb1a45ccdcf1e4e0f1e48b63fa0ac1c0868b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'apigee/devportal-kickstart-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '82e813e0c40cffb6f08417d08b9a6f13de0dc82f',
+            'reference' => '9515eb1a45ccdcf1e4e0f1e48b63fa0ac1c0868b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -413,9 +413,9 @@
             'dev_requirement' => false,
         ),
         'drupal/coder' => array(
-            'pretty_version' => '8.3.17',
-            'version' => '8.3.17.0',
-            'reference' => '1c4662337418ab88c9ddf40348f0638e35d49182',
+            'pretty_version' => '8.3.18',
+            'version' => '8.3.18.0',
+            'reference' => 'd5911f812b69ca3bda5524899bdd06b3b4e687ff',
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../drupal/coder',
             'aliases' => array(),
@@ -440,9 +440,9 @@
             'dev_requirement' => false,
         ),
         'drupal/core' => array(
-            'pretty_version' => '9.5.7',
-            'version' => '9.5.7.0',
-            'reference' => 'bf51aa8ed6ab733fcaf60d0860aefd3918140fe3',
+            'pretty_version' => '9.5.8',
+            'version' => '9.5.8.0',
+            'reference' => 'a9a1e4e1fe23fb8c83fd6aeafb740c1462a218fc',
             'type' => 'drupal-core',
             'install_path' => __DIR__ . '/../../web/core',
             'aliases' => array(),
@@ -451,30 +451,30 @@
         'drupal/core-annotation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-assertion' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-bridge' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-class-finder' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-composer-scaffold' => array(
-            'pretty_version' => '9.5.7',
-            'version' => '9.5.7.0',
+            'pretty_version' => '9.5.8',
+            'version' => '9.5.8.0',
             'reference' => 'c78779acff7b39fc0f29ff1edd710361c15ed87b',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../drupal/core-composer-scaffold',
@@ -484,18 +484,18 @@
         'drupal/core-datetime' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-dependency-injection' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-dev' => array(
-            'pretty_version' => '9.5.7',
-            'version' => '9.5.7.0',
+            'pretty_version' => '9.5.8',
+            'version' => '9.5.8.0',
             'reference' => '60196e12909624e168c482660c0f5795df67a6d7',
             'type' => 'metapackage',
             'install_path' => NULL,
@@ -505,78 +505,78 @@
         'drupal/core-diff' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-discovery' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-event-dispatcher' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-file-cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-file-security' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-front-matter' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-gettext' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-graph' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-http-foundation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-php-storage' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-plugin' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-project-message' => array(
-            'pretty_version' => '9.5.7',
-            'version' => '9.5.7.0',
+            'pretty_version' => '9.5.8',
+            'version' => '9.5.8.0',
             'reference' => '5dfa0b75a057caf6542be67f61e7531c737db48c',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../drupal/core-project-message',
@@ -586,13 +586,13 @@
         'drupal/core-proxy-builder' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-recommended' => array(
-            'pretty_version' => '9.5.7',
-            'version' => '9.5.7.0',
-            'reference' => '4b63b8220b166ad9eca7b5ea05e485cbe1f2b4a7',
+            'pretty_version' => '9.5.8',
+            'version' => '9.5.8.0',
+            'reference' => '74db3999d3432b7433b399fe76fa6ff6f126bed9',
             'type' => 'metapackage',
             'install_path' => NULL,
             'aliases' => array(),
@@ -601,37 +601,37 @@
         'drupal/core-render' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-serialization' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-transliteration' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-utility' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-uuid' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/core-version' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '9.5.7',
+                0 => '9.5.8',
             ),
         ),
         'drupal/ctools' => array(
@@ -959,9 +959,9 @@
             'dev_requirement' => false,
         ),
         'guzzlehttp/psr7' => array(
-            'pretty_version' => '1.9.0',
-            'version' => '1.9.0.0',
-            'reference' => 'e98e3e6d4f86621a9b75f623996e6bbdeb4b9318',
+            'pretty_version' => '1.9.1',
+            'version' => '1.9.1.0',
+            'reference' => 'e4490cabc77465aaee90b20cfc9a770f8c04be6b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
@@ -1109,9 +1109,9 @@
             'dev_requirement' => false,
         ),
         'pear/pear-core-minimal' => array(
-            'pretty_version' => 'v1.10.11',
-            'version' => '1.10.11.0',
-            'reference' => '68d0d32ada737153b7e93b8d3c710ebe70ac867d',
+            'pretty_version' => 'v1.10.13',
+            'version' => '1.10.13.0',
+            'reference' => 'aed862e95fd286c53cc546734868dc38ff4b5b1d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../pear/pear-core-minimal',
             'aliases' => array(),
@@ -1147,14 +1147,14 @@
         'php-http/async-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0',
-                1 => '*',
+                0 => '*',
+                1 => '1.0',
             ),
         ),
         'php-http/client-common' => array(
-            'pretty_version' => '2.6.0',
-            'version' => '2.6.0.0',
-            'reference' => '45db684cd4e186dcdc2b9c06b22970fe123796c0',
+            'pretty_version' => '2.6.1',
+            'version' => '2.6.1.0',
+            'reference' => '665bfc381bb910385f70391ed3eeefd0b7bbdd0d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-http/client-common',
             'aliases' => array(),
@@ -1163,8 +1163,8 @@
         'php-http/client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0',
-                1 => '*',
+                0 => '*',
+                1 => '1.0',
             ),
         ),
         'php-http/discovery' => array(
@@ -1186,27 +1186,27 @@
             'dev_requirement' => false,
         ),
         'php-http/httplug' => array(
-            'pretty_version' => '2.3.0',
-            'version' => '2.3.0.0',
-            'reference' => 'f640739f80dfa1152533976e3c112477f69274eb',
+            'pretty_version' => '2.4.0',
+            'version' => '2.4.0.0',
+            'reference' => '625ad742c360c8ac580fcc647a1541d29e257f67',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-http/httplug',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'php-http/message' => array(
-            'pretty_version' => '1.13.0',
-            'version' => '1.13.0.0',
-            'reference' => '7886e647a30a966a1a8d1dad1845b71ca8678361',
+            'pretty_version' => '1.14.0',
+            'version' => '1.14.0.0',
+            'reference' => '2ccee04a28c3d98eb3f2b85ce1e2fcff70c0e63b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-http/message',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'php-http/message-factory' => array(
-            'pretty_version' => 'v1.0.2',
-            'version' => '1.0.2.0',
-            'reference' => 'a478cb11f66a6ac48d8954216cfed9aa06a501a1',
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => '4d8778e1c7d405cbb471574821c1ff5b68cc8f57',
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-http/message-factory',
             'aliases' => array(),
@@ -1273,9 +1273,9 @@
             'dev_requirement' => true,
         ),
         'phpstan/phpdoc-parser' => array(
-            'pretty_version' => '1.17.1',
-            'version' => '1.17.1.0',
-            'reference' => 'd3753fcb3abc6f78f5de6f72153d4b9c99c72dee',
+            'pretty_version' => '1.20.2',
+            'version' => '1.20.2.0',
+            'reference' => '90490bd8fd8530a272043c4950c180b6d0cf5f81',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpstan/phpdoc-parser',
             'aliases' => array(),
@@ -1327,9 +1327,9 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '9.6.6',
-            'version' => '9.6.6.0',
-            'reference' => 'b65d59a059d3004a040c16a82e07bbdf6cfdd115',
+            'pretty_version' => '9.6.7',
+            'version' => '9.6.7.0',
+            'reference' => 'c993f0d3b0489ffc42ee2fe0bd645af1538a63b2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -1376,9 +1376,9 @@
             ),
         ),
         'psr/http-client' => array(
-            'pretty_version' => '1.0.1',
-            'version' => '1.0.1.0',
-            'reference' => '2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
+            'pretty_version' => '1.0.2',
+            'version' => '1.0.2.0',
+            'reference' => '0955afe48220520692d2d09f7ab7e0f93ffd6a31',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/http-client',
             'aliases' => array(),
@@ -1387,14 +1387,14 @@
         'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0',
-                1 => '*',
+                0 => '*',
+                1 => '1.0',
             ),
         ),
         'psr/http-factory' => array(
-            'pretty_version' => '1.0.1',
-            'version' => '1.0.1.0',
-            'reference' => '12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
+            'pretty_version' => '1.0.2',
+            'version' => '1.0.2.0',
+            'reference' => 'e616d01114759c4c489f93b099585439f795fe35',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/http-factory',
             'aliases' => array(),
@@ -1439,9 +1439,9 @@
             ),
         ),
         'psy/psysh' => array(
-            'pretty_version' => 'v0.11.14',
-            'version' => '0.11.14.0',
-            'reference' => '8c2e264def7a8263a68ef6f0b55ce90b77d41e17',
+            'pretty_version' => 'v0.11.15',
+            'version' => '0.11.15.0',
+            'reference' => '5350ce0ec8ecf2c5b5cf554cd2496f97b444af85',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
@@ -1474,7 +1474,7 @@
         'rsky/pear-core-min' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v1.10.11',
+                0 => 'v1.10.13',
             ),
         ),
         'sebastian/cli-parser' => array(
@@ -1655,9 +1655,9 @@
             'dev_requirement' => true,
         ),
         'slevomat/coding-standard' => array(
-            'pretty_version' => '8.9.2',
-            'version' => '8.9.2.0',
-            'reference' => 'c9b39061ebd5c58b71ecae26042eb7b054c380dd',
+            'pretty_version' => '8.11.0',
+            'version' => '8.11.0.0',
+            'reference' => '91428d5bcf7db93a842bcf97f465edf62527f3ea',
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../slevomat/coding-standard',
             'aliases' => array(),
