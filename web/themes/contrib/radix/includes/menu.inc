@@ -24,6 +24,12 @@ function radix_preprocess_menu(&$variables, $hook) {
       // Add active link.
       $variables['items'][$key]['in_active_trail'] = TRUE;
     }
+
+    // If menu item isn't a link, it's rendered as a <span> element. Add the
+    // "navbar-text" class.
+    if ($item['url']->isRouted() && $item['url']->getRouteName() === '<nolink>') {
+      $variables['items'][$key]['attributes']->addClass('navbar-text');
+    }
   }
 }
 
@@ -33,7 +39,6 @@ function radix_preprocess_menu(&$variables, $hook) {
 function radix_preprocess_menu_local_action(&$variables) {
   // Add button classes.
   $variables['link']['#options']['attributes']['class'][] = 'btn';
-  $variables['link']['#options']['attributes']['class'][] = 'btn-sm';
   $variables['link']['#options']['attributes']['class'][] = 'btn-primary';
 }
 
@@ -58,10 +63,20 @@ function radix_preprocess_links__dropbutton(&$variables) {
 
     if ($variables['split'] = $url->getRouteName() !== '<nolink>') {
       $button['#options']['attributes']['class'][] = 'btn';
-      $button['#options']['attributes']['class'][] = 'btn-sm';
       $button['#options']['attributes']['class'][] = 'btn-outline-dark';
     }
 
+    $variables['button'] = $button;
+
+    // Remove first link from links.
+    array_shift($links);
+
+    foreach ($links as $key => $link) {
+      $links[$key]['link']['#options']['attributes']['class'][] = 'dropdown-item';
+    }
+
+  } elseif (isset($link['text'])) {
+    $button = $link['text'];
     $variables['button'] = $button;
 
     // Remove first link from links.
@@ -70,8 +85,6 @@ function radix_preprocess_links__dropbutton(&$variables) {
 
   // Add required classes.
   foreach ($links as $key => $link) {
-    $links[$key]['link']['#options']['attributes']['class'][] = 'dropdown-item';
-
     if (isset($links[$key]['text_attributes'])) {
       $links[$key]['text_attributes']->addClass('dropdown-item');
     }

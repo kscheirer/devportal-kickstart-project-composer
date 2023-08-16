@@ -112,12 +112,7 @@ class SubThemeCommands extends DrushCommands implements BuilderAwareInterface {
 
       $cb->addCode(function (RoboStateData $data) use ($kitUrl): int {
         $logger = $this->logger();
-        $logger->debug(
-          'download Radix starter kit from <info>{kitUrl}</info>',
-          [
-            'kitUrl' => $kitUrl,
-          ]
-        );
+        $logger->debug(t('download Radix starter kit from @kitUrl', array('@kitUrl' => "<info>$kitUrl</info>")));
 
         $fileName = $this->getFileNameFromUrl($kitUrl);
         $packDir = "{$data['path']}/pack";
@@ -139,11 +134,13 @@ class SubThemeCommands extends DrushCommands implements BuilderAwareInterface {
       $cb->addCode(function (RoboStateData $data): int {
         $logger = $this->logger();
         $logger->debug(
-          'extract downloaded Radix starter kit from <info>{packPath}</info> to <info>{srcDir}</info>',
-          [
-            'packPath' => $data['packPath'],
-            'srcDir' => $data['srcDir'],
-          ]
+          t(
+            'extract downloaded Radix starter kit from @packPath to @srcDir',
+            array(
+              '@packPath' => "<info>$data[packPath]</info>", 
+              '@srcDir' => "<info>$data[srcDir]</info>"
+            )
+          )
         );
 
         $data['srcDir'] = "{$data['path']}/kit";
@@ -174,11 +171,13 @@ class SubThemeCommands extends DrushCommands implements BuilderAwareInterface {
     $cb->addCode(function (RoboStateData $data) use ($dstDir): int {
       $logger = $this->logger();
       $logger->debug(
-        'copy Radix starter kit from <info>{srcDir}</info> to <info>{dstDir}</info>',
-        [
-          'srcDir' => $data['srcDir'],
-          'dstDir' => $dstDir,
-        ]
+        t(
+          'copy Radix starter kit from @srcDir to @dstDir',
+          array(
+            '@srcDir' => "<info>$data[srcDir]</info>",
+            '@dstDir' => "<info>$dstDir</info>"
+          )
+        )
       );
 
       try {
@@ -196,10 +195,12 @@ class SubThemeCommands extends DrushCommands implements BuilderAwareInterface {
     $cb->addCode(function () use ($name, $options, $dstDir): int {
       $logger = $this->logger();
       $logger->debug(
-        'customize Radix starter kit in <info>{dstDir}</info> directory',
-        [
-          'dstDir' => $dstDir,
-        ]
+        t(
+          'customize Radix starter kit in @dstDir',
+          array(
+            '@dstDir' => "<info>$dstDir</info>"
+          )
+        )
       );
 
       $this

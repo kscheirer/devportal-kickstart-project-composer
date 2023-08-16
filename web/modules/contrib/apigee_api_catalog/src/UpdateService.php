@@ -24,10 +24,10 @@ use Drupal\Component\Serialization\Yaml;
 use Drupal\Component\Uuid\UuidInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\FileStorage;
-use Drupal\Core\Entity\EntityLastInstalledSchemaRepositoryInterface;
-use Drupal\Core\Extension\ModuleHandlerInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
+use Drupal\Core\Entity\EntityLastInstalledSchemaRepositoryInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Utility\UpdateException;
 use Drupal\field\Entity\FieldConfig;
@@ -249,7 +249,7 @@ class UpdateService {
     $apidocStorage = $this->entityTypeManager->getStorage('apidoc');
 
     if (!isset($sandbox['progress'])) {
-      $query = $apidocStorage->getQuery();
+      $query = $apidocStorage->getQuery()->accessCheck(FALSE);
       $total = $query->count()->execute();
 
       $sandbox['progress'] = 0;
@@ -264,6 +264,7 @@ class UpdateService {
 
     // Migrate in chunks of 20.
     $query = $apidocStorage->getQuery()
+      ->accessCheck(FALSE)
       ->sort('id')
       ->range($sandbox['progress'], 20);
     $ids = $query->execute();

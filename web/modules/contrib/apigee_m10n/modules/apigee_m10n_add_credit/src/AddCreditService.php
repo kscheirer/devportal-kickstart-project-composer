@@ -20,8 +20,8 @@
 namespace Drupal\apigee_m10n_add_credit;
 
 use Drupal\apigee_m10n\Entity\Form\PurchasedPlanForm;
-use Drupal\apigee_m10n\Entity\PurchasedPlanInterface;
 use Drupal\apigee_m10n\Entity\Form\PurchasedProductForm;
+use Drupal\apigee_m10n\Entity\PurchasedPlanInterface;
 use Drupal\apigee_m10n\Entity\PurchasedProductInterface;
 use Drupal\apigee_m10n_add_credit\Form\AddCreditAddToCartForm;
 use Drupal\apigee_m10n_add_credit\Plugin\AddCreditEntityTypeManagerInterface;
@@ -471,7 +471,7 @@ class AddCreditService implements AddCreditServiceInterface {
           $build['table']['#attached'] = [
             'library' => [
               'core/drupal.dialog.ajax',
-              'core/jquery.ui.dialog',
+              'jquery_ui_dialog/dialog',
             ],
           ];
         }

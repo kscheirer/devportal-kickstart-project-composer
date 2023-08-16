@@ -1,16 +1,19 @@
 name: RADIX_SUBTHEME_NAME
 description: RADIX_SUBTHEME_DESCRIPTION
 screenshot: screenshot.png
-core_version_requirement: ^8.7.7 || ^9.0
+core_version_requirement: ^8.7.7 || ^9.0 || ^10
 # version: VERSION
 engine: twig
 type: theme
 base theme: radix
 hidden: true
 
+'interface translation project': RADIX_SUBTHEME_MACHINE_NAME
+'interface translation server pattern': 'themes/custom/RADIX_SUBTHEME_MACHINE_NAME/translations/%language.po'
+
 regions:
   navbar_branding: Navbar branding
-  navbar_left:  Navbar left
+  navbar_left: Navbar left
   navbar_right: Navbar right
   header: Header
   content: Content
@@ -18,20 +21,16 @@ regions:
   footer: Footer
 
 libraries:
-  - radix/style
   - RADIX_SUBTHEME_MACHINE_NAME/style
 
-libraries-override:
-  radix/bootstrap: false
-
 ckeditor_stylesheets:
-  - assets/css/RADIX_SUBTHEME_MACHINE_NAME.style.css
+  - build/css/main.style.css
 
 components:
   namespaces:
     RADIX_SUBTHEME_MACHINE_NAME: src/components
 
-# Information added by Drupal.org packaging script on 2022-11-17
-version: '8.x-4.12'
+# Information added by Drupal.org packaging script on 2023-07-20
+version: '5.0.10'
 project: 'radix'
-datestamp: 1668674693
+datestamp: 1689844017
