@@ -27,6 +27,7 @@ class TwigExtensionTest extends ComponentsKernelTestBase {
    * @throws \Exception
    */
   public function testTemplateFunction() {
+    $result = NULL;
     try {
       $element = [
         '#theme' => 'components_twig_extension_test_template_function',
@@ -40,7 +41,13 @@ class TwigExtensionTest extends ComponentsKernelTestBase {
     catch (\Exception $e) {
       $this->fail('No Exception expected; "' . $e->getMessage() . '" thrown during: ' . $this->getName());
     }
-    $this->assertStringContainsString('<ul><li>first item</li><li>second item</li></ul>', $result);
+    $expected = '<ul><li>first item</li><li>second item</li></ul>';
+    if (method_exists($this, 'assertStringContainsString')) {
+      $this->assertStringContainsString($expected, $result);
+    }
+    else {
+      $this->assertContains($expected, $result);
+    }
   }
 
   /**
@@ -101,6 +108,7 @@ class TwigExtensionTest extends ComponentsKernelTestBase {
    * @dataProvider providerTestSetFilter
    */
   public function testSetFilter(string $theme_hook, string $expected) {
+    $result = NULL;
     try {
       $element = [
         '#theme' => $theme_hook,
@@ -122,7 +130,12 @@ class TwigExtensionTest extends ComponentsKernelTestBase {
     catch (\Exception $e) {
       $this->fail('No Exception expected; "' . $e->getMessage() . '" thrown during: ' . $this->getName());
     }
-    $this->assertStringContainsString($expected, $result);
+    if (method_exists($this, 'assertStringContainsString')) {
+      $this->assertStringContainsString($expected, $result);
+    }
+    else {
+      $this->assertContains($expected, $result);
+    }
   }
 
   /**
@@ -140,6 +153,14 @@ class TwigExtensionTest extends ComponentsKernelTestBase {
         'theme_hook' => 'components_twig_extension_test_set_filter_named_arguments',
         'expected' => '<div class="new-class"></div>',
       ],
+      'Uses deprecated "path" named argument' => [
+        'theme_hook' => 'components_twig_extension_test_set_filter_deprecated_named_arguments',
+        'expected' => '<div class="new-class"></div>',
+      ],
+      'Uses deprecated "array" named argument' => [
+        'theme_hook' => 'components_twig_extension_test_set_filter_deprecated_named_argument',
+        'expected' => '<div id="the_element_id" class="new-class"></div>',
+      ],
     ];
   }
 
@@ -151,6 +172,7 @@ class TwigExtensionTest extends ComponentsKernelTestBase {
    * @dataProvider providerTestAddFilter
    */
   public function testAddFilter(string $theme_hook, string $expected) {
+    $result = NULL;
     try {
       $element = [
         '#theme' => $theme_hook,
@@ -171,7 +193,18 @@ class TwigExtensionTest extends ComponentsKernelTestBase {
     catch (\Exception $e) {
       $this->fail('No Exception expected; "' . $e->getMessage() . '" thrown during: ' . $this->getName());
     }
-    $this->assertStringContainsString($expected, $result);
+    if (method_exists($this, 'assertStringContainsString')) {
+      $this->assertStringContainsString($expected, $result);
+    }
+    else {
+      $this->assertContains($expected, $result);
+    }
+    if (method_exists($this, 'assertStringContainsString')) {
+      $this->assertStringContainsString($expected, $result);
+    }
+    else {
+      $this->assertContains($expected, $result);
+    }
   }
 
   /**
@@ -192,6 +225,10 @@ class TwigExtensionTest extends ComponentsKernelTestBase {
       'Uses "values" named argument' => [
         'theme_hook' => 'components_twig_extension_test_add_filter_plural_named_arguments',
         'expected' => '<div class="original-container-class new-class-1 new-class-2"></div>',
+      ],
+      'Uses deprecated "path" named argument' => [
+        'theme_hook' => 'components_twig_extension_test_add_filter_deprecated_named_arguments',
+        'expected' => '<div class="original-container-class new-class"></div>',
       ],
     ];
   }

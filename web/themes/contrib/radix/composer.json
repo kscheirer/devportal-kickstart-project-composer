@@ -29,14 +29,18 @@
 	"minimum-stability": "dev",
 	"require-dev": {
 		"consolidation/robo": "^1.1.4 || ^2",
-		"drush/drush": "^11.5"
+		"drush/drush": "^11.6 || ^12"
 	},
 	"require": {
 		"drupal/components": "^3.0"
 	},
 	"autoload": {
 		"psr-4": {
-			"Drush\\Commands\\radix\\": "Commands/radix/"
+			"Drush\\Commands\\radix\\": "Commands/radix/",
+			"Drupal\\radix\\": "src/",
+			"classmap": [
+				"src/SubThemeGenerator.php"
+			]
 		}
 	},
 	"extra": {

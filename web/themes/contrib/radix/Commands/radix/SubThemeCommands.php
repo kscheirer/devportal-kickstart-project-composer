@@ -1,13 +1,11 @@
 <?php
-
 declare(strict_types = 1);
-
 namespace Drush\Commands\radix;
 
 use Consolidation\AnnotatedCommand\CommandData;
 use Consolidation\AnnotatedCommand\CommandError;
 use Drupal\Component\Utility\UrlHelper;
-use Drupal\radix\SubThemeGenerator;
+use Drush\Commands\radix\SubThemeGenerator;
 use Drush\Commands\DrushCommands;
 use Robo\Contract\BuilderAwareInterface;
 use Robo\State\Data as RoboStateData;

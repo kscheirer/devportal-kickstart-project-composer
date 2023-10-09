@@ -99,7 +99,6 @@ return array(
     'Enlightn\\SecurityChecker\\' => array($vendorDir . '/enlightn/security-checker/src'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
     'EasyRdf\\' => array($vendorDir . '/easyrdf/easyrdf/lib'),
-    'Drush\\Commands\\radix\\' => array($baseDir . '/web/themes/contrib/radix/Commands/radix'),
     'Drush\\' => array($vendorDir . '/drush/drush/src'),
     'Drupal\\Driver\\' => array($baseDir . '/web/drivers/lib/Drupal/Driver'),
     'Drupal\\Core\\' => array($baseDir . '/web/core/lib/Drupal/Core'),

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\radix;
+namespace Drush\Commands\radix;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;

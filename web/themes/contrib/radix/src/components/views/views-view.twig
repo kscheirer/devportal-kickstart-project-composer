@@ -37,15 +37,12 @@
     css_name ? 'view-' ~ css_name,
   ]|merge(views_view_classes_utility_classes ? views_view_classes_utility_classes : [])
 %}
-
-{% set show_title = show_title ?? true %}
+{% set title = title ?? true %}
 
 <div{{ attributes.addClass(views_view_classes) }}>
   {% block title %}
-   {% if show_title %}
-    {% include "@radix/title/title.twig" with {
-      title: view.title,
-    } %}
+   {% if title %}
+    {% include "@radix/title/title.twig" %}
    {% endif %}
   {% endblock %}
 
