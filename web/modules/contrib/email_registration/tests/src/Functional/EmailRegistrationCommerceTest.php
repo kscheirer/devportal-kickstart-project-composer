@@ -3,16 +3,16 @@
 namespace Drupal\Tests\email_registration\Functional\Plugin\Commerce\CheckoutPane;
 
 use Drupal\commerce_product\Entity\ProductInterface;
-use Drupal\Component\Render\FormattableMarkup;
-use Drupal\Core\Session\AccountInterface;
 use Drupal\Tests\commerce\Functional\CommerceBrowserTestBase;
+use Drupal\Tests\email_registration\Traits\EmailRegistrationTestTrait;
 
 /**
  * Tests the login checkout pane.
  *
  * @group email_registration
  */
-class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
+class EmailRegistrationCommerceTest extends CommerceBrowserTestBase {
+  use EmailRegistrationTestTrait;
 
   /**
    * The product.
@@ -20,6 +20,13 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
    * @var \Drupal\commerce_product\Entity\ProductInterface
    */
   protected $product;
+
+  /**
+   * The checkout flow object.
+   *
+   * @var \Drupal\commerce_checkout\Entity\CheckoutFlowInterface
+   */
+  protected $checkoutFlow;
 
   /**
    * {@inheritdoc}
@@ -63,12 +70,12 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
     // Enable the email_registration_login pane and disable the default login
     // pane.
     /** @var \Drupal\commerce_checkout\Entity\CheckoutFlowInterface $checkout_flow */
-    $checkout_flow = $this->container
+    $this->checkoutFlow = $this->container
       ->get('entity_type.manager')
       ->getStorage('commerce_checkout_flow')
       ->load('default');
     /** @var \Drupal\commerce_checkout\Plugin\Commerce\CheckoutFlow\CheckoutFlowInterface $checkout_flow_plugin */
-    $checkout_flow_plugin = $checkout_flow->getPlugin();
+    $checkout_flow_plugin = $this->checkoutFlow->getPlugin();
     /** @var \Drupal\email_registration\Plugin\Commerce\CheckoutPane\EmailRegistrationLogin $pane */
     $er_login_pane = $checkout_flow_plugin->getPane('email_registration_login');
     $er_login_pane->setConfiguration([]);
@@ -83,10 +90,32 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
     $checkout_flow_plugin_configuration['panes']['email_registration_login'] = $er_login_pane->getConfiguration();
     $checkout_flow_plugin_configuration['panes']['login'] = $login_pane->getConfiguration();
     $checkout_flow_plugin->setConfiguration($checkout_flow_plugin_configuration);
-    $checkout_flow->save();
+    $this->checkoutFlow->save();
 
     $this->drupalLogout();
     $this->addProductToCart($this->product);
+  }
+
+  /**
+   * Adds the given product to the cart.
+   *
+   * @param \Drupal\commerce_product\Entity\ProductInterface $product
+   *   The product to add to the cart.
+   */
+  protected function addProductToCart(ProductInterface $product) {
+    $this->drupalGet($product->toUrl()->toString());
+    $this->submitForm([], 'Add to cart');
+  }
+
+  /**
+   * Asserts the current step in the checkout progress block.
+   *
+   * @param string $expected
+   *   The expected value.
+   */
+  protected function assertCheckoutProgressStep($expected) {
+    $current_step = $this->getSession()->getPage()->find('css', '.checkout-progress--step__current')->getText();
+    $this->assertEquals($expected, $current_step);
   }
 
   /**
@@ -96,7 +125,7 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
     // Create an user to login with.
     $account = $this->drupalCreateUser();
 
-    $this->goToCheckout();
+    $this->drupalGet('/checkout');
     $this->assertCheckoutProgressStep('Login');
 
     $edit = [
@@ -120,7 +149,7 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
     // Create an user to login with.
     $account = $this->drupalCreateUser();
 
-    $this->goToCheckout();
+    $this->drupalGet('/checkout');
     $this->assertCheckoutProgressStep('Login');
     $this->assertSession()->pageTextContains('Email address or username');
 
@@ -137,7 +166,7 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
    * Tests trying to login without entering name or mail address.
    */
   public function testLoginWithoutValues() {
-    $this->goToCheckout();
+    $this->drupalGet('/checkout');
     $this->assertCheckoutProgressStep('Login');
     $this->submitForm([], 'Log in');
     $this->assertSession()->pageTextContains('Unrecognized email address or password. Forgot your password?');
@@ -150,7 +179,7 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
     // Create an user to login with.
     $account = $this->drupalCreateUser();
 
-    $this->goToCheckout();
+    $this->drupalGet('/checkout');
     $this->assertCheckoutProgressStep('Login');
 
     $edit = [
@@ -175,7 +204,7 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
       ->set('login_with_username', FALSE)
       ->save();
 
-    $this->goToCheckout();
+    $this->drupalGet('/checkout');
     $this->assertCheckoutProgressStep('Login');
     $this->assertSession()->pageTextContains('Enter your email address.');
 
@@ -203,7 +232,7 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
       ->set('login_with_username', TRUE)
       ->save();
 
-    $this->goToCheckout();
+    $this->drupalGet('/checkout');
     $this->assertCheckoutProgressStep('Login');
 
     $edit = [
@@ -223,7 +252,7 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
     $account->status = FALSE;
     $account->save();
 
-    $this->goToCheckout();
+    $this->drupalGet('/checkout');
     $this->assertCheckoutProgressStep('Login');
 
     // Try logging in with wrong pass first.
@@ -244,65 +273,46 @@ class EmailRegistrationLoginTest extends CommerceBrowserTestBase {
   }
 
   /**
-   * {@inheritdoc}
+   * Tests if the "Proceed to checkout" message appears.
    */
-  protected function drupalLogin(AccountInterface $account) {
-    if ($this->loggedInUser) {
-      $this->drupalLogout();
-    }
+  public function testProceedToCheckoutMessage() {
+    $session = $this->assertSession();
+    $this->drupalGet('/checkout');
+    // "Guest registration after checkout" is enabled as default, meaning
+    // the message should appear:
+    $session->pageTextContains('Proceed to checkout. You can optionally create an account at the end.');
 
-    $this->drupalGet('user/login');
-    $this->submitForm([
-      'mail' => $account->getEmail(),
-      'pass' => $account->passRaw,
-    ], t('Log in'));
+    // Disable the "Guest registration after checkout" pane:
+    $checkoutFlowPlugin = $this->checkoutFlow->getPlugin();
+    $checkoutFlowPlugin->setConfiguration([
+      'panes' => [
+        'completion_register' => [
+          'step' => '_disabled',
+          'weight' => 10,
+        ],
+      ],
+    ]);
+    $this->checkoutFlow->save();
 
-    $this->assertLoggedIn($account);
-  }
+    // See if the message disappeared:
+    $this->drupalGet('/checkout');
+    $session->pageTextNotContains('Proceed to checkout. You can optionally create an account at the end.');
 
-  /**
-   * Adds the given product to the cart.
-   *
-   * @param \Drupal\commerce_product\Entity\ProductInterface $product
-   *   The product to add to the cart.
-   */
-  protected function addProductToCart(ProductInterface $product) {
-    $this->drupalGet($product->toUrl()->toString());
-    $this->submitForm([], 'Add to cart');
-  }
-
-  /**
-   * Proceeds to checkout.
-   */
-  protected function goToCheckout() {
-    $cart_link = $this->getSession()->getPage()->findLink('your cart');
-    $cart_link->click();
-    $this->submitForm([], 'Checkout');
-  }
-
-  /**
-   * Asserts the current step in the checkout progress block.
-   *
-   * @param string $expected
-   *   The expected value.
-   */
-  protected function assertCheckoutProgressStep($expected) {
-    $current_step = $this->getSession()->getPage()->find('css', '.checkout-progress--step__current')->getText();
-    $this->assertEquals($expected, $current_step);
-  }
-
-  /**
-   * Asserts that a particular user is logged in.
-   *
-   * @param \Drupal\Core\Session\AccountInterface $account
-   *   The account to check for being logged in.
-   */
-  protected function assertLoggedIn(AccountInterface $account) {
-    $account->sessionId = $this->getSession()->getCookie(\Drupal::service('session_configuration')->getOptions(\Drupal::request())['name']);
-    $this->assertTrue($this->drupalUserIsLoggedIn($account), new FormattableMarkup('User %name successfully logged in.', ['%name' => $account->getAccountName()]));
-
-    $this->loggedInUser = $account;
-    $this->container->get('current_user')->setAccount($account);
+    // The message should also appear, if we enable the
+    // "email_registration_completion_registration" pane:
+    $checkoutFlowPlugin = $this->checkoutFlow->getPlugin();
+    $checkoutFlowPlugin->setConfiguration([
+      'panes' => [
+        'email_registration_completion_registration' => [
+          'step' => 'complete',
+          'weight' => 10,
+        ],
+      ],
+    ]);
+    $this->checkoutFlow->save();
+    // See if the message appears again:
+    $this->drupalGet('/checkout');
+    $session->pageTextContains('Proceed to checkout. You can optionally create an account at the end.');
   }
 
 }

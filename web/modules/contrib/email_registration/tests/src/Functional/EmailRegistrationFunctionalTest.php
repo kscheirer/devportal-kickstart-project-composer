@@ -2,7 +2,6 @@
 
 namespace Drupal\Tests\email_registration\Functional;
 
-use Drupal\Tests\BrowserTestBase;
 use Drupal\user\Entity\User;
 use Drupal\user\UserInterface;
 
@@ -11,19 +10,44 @@ use Drupal\user\UserInterface;
  *
  * @group email_registration
  */
-class EmailRegistrationTestCase extends BrowserTestBase {
+class EmailRegistrationFunctionalTest extends EmailRegistrationFunctionalTestBase {
 
   /**
-   * Modules to enable.
-   *
-   * @var array
+   * Tests if installing the module, won't break the site.
    */
-  protected static $modules = ['email_registration'];
+  public function testInstallation() {
+    $session = $this->assertSession();
+    $this->drupalGet('<front>');
+    // Ensure the status code is success:
+    $session->statusCodeEquals(200);
+    // Ensure the correct test page is loaded as front page:
+    $session->pageTextContains('Test page text.');
+  }
 
   /**
-   * {@inheritdoc}
+   * Tests if uninstalling the module, won't break the site.
    */
-  protected $defaultTheme = 'stark';
+  public function testUninstallation() {
+    $this->drupalLogin($this->adminUser);
+    // Go to uninstallation page an uninstall email_registration_username:
+    $session = $this->assertSession();
+    $page = $this->getSession()->getPage();
+    $this->drupalGet('/admin/modules/uninstall');
+    $session->statusCodeEquals(200);
+    $page->checkField('edit-uninstall-email-registration');
+    $page->pressButton('edit-submit');
+    $session->statusCodeEquals(200);
+    // Confirm uninstall:
+    $page->pressButton('edit-submit');
+    $session->statusCodeEquals(200);
+    $session->pageTextContains('The selected modules have been uninstalled.');
+    // Retest the frontpage:
+    $this->drupalGet('<front>');
+    // Ensure the status code is success:
+    $session->statusCodeEquals(200);
+    // Ensure the correct test page is loaded as front page:
+    $session->pageTextContains('Test page text.');
+  }
 
   /**
    * Test various behaviors for anonymous users.
@@ -205,6 +229,8 @@ class EmailRegistrationTestCase extends BrowserTestBase {
     $page->pressButton('Create new account');
 
     $assert_session->pageTextContains('Registration successful. You are now logged in.');
+
+    $this->drupalGet('/user');
     $assert_session->pageTextContains($name);
 
     // Extract the user ID from the current URL and load the user from backend.
@@ -215,7 +241,8 @@ class EmailRegistrationTestCase extends BrowserTestBase {
     $this->assertEquals($name, $account->getAccountName());
 
     // Log out.
-    $this->drupalGet('/user/logout');
+    $this->drupalLogout();
+    $this->drupalGet('/user/login');
 
     // Check that the username is not present on the login form.
     $assert_session->fieldNotExists('Username');
@@ -232,7 +259,8 @@ class EmailRegistrationTestCase extends BrowserTestBase {
       ->save();
 
     // Log out.
-    $this->drupalGet('/user/logout');
+    $this->drupalLogout();
+    $this->drupalGet('/user/login');
 
     // Login with username.
     $page->fillField('Email or username', $name);
@@ -243,7 +271,8 @@ class EmailRegistrationTestCase extends BrowserTestBase {
     $assert_session->pageTextContains($name);
 
     // Log out.
-    $this->drupalGet('/user/logout');
+    $this->drupalLogout();
+    $this->drupalGet('/user/login');
 
     // Login with email.
     $page->fillField('Email or username', "$name@example.com");
@@ -252,6 +281,52 @@ class EmailRegistrationTestCase extends BrowserTestBase {
 
     // Check that the user is logged in.
     $assert_session->pageTextContains($name);
+  }
+
+  /**
+   * Tests the "email_registration_update_username" action.
+   */
+  public function testBatchAction() {
+    // Rename both the "user" and "adminUser":
+    $this->user->setUserName('testUser1');
+    $this->user->setEmail('testA@mail.com');
+    $this->user->save();
+    $this->adminUser->setUserName('testUser2');
+    $this->adminUser->setEmail('testB@mail.com');
+    $this->adminUser->save();
+
+    // Execute our action on the users:
+    $updateUsernameAction = \Drupal::entityTypeManager()
+      ->getStorage('action')
+      ->load('email_registration_update_username');
+    $updateUsernameAction->execute([$this->user, $this->adminUser]);
+
+    // The active users username should be a stripped variant of their
+    // email-address:
+    $this->assertSame('testA', $this->user->getAccountName());
+    $this->assertSame('testB', $this->adminUser->getAccountName());
+  }
+
+  /**
+   * Tests the "email_registration_update_username" action.
+   */
+  public function testBatchActionAlreadyExistingName() {
+    // Rename both the "user" and "adminUser":
+    $this->user->setUserName('testUser1');
+    $this->user->save();
+    $this->adminUser->setUserName('testUser2');
+    $this->adminUser->save();
+    // Execute our action on the users:
+    $updateUsernameAction = \Drupal::entityTypeManager()
+      ->getStorage('action')
+      ->load('email_registration_update_username');
+    $updateUsernameAction->execute([$this->user, $this->adminUser]);
+    // The active "user" username should be a stripped variant of their
+    // email-address:
+    $this->assertSame('user', $this->user->getAccountName());
+    // Since there is already an 'admin' user through BrowserTestBase,
+    // this user will be named 'admin_1':
+    $this->assertSame('admin_1', $this->adminUser->getAccountName());
   }
 
 }
