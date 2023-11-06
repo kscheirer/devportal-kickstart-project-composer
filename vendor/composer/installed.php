@@ -3,7 +3,7 @@
         'name' => 'apigee/devportal-kickstart-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '60f3a83becf486e24746013508a02333faf21ff0',
+        'reference' => '87e4bcf47eff08c722e27e38f9fc6cc451a36d34',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'apigee/devportal-kickstart-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '60f3a83becf486e24746013508a02333faf21ff0',
+            'reference' => '87e4bcf47eff08c722e27e38f9fc6cc451a36d34',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
